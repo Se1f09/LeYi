@@ -70,6 +70,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Sso", "Platform.Ss
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.ResourceCount", "Service.ResourceCount\Service.ResourceCount.csproj", "{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jhsoft.web.ssologin", "C6\jhsoft.web.ssologin\jhsoft.web.ssologin.csproj", "{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
