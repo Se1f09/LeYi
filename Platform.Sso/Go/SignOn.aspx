@@ -106,7 +106,7 @@
 						<div class="ui blue header">
 							<i class="green cloud icon"></i>
 							<div class="content signBreak" style="font-size:16px;">
-								<asp:Label ID="ApplicationCount" runat="server"></asp:Label>大应用模块
+								<asp:Label ID="ApplicationCount" runat="server"></asp:Label>大应用
    
               <div class="sub header">平台一体化</div>
 							</div>
@@ -120,7 +120,7 @@
 						<div class="ui green header">
 							<i class="blue video icon"></i>
 							<div class="content signBreak" style="font-size:16px;">
-								<asp:Label ID="ResourceCount" runat="server"></asp:Label>教育资源
+								<asp:Label ID="ResourceCount" runat="server"></asp:Label>资源
 
 								<div class="sub header">资源多样化</div>
 							</div>
@@ -134,7 +134,7 @@
 						<div class="ui blue header">
 							<i class="green users icon"></i>
 							<div class="content signBreak" style="font-size:16px;">
-								<asp:Label ID="UserCount" runat="server"></asp:Label>位教育用户
+								<asp:Label ID="UserCount" runat="server"></asp:Label>位用户
    
               <div class="sub header">用户专业化</div>
 							</div>
@@ -148,7 +148,7 @@
 						<div class="ui green header">
 							<i class="blue dashboard icon"></i>
 							<div class="content signBreak" style="font-size:16px;">
-								<asp:Label ID="VisitCount" runat="server"></asp:Label>次统一登录
+								<asp:Label ID="VisitCount" runat="server"></asp:Label>次登录
    
               <div class="sub header">登录统一化</div>
 							</div>
