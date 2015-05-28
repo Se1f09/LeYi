@@ -23,6 +23,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Core", "Platform.C
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "58322"
+		SlnRelativePath = "Platform.Core\"
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Resource", "Platform.Resource\", "{27D11A2D-74FF-434B-BF93-5BDF0F9CD617}"
@@ -43,6 +44,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Resource", "Platfo
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "58341"
+		SlnRelativePath = "Platform.Resource\"
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Sso", "Platform.Sso\", "{F8A781DA-12C1-4100-B110-1CD58EB47D0C}"
@@ -63,6 +65,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Sso", "Platform.Ss
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "58346"
+		SlnRelativePath = "Platform.Sso\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.ResourceCount", "Service.ResourceCount\Service.ResourceCount.csproj", "{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}"
