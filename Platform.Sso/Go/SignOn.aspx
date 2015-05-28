@@ -90,7 +90,7 @@
 		<div class="ui center aligned page grid">
 			<telerik:RadAjaxPanel ID="areaFavourite" runat="server">
 				<div class="twelve wide column">
-					<div id="signThumb" class="ui horizontal icon divider">
+					<div id="signThumb" class="ui horizontal icon divider" style="width: 80%;">
 						<i id="signThumbButton" class="circular blue inverted thumbs up icon signOnPointer"></i>
 						<div id="signThumbCount" class="floating ui blue label width100">
 							<asp:Label ID="FavouriteCount" runat="server"></asp:Label><asp:Button ID="signThumbPost" runat="server" CssClass="signHidden" OnClick="signThumbPost_OnClick" />
