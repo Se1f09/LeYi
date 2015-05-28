@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>jhsoft.web.ssologin</AssemblyName>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JHSoft.OS">
+      <HintPath>jhsoft.web.ssologinReferences\JHSoft.OS.Dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System" />
+    <Reference Include="JHSoft.Base">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web">
+      <HintPath>.\jhsoft.web.ssologinReferences\System.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="JHSoft.IDAL">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.IDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="JHBase.Message">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHBase.Message.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="JHSoft.Login">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="JHSoft.Globalization">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.Globalization.dll</HintPath>
+    </Reference>
+    <Reference Include="JHSoft.WorkFlat">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.WorkFlat.dll</HintPath>
+    </Reference>
+    <Reference Include="JHSoft.CustomQuery">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.CustomQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="JHSoft.Crypt">
+      <HintPath>.\jhsoft.web.ssologinReferences\JHSoft.Crypt.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.RTXSAPILib">
+      <HintPath>.\jhsoft.web.ssologinReferences\Interop.RTXSAPILib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\Common.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\JHSSO\CheckSignCompletedEventArgs.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\cn.gov.btedu.i\TokenGetCredenceCompletedEventHandler.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\cn.gov.btedu.i\ClearTokenCompletedEventHandler.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\cn.gov.btedu.i\TokenGetCredenceCompletedEventArgs.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\JHSSO\CheckSSO.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\JHSSO\CheckSignCompletedEventHandler.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\Properties\Settings.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\RTXLogin.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>RTXLogin.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\RTXSkip.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>RTXSkip.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\SSOLoginToC6.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>aspxcodebehind</SubType>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\HttpUtility.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\LoginByRTX.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>LoginByRTX.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\LoginBySSO.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>aspxcodebehind</SubType>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\LoginByURLNP.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>LoginByURLNP.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\LoginByAD.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>aspxcodebehind</SubType>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\cn.gov.btedu.i\TokenService.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\LoginByURL.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>LoginByURL.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="JHSoft.web.ssoc6\RtxFlatC6.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>RtxFlatC6.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="jhsoft.web.ssologin\loginByiYou.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>aspxcodebehind</SubType>
+    </Compile>
+    <EmbeddedResource Include="JHSoft.web.ssoc6\RTXLogin.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RTXLogin.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JHSoft.web.ssoc6\RTXSkip.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RTXSkip.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JHSoft.web.ssoc6\LoginByRTX.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginByRTX.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JHSoft.web.ssoc6\LoginByURLNP.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginByURLNP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JHSoft.web.ssoc6\LoginByURL.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginByURL.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JHSoft.web.ssoc6\RtxFlatC6.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RtxFlatC6.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
