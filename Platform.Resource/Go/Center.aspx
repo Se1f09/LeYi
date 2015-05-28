@@ -44,11 +44,11 @@
                         <div style="width: 320px; text-align: center;">
 
                         </div>
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Media">发布视频</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Article">发布文章</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Courseware">发布课件</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Paper">发布试卷</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" onclick="closePublish();">取消发布</a>
+                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Media"><img src="../Image/pub_v.jpg" width="80" height="30" /></a><br />
+                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Article"><img src="../Image/pub_a.jpg" width="80" height="30" /></a><br />
+                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Courseware"><img src="../Image/pub_c.jpg" width="80" height="30" /></a><br />
+                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Paper"><img src="../Image/pub_p.jpg" width="80" height="30" /></a><br />
+                        <%--&nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" onclick="closePublish();">取消发布</a>--%>
                     </ContentTemplate>
                 </telerik:RadWindow>
             </Windows>

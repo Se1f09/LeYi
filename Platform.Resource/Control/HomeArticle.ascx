@@ -15,12 +15,12 @@
                               <dl  id="msg_2356466"  uid="105964"  style="display: block;">
 		                                    <dt> 
 			                <a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'>
-                                <asp:Image Width="49"  Height="49"  ImageUrl='<%# Eval("Image") %>'  CssClass="face face_40" runat="server"></asp:Image></a>
+                                <asp:Image Width="49"  Height="49"  ImageUrl='<%# string.Format("../Image/img/{0}.png", Eval("Thumbnail")) %>'  CssClass="face face_40" runat="server"></asp:Image></a>
 		                </dt>
 		                <dd>
 			                <div>
 				                <p  class="tle">
-					<img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' width="13" height="13" />
+					
 					                <a style="color:#227DC5;" href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'>
 									                <%# ((Homory.Model.Resource)Container.DataItem).Title.CutString(12) %>
 								                </a>
