@@ -23,7 +23,7 @@ namespace Go
 				{
 					if (string.IsNullOrEmpty(Request.QueryString["SsoRedirect"]))
 					{
-						Response.Redirect(string.Format("SsoRedirect".FromHomoryConfig(), user.Account, HomoryCryptor.Decrypt(user.Password, user.CryptoKey, user.CryptoSalt)), false);
+						Response.Redirect(string.Format("SsoRedirect".FromWebConfig() == "" ? Application["Sso"] + "Go/Board" : "SsoRedirect".FromWebConfig(), user.Account, HomoryCryptor.Decrypt(user.Password, user.CryptoKey, user.CryptoSalt)), false);
 					}
 					else
 					{
@@ -183,7 +183,7 @@ namespace Go
 					Session[HomoryConstant.SessionRegisterId] = user.Id;
 					output.Ok = true;
 					output.Data.Redirect = true;
-					output.Data.RedirectUrl = "SsoVerify".FromHomoryConfig();
+					output.Data.RedirectUrl = Application["Sso"] + "Go/ToVerify";
 					return output;
 				}
 				var online = user.UserOnline.SingleOrDefault();
@@ -212,7 +212,7 @@ namespace Go
 				var query = Server.UrlDecode(Request.QueryString["SsoRedirect"]);
 				if (string.IsNullOrWhiteSpace(Request.QueryString["SsoRedirect"]))
 				{
-					output.Data.RedirectUrl = string.Format("SsoRedirect".FromHomoryConfig(), user.Account, HomoryCryptor.Decrypt(user.Password, user.CryptoKey, user.CryptoSalt));
+                    output.Data.RedirectUrl = string.Format(string.Format("SsoRedirect".FromWebConfig() == "" ? Application["Sso"] + "Go/Board" : "SsoRedirect".FromWebConfig(), user.Account, HomoryCryptor.Decrypt(user.Password, user.CryptoKey, user.CryptoSalt)));
 				}
 				else
 				{
@@ -235,7 +235,7 @@ namespace Go
 									.Insert(index, string.Format("?OnlineId={0}&", user.UserOnline.Single().Id)));
 						}
 					}
-					output.Data.RedirectUrl = string.IsNullOrWhiteSpace(url) ? string.Format("SsoRedirect".FromHomoryConfig(), user.Account, HomoryCryptor.Decrypt(user.Password, user.CryptoKey, user.CryptoSalt)) : url;
+					output.Data.RedirectUrl = string.IsNullOrWhiteSpace(url) ? string.Format(string.Format("SsoRedirect".FromWebConfig() == "" ? Application["Sso"] + "Go/Board" : "SsoRedirect".FromWebConfig(), user.Account, HomoryCryptor.Decrypt(user.Password, user.CryptoKey, user.CryptoSalt))) : url;
 				}
 				return output;
 			}
@@ -319,7 +319,7 @@ namespace Go
 
 		protected void buttonRegister_OnClick(object sender, EventArgs e)
 		{
-			Response.Redirect("SsoRegister".FromHomoryConfig(), false);
+			Response.Redirect(Application["Sso"] + "Go/Register", false);
 		}
 	}
 }

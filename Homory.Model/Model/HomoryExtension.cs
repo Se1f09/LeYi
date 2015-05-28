@@ -44,14 +44,14 @@ namespace Homory.Model
 			return JsonConvert.DeserializeObject<T>(json);
 		}
 
-		public static string FromHomoryConfig(this string configName)
+		public static string FromWebConfig(this string configName)
 		{
 			return WebConfigurationManager.AppSettings[configName];
 		}
 
-		public static string ToHomoryUrl(this string relativeUrl, string configName)
+        public static string ToHomoryUrl(this string relativeUrl, string configName)
 		{
-			return string.Concat(configName.FromHomoryConfig(), relativeUrl);
+			return string.Concat(configName.FromWebConfig(), relativeUrl);
 		}
 	}
 }

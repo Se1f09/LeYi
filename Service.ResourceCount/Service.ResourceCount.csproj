@@ -7,8 +7,8 @@
     <ProjectGuid>{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BT.Service.ResourceCount</RootNamespace>
-    <AssemblyName>BT.Service.ResourceCount</AssemblyName>
+    <RootNamespace>LY.Service.ResourceCount</RootNamespace>
+    <AssemblyName>LY.Service.ResourceCount</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

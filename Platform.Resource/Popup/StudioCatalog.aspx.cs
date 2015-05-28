@@ -43,7 +43,7 @@ namespace Popup
 
 		private void LoadInit()
 		{
-			loading.InitialDelayTime = int.Parse("Busy".FromHomoryConfig());
+			loading.InitialDelayTime = int.Parse("Busy".FromWebConfig());
 
 			Guid newId = Guid.Parse(Request.QueryString[0]);
 			if (HomoryContext.Value.Catalog.Count(o => o.Id == newId) == 0)

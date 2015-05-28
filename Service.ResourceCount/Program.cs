@@ -1,6 +1,6 @@
 ﻿using System.ServiceProcess;
 
-namespace BT.Service.ResourceCount
+namespace LY.Service.ResourceCount
 {
     static class Program
     {

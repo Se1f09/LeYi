@@ -17,7 +17,7 @@ public partial class Go_EmailGo : HomoryPage
 		if (IsSsoOnline(out u))
 		{
 			var id = u.Account;
-			Response.Redirect(string.Format("EmailGo".FromHomoryConfig(), Server.UrlEncode(u.Account), u.Account.Equals("admin", StringComparison.InvariantCultureIgnoreCase) ? "xsfx3450" : "EmailPassword".FromHomoryConfig()), false);
+			Response.Redirect(string.Format("EmailGo".FromWebConfig(), Server.UrlEncode(u.Account), u.Account.Equals("admin", StringComparison.InvariantCultureIgnoreCase) ? "xsfx3450" : "EmailPassword".FromWebConfig()), false);
 			return;
 		}
 		else
@@ -33,7 +33,7 @@ public partial class Go_EmailGo : HomoryPage
 		if (path.IndexOf('?') > 0)
 			path = path.Substring(0, path.IndexOf('?'));
 		var query = Request.QueryString.ToString();
-		var url = string.Format("{0}?{1}{2}{3}", "SsoOn".FromHomoryConfig(), Server.UrlEncode(path),
+		var url = string.Format("{0}?{1}{2}{3}", Application["Sso"] + "Go/SignOn", Server.UrlEncode(path),
 			string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
 		Response.Redirect(url, false);
 	}

@@ -34,8 +34,8 @@
             // serviceInstallerHomoryResourceCountService
             // 
             this.serviceInstallerHomoryResourceCountService.Description = "计算资源文件夹总量";
-            this.serviceInstallerHomoryResourceCountService.DisplayName = "BTResourceCountService";
-            this.serviceInstallerHomoryResourceCountService.ServiceName = "BTResourceCountService";
+            this.serviceInstallerHomoryResourceCountService.DisplayName = "LYResourceCountService";
+            this.serviceInstallerHomoryResourceCountService.ServiceName = "LYResourceCountService";
             this.serviceInstallerHomoryResourceCountService.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // serviceProcessInstaller

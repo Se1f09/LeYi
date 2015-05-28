@@ -15,7 +15,7 @@ public partial class Go_DiskGo : HomoryPage
 		{
 			var id = u.Account;
 			string password = HomoryCryptor.Decrypt(u.Password, u.CryptoKey, u.CryptoSalt);
-			Response.Redirect(string.Format("DiskGo".FromHomoryConfig(), Server.UrlEncode(u.Account), Server.UrlEncode(password)), false);
+			Response.Redirect(string.Format("DiskGo".FromWebConfig(), Server.UrlEncode(u.Account), Server.UrlEncode(password)), false);
 			return;
 		}
 		else
@@ -31,7 +31,7 @@ public partial class Go_DiskGo : HomoryPage
 		if (path.IndexOf('?') > 0)
 			path = path.Substring(0, path.IndexOf('?'));
 		var query = Request.QueryString.ToString();
-		var url = string.Format("{0}?{1}{2}{3}", "SsoOn".FromHomoryConfig(), Server.UrlEncode(path),
+		var url = string.Format("{0}?{1}{2}{3}", Application["Sso"] + "Go/SignOn", Server.UrlEncode(path),
 			string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
 		Response.Redirect(url, false);
 	}

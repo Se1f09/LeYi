@@ -5,7 +5,7 @@ using System.IO;
 using System.ServiceProcess;
 using System.Timers;
 
-namespace BT.Service.ResourceCount
+namespace LY.Service.ResourceCount
 {
     public partial class HomoryResourceCountService : ServiceBase
     {

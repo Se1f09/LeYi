@@ -22,7 +22,7 @@ namespace Go
 
         private void LoadInit()
         {
-			loading.InitialDelayTime = int.Parse("Busy".FromHomoryConfig());
+			loading.InitialDelayTime = int.Parse("Busy".FromWebConfig());
         }
 
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)

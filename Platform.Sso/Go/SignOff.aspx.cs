@@ -32,7 +32,7 @@ namespace Go
 				var query = Request.QueryString["SsoRedirect"];
 				if (string.IsNullOrWhiteSpace(query))
 				{
-					Response.Redirect("SsoOn".FromHomoryConfig(), false);
+					Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 				}
 				else
 				{
@@ -45,7 +45,7 @@ namespace Go
 						var path = Server.UrlDecode(Request.QueryString["SsoRedirect"]);
                         url = string.Format("{0}?{1}", path, query.Substring(index + 1));
                     }
-					Response.Redirect(string.IsNullOrWhiteSpace(url) ? "SsoOn".FromHomoryConfig() : url, false);
+					Response.Redirect(string.IsNullOrWhiteSpace(url) ? Application["Sso"] + "Go/SignOn" : url, false);
 				}
 			}
 		}

@@ -23,12 +23,12 @@ namespace Go
 		{
 			if (Session[HomoryConstant.SessionRegisterId] == null)
 			{
-				Response.Redirect("SsoOn".FromHomoryConfig(), false);
+				Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 				return;
 			}
 			var output = UserGetInternal(HomoryContext.Value, (Guid)Session[HomoryConstant.SessionRegisterId]);
 			if (output.Ok) return;
-			Response.Redirect("SsoRegister".FromHomoryConfig(), false);
+			Response.Redirect(Application["Sso"] + "Go/Register", false);
 		}
 
 		public dynamic UserGetInternal(Entities db, Guid id)
@@ -82,7 +82,7 @@ namespace Go
 				var sender =
 					db.ApplicationPolicy.Single(o => o.Name == "SmtpSender" && o.ApplicationId == Guid.Empty).Value;
 				var content = string.Format(ToVerifyBody, user.DisplayName,
-					"SsoVerify".FromHomoryConfig().Replace("ToVerify", "Verifying"), user.Stamp, sender);
+                    Application["Sso"] + "Go/Verifying", user.Stamp, sender);
 				output.Ok = Smtp.SendEmail(db, string.Format(ToVerifyHead, sender), user.DisplayName, content, user.Account, sender);
 				return output;
 			}

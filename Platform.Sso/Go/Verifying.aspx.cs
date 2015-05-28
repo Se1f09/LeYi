@@ -12,7 +12,7 @@ namespace Go
 		{
 			if (Request.QueryString.Count == 0)
 			{
-				Response.Redirect("SsoOn".FromHomoryConfig(), false);
+				Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 				return;
 			}
 			try
@@ -21,14 +21,14 @@ namespace Go
 				var output = UserVerifying(HomoryContext.Value, stamp);
 				if (output.Ok)
 				{
-					Response.Redirect("SsoBoard".FromHomoryConfig(), false);
+					Response.Redirect(Application["Sso"] + "Go/Board", false);
 					return;
 				}
-				Response.Redirect("SsoOn".FromHomoryConfig(), false);
+				Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 			}
 			catch
 			{
-				Response.Redirect("SsoOn".FromHomoryConfig(), false);
+				Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 			}
 		}
 

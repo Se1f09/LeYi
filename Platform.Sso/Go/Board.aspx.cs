@@ -13,7 +13,7 @@ namespace Go
 			{
 				if (!GetOnlineUser(out _user))
 				{
-					Response.Redirect("SsoOn".FromHomoryConfig(), false);
+					Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 					return;
 				}
 				else

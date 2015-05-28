@@ -20,7 +20,7 @@ namespace Go
 
         private void LoadInit()
         {
-            loading.InitialDelayTime = int.Parse("Busy".FromHomoryConfig());
+            loading.InitialDelayTime = int.Parse("Busy".FromWebConfig());
          
             BindCombo();
             InitCombo();

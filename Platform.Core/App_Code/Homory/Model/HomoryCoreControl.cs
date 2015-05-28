@@ -79,7 +79,7 @@ namespace Homory.Model
                     if (path.IndexOf('?') > 0)
                         path = path.Substring(0, path.IndexOf('?'));
                     var query = Request.QueryString.ToString();
-					var url = string.Format("{0}?SsoRedirect={1}{2}{3}", "SsoOn".FromHomoryConfig(), Server.UrlEncode(path),
+					var url = string.Format("{0}?SsoRedirect={1}{2}{3}", Application["Sso"] + "Go/SignOn", Server.UrlEncode(path),
                         string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
                     Session["CORE"] = "CORE";
                     Response.Redirect(url, false);
@@ -93,7 +93,7 @@ namespace Homory.Model
                         if (path.IndexOf('?') > 0)
                             path = path.Substring(0, path.IndexOf('?'));
                         var query = Request.QueryString.ToString();
-						var url = string.Format("{0}?SsoRedirect={1}{2}{3}", "SsoOff".FromHomoryConfig(), Server.UrlEncode(path),
+						var url = string.Format("{0}?SsoRedirect={1}{2}{3}", Application["Sso"] + "Go/SignOff", Server.UrlEncode(path),
                             string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
 	                    Session[HomoryCoreConstant.SessionUserId] = null;
 	                    Session["CORE"] = null;

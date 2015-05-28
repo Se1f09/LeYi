@@ -1,4 +1,4 @@
-﻿namespace BT.Service.ResourceCount
+﻿namespace LY.Service.ResourceCount
 {
     partial class HomoryResourceCountService
     {
@@ -31,7 +31,7 @@
             // 
             // HomoryResourceCountService
             // 
-            this.ServiceName = "BTResourceCountService";
+            this.ServiceName = "LYResourceCountService";
 
         }
 

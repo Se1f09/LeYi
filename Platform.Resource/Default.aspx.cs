@@ -5,6 +5,6 @@ public partial class Default : HomoryPage
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
-        Response.Redirect("ResourceHome".FromHomoryConfig(), false);
+        Response.Redirect(Application["Resource"] + "Go/Home", false);
 	}
 }

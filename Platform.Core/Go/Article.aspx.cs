@@ -21,7 +21,7 @@ namespace Go
 
         private void LoadInit()
         {
-			loading.InitialDelayTime = int.Parse("Busy".FromHomoryConfig());
+			loading.InitialDelayTime = int.Parse("Busy".FromWebConfig());
             LogOp(OperationType.查询);
             BindTree();
             InitTree();

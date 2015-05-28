@@ -126,7 +126,7 @@ namespace Go
 			{
 				if (CurrentRights.Contains(item.RightName))
 					sb.Append(string.Format("&nbsp;<div class='ui mini button {2}' data-url='{0}'>{1}</div>&nbsp;",
-						item.Redirect.StartsWith("+") ? item.Redirect.Substring(1).FromHomoryConfig() : item.Redirect, item.Name,
+						item.Redirect.StartsWith("+") ? item.Redirect.Substring(1).FromWebConfig() : item.Redirect, item.Name,
 						menu.Icon));
 				else
 				{
@@ -148,7 +148,7 @@ namespace Go
 			if (path.IndexOf('?') > 0)
 				path = path.Substring(0, path.IndexOf('?'));
 			var query = Request.QueryString.ToString();
-			var url = string.Format("{0}?SsoRedirect={1}", "SsoOff".FromHomoryConfig(), Server.UrlEncode("CoreHome".FromHomoryConfig()));
+			var url = string.Format("{0}?SsoRedirect={1}", Application["Sso"] + "Go/SignOff", Application["Core"] + "Go/Home");
 			Response.Redirect(url, false);
 		}
 

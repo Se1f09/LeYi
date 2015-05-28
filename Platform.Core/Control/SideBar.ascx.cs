@@ -38,7 +38,7 @@ namespace Control
 			foreach (var item in query)
 			{
 				if (CurrentRights.Contains(item.RightName))
-					sb.Append(string.Format("<a class=\"item\" href=\"{0}\">{1}<i class=\"icon\"></i></a>", item.Redirect.StartsWith("+") ? item.Redirect.Substring(1).FromHomoryConfig() : item.Redirect, item.Name));
+					sb.Append(string.Format("<a class=\"item\" href=\"{0}\">{1}<i class=\"icon\"></i></a>", item.Redirect.StartsWith("+") ? item.Redirect.Substring(1).FromWebConfig() : item.Redirect, item.Name));
             }
 			return sb.ToString();
 		}
@@ -49,7 +49,7 @@ namespace Control
             if (path.IndexOf('?') > 0)
                 path = path.Substring(0, path.IndexOf('?'));
             var query = Request.QueryString.ToString();
-            var url = string.Format("{0}?SsoRedirect={1}", "SsoOff".FromHomoryConfig(), Server.UrlEncode("CoreHome".FromHomoryConfig()));
+            var url = string.Format("{0}?SsoRedirect={1}", Application["Sso"] + "Go/SignOff", Server.UrlEncode(Application["Core"] + "Go/Home"));
             Response.Redirect(url, false);
         }
 

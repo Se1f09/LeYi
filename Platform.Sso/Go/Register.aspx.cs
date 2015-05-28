@@ -116,7 +116,7 @@ namespace Go
 				userPasswordRepeat.Value, userName.Value, userRealName.Value, file, userDescription.Value);
 			if (output.Ok)
 			{
-				Response.Redirect("SsoVerify".FromHomoryConfig(), false);
+				Response.Redirect(Application["Sso"] + "Go/ToVerify", false);
 				return;
 			}
 			string control = null;
@@ -138,7 +138,7 @@ namespace Go
 		protected void buttonBack_OnClick(object sender, EventArgs e)
 		{
 			Session.Remove(HomoryConstant.SessionRegisterId);
-			Response.Redirect("SsoOn".FromHomoryConfig(), false);
+			Response.Redirect(Application["Sso"] + "Go/SignOn", false);
 		}
 	}
 }
