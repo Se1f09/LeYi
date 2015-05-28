@@ -106,7 +106,7 @@
 						<div class="ui blue header">
 							<i class="green cloud icon"></i>
 							<div class="content signBreak" style="font-size:16px;">
-								<asp:Label ID="ApplicationCount" runat="server"></asp:Label>大应用
+								<asp:Label ID="ApplicationCount" runat="server"></asp:Label>个应用
    
               <div class="sub header">平台一体化</div>
 							</div>
