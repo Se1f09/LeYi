@@ -21,7 +21,7 @@ namespace Document.web
 					var id = Request.QueryString["Id"];
 					var key = Guid.Parse(id);
 					var resource = HomoryContext.Value.Resource.First(o => o.Id == key).Preview;
-					var url = string.Format("{0}{1}", WebConfigurationManager.AppSettings["ResourceUrl"], resource.Substring((3)));
+					var url = string.Format("{0}{1}", Application["Resource"], resource.Substring((3)));
 					return url;
 				}
 				catch (Exception)

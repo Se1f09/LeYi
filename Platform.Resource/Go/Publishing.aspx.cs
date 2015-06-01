@@ -25,9 +25,11 @@ namespace Go
 				InitializeHomoryPage();
 				CreateDirectories();
 			}
-		}
+            author_pub.DataSource = lll;
+            author_pub.DataBind();
+        }
 
-		protected void CreateDirectories()
+        protected void CreateDirectories()
 		{
 			var path = string.Format("../Common/资源/{0}/附件", CurrentUser.Id.ToString().ToUpper());
 			var dir = Server.MapPath(path);
@@ -96,12 +98,28 @@ namespace Go
             }
         }
 
+        public const string FORMAT_AUTHOR = "{0} - {1}";
+
+        public List<ED> lll { get { return HomoryContext.Value.ViewTeacher.Where(o => o.State < State.审核 && (o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) && o.TopDepartmentId == CurrentCampus.Id).ToList().Select(o => new ED { Id = o.Id, Name = string.Format(FORMAT_AUTHOR, o.RealName, o.Phone) }).ToList(); } }
+
 		protected void InitializeHomoryPage()
 		{
-			if (CurrentUser.Resource.Count(o => o.State == State.审核 && o.Type == ResourceType && o.UserId == CurrentUser.Id) != 0)
+            if (CurrentUser.Resource.Count(o => o.State == State.审核 && o.Type == ResourceType && o.UserId == CurrentUser.Id) != 0)
 			{
 				var r = CurrentResource;
-				publish_title_content.Value = r.Title;
+                try
+                {
+                    var ______id = Guid.Parse(CurrentResource.Author);
+                    var ______user = HomoryContext.Value.ViewTeacher.First(o => o.Id == ______id);
+                    author_pub.Text = string.Format(FORMAT_AUTHOR, ______user.RealName, ______user.Phone);
+                }
+                catch
+                {
+                    author_pub.Text = string.Format(FORMAT_AUTHOR, CurrentUser.RealName, CurrentUser.Teacher.Phone);
+                    CurrentResource.Author = CurrentUser.Id.ToString();
+                    HomoryContext.Value.SaveChanges();
+                }
+                publish_title_content.Value = r.Title;
 				publish_tag_tags.DataSource =
 						HomoryContext.Value.ResourceTag.Where(o => o.ResourceId == r.Id && o.State == State.启用).Select(o => o.Tag).ToList();
 				publish_tag_tags.DataBind();
@@ -203,7 +221,7 @@ namespace Go
 				OpenType = OpenType.互联网,
 				FileType = ResourceFileType.Word,
 				Title = string.Empty,
-				Author = CurrentUser.RealName,
+				Author = CurrentUser.Id.ToString(),
 				State = State.审核,
 				Time = DateTime.Now
 			};
@@ -413,6 +431,7 @@ namespace Go
 			resource.Content = publish_editor.Content;
 			resource.Time = DateTime.Now;
 			resource.State = State.启用;
+            resource.UserId = Guid.Parse(resource.Author);
 			HomoryContext.Value.SaveChanges();
             LogOp(TeacherOperationType);
             Response.Redirect(string.Format("../Go/{1}?Id={0}", resource.Id, resource.Type == Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain"), false);
@@ -466,6 +485,28 @@ namespace Go
             };
             HomoryContext.Value.ResourceCatalog.AddOrUpdate(rc);
             HomoryContext.Value.SaveChanges();
+        }
+
+        public class ED
+        {
+            public Guid Id { get; set; }
+            public string Name { get; set; }
+        }
+
+        protected void author_pub_DataSourceSelect(object sender, SearchBoxDataSourceSelectEventArgs e)
+        {
+            RadSearchBox searchBox = (RadSearchBox)sender;
+            searchBox.DataSource = lll.Where(o => o.Name.Contains(e.FilterString)).ToList();
+            searchBox.DataBind();
+        }
+
+        protected void author_pub_Search(object sender, SearchBoxEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(e.Value))
+            {
+                CurrentResource.Author = e.Value;
+                HomoryContext.Value.SaveChanges();
+            }
         }
     }
 }

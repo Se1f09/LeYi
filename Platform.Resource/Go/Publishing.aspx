@@ -70,6 +70,13 @@
                         <div class="editor-top">
                             <label id="publish_title_label" class="title">标题：</label>
                             <input runat="server" class="editor-title" id="publish_title_content" type="text" />
+                            <br />
+                            <br />
+                            <telerik:RadAjaxPanel runat="server">
+                                <telerik:RadSearchBox ID="author_pub" runat="server" OnSearch="author_pub_Search" DropDownSettings-Width="702px" DropDownSettings-CssClass="xs" Width="743px" OnDataSourceSelect="author_pub_DataSourceSelect" DataTextField="Name" DataValueField="Id" LabelCssClass="title fl sx" Label="作者：" ShowLoadingIcon="false" ShowSearchButton="false" EnableEmbeddedSkins="false" EnableEmbeddedBaseStylesheet="true"></telerik:RadSearchBox>
+                            </telerik:RadAjaxPanel>
+                            <br />
+                            <br />
                             <div style="width: 738px; height: auto;">
                                 <telerik:RadAjaxPanel runat="server" ID="publish_preview_empty">
                                     <div style="margin: 40px;">
@@ -291,6 +298,41 @@
                 <homory:CommonBottom runat="server" ID="CommonBottom" />
             </div>
         </div>
+        <style>
+            html .RadSearchBox .rsbInput {
+                color: black;
+                background-color: white;
+                display: block;
+                border: solid #ddd 1px;
+                height: 32px;
+                line-height: 32px;
+                text-align: left;
+                color: #727272;
+                font-size: 12px;
+                font-weight: bolder;
+                float: right;
+                margin-left: -8px;
+            }
+
+            html .RadSearchBox .rsbInner {
+                display: block;
+                line-height: 0;
+                border: none;
+                padding: 0;
+                position: relative;
+                _overflow: hidden;
+                width: 700px;
+            }
+
+            .xs{
+                background-color: wheat;
+                margin-left: 38px;
+            }
+
+            .sx{
+                margin-top: 6px;
+            }
+        </style>
     </form>
 </body>
 </html>

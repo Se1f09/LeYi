@@ -132,7 +132,7 @@ namespace Homory.Model
 
 		protected override void OnLoad(EventArgs e)
 		{
-            var doc = XDocument.Load(Server.MapPath("../Common/配置/Title.xml"));
+            var doc = XDocument.Load(Server.MapPath("~/Common/配置/Title.xml"));
             this.Title = doc.Root.Element("Resource").Value;
 
             if (IsOnline)
