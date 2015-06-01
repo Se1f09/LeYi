@@ -58,7 +58,7 @@
                                         <asp:Repeater runat="server" ID="favourites">
                                             <ItemTemplate>
                                                 <li class="pt10 clearfix"><a href="<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>" class="fl">
-                                                    <asp:Image runat="server" ImageUrl='<%# Eval("Icon") %>' Width="40" Height="40" />
+                                                    <asp:Image runat="server" ImageUrl='<%# P(Eval("Icon")) %>' Width="40" Height="40" />
                                                 </a>
                                                     <div class="fl ml5">
                                                         <p><a href="<%# string.Format("../Go/Personal.aspx?Id={0}", Eval("Id")) %>" data-card="20530" data-card-type="person"><%# Eval("DisplayName") %></a>&nbsp; </p>
@@ -79,7 +79,7 @@
                                         <asp:Repeater runat="server" ID="relatives">
                                             <ItemTemplate>
                                                 <li class="pt10 clearfix"><a href="<%# string.Format("../Go/Personal.aspx?Id={0}", Eval("Id")) %>" class="fl">
-                                                    <asp:Image runat="server" ImageUrl='<%# Eval("Icon") %>' Width="40" Height="40" />
+                                                    <asp:Image runat="server" ImageUrl='<%# P(Eval("Icon")) %>' Width="40" Height="40" />
                                                 </a>
                                                     <div class="fl ml5">
                                                         <p><a href="<%# string.Format("../Go/Personal.aspx?Id={0}", Eval("Id")) %>" data-card="20530" data-card-type="person"><%# Eval("DisplayName") %></a>&nbsp; </p>
@@ -98,7 +98,7 @@
 
                             </telerik:RadAjaxPanel>
 
-                            <div class="u-rbox u-rbox-visitor">
+                            <%--<div class="u-rbox u-rbox-visitor">
                                 <div class="u-rbox-title">
                                     <h3 class="">最近访客</h3>
                                     <p class="u-rbox-rtop skin-grey-a">访问总数:1</p>
@@ -110,5 +110,5 @@
                                         <p id="visitTime" runat="server" class="time"></p>
                                     </li>
                                 </ul>
-                            </div>
+                            </div>--%>
                         </div>

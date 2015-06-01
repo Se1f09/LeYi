@@ -21,7 +21,7 @@ public partial class Control_CenterLeft : Homory.Model.HomoryResourceControl
     {
         var user = CurrentUser;
 
-        icon.ImageUrl = user.Icon;
+        icon.ImageUrl = P(user.Icon);
         name.Text = user.DisplayName;
         favourite.Text = HomoryContext.Value.UserFavourite.Count(o => o.FavouriteUserId == user.Id && o.State == State.启用).ToString();
         honor.Text = HomoryContext.Value.ViewTS.First(o => o.Id == user.Id).Credit.ToString();

@@ -52,7 +52,7 @@ namespace Go
         protected void InitializeHomoryPage()
         {
             var user = TargetUser;
-            icon.ImageUrl = user.Icon;
+            icon.ImageUrl = P(user.Icon);
             name.Text = string.Format("{0}&nbsp;{1}", UC(user.Id), user.DisplayName);
             count1.Text = HomoryContext.Value.UserFavourite.Count(o => o.UserId == user.Id && o.State == State.启用).ToString();
             count2.Text = HomoryContext.Value.UserFavourite.Count(o => o.FavouriteUserId == user.Id && o.State == State.启用).ToString();

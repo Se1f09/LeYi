@@ -12,7 +12,7 @@
                     <dl class="srx-comment-item">
                         <dt>
                             <a style="border: none;" href='<%# string.Format("../Go/Personal?Id={0}", U(((Homory.Model.Action)Container.DataItem).Id3).Id) %>'>
-                                <asp:Image runat="server" ID="icon" ImageUrl='<%# U(((Homory.Model.Action)Container.DataItem).Id3).Icon %>' Width="35" Height="35" /></a>
+                                <asp:Image runat="server" ID="icon" ImageUrl='<%# P(U(((Homory.Model.Action)Container.DataItem).Id3).Icon) %>' Width="35" Height="35" /></a>
                         </dt>
                         <dd>
                             <div class="srx-comment-content" style="font-size: 14px;">

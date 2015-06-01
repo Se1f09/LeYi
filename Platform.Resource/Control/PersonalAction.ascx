@@ -13,7 +13,7 @@
                             <dl style="display: block;">
                                 <dt>
                                     <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("id3")) %>'>
-                                        <asp:Image Width="49" Height="49" ImageUrl='<%# U(Eval("Id3")).Icon %>' CssClass="face face_40" runat="server"></asp:Image></a>
+                                        <asp:Image Width="49" Height="49" ImageUrl='<%# P(U(Eval("Id3")).Icon) %>' CssClass="face face_40" runat="server"></asp:Image></a>
                                 </dt>
                                 <dd>
                                     <div>

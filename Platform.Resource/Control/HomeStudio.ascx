@@ -10,7 +10,7 @@
 				<ItemTemplate>
 					<li style="display: list-item;">
 						<a href='<%# string.Format("../Go/ViewStudio?Id={0}", Eval("Id")) %>'>
-							<asp:Image runat="server" ImageUrl='<%# Eval("Icon") %>' Width="70" Height="70" />
+							<asp:Image runat="server" ImageUrl='<%# P(Eval("Icon")) %>' Width="70" Height="70" />
 						</a>
 						<div class="cl-r">
 							<p class="f14"><a href='<%# string.Format("../Go/ViewStudio?Id={0}", Eval("Id")) %>'><%# Eval("Name") %></a></p>

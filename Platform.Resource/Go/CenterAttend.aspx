@@ -106,7 +106,7 @@
                                                                     <ItemTemplate>
                                                                         <div style="width: 150px; float: left; text-align: center;">
                                                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
-                                                                                <asp:Image runat="server" ImageUrl='<%# Eval("Icon") %>' Width="100" Height="100" /></a></br>
+                                                                                <asp:Image runat="server" ImageUrl='<%# P(Eval("Icon")) %>' Width="100" Height="100" /></a></br>
                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a><br />
                                                                             <a data-id='<%# Eval("Id") %>' id="removeAttend" target="_self" runat="server" onserverclick="removeAttend1_ServerClick">取消关注</a>
                                                                         </div>
@@ -124,7 +124,7 @@
                                                                     <ItemTemplate>
                                                                         <div style="width: 150px; float: left; text-align: center;">
                                                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
-                                                                                <asp:Image runat="server" ImageUrl='<%# Eval("Icon") %>' Width="100" Height="100" /></a></br>
+                                                                                <asp:Image runat="server" ImageUrl='<%# P(Eval("Icon")) %>' Width="100" Height="100" /></a></br>
                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a><br />
                                                                             <a data-id='<%# Eval("Id") %>' id="removeAttend" target="_self" runat="server" onserverclick="removeAttend2_ServerClick">取消关注</a>
                                                                         </div>
@@ -142,7 +142,7 @@
                                                                     <ItemTemplate>
                                                                         <div style="width: 150px; float: left; text-align: center;">
                                                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
-                                                                                <asp:Image runat="server" ImageUrl='<%# Eval("Icon") %>' Width="100" Height="100" /></a></br>
+                                                                                <asp:Image runat="server" ImageUrl='<%# P(Eval("Icon")) %>' Width="100" Height="100" /></a></br>
                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a><br />
                                                                             <a data-id='<%# Eval("Id") %>' id="addAttend" target="_self" runat="server" onserverclick="addAttend_ServerClick">添加关注</a>
                                                                         </div>

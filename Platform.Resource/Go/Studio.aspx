@@ -43,7 +43,7 @@
                                         <ItemTemplate>
                                             <li class="c-p-box1"><span class="payTag"></span><span class="titleMask"><a href='<%# string.Format("../Go/ViewStudio?Id={0}", Eval("Id")) %>'><%# Eval("Name") %></a></span> <a href='<%# string.Format("../Go/ViewStudio?Id={0}", Eval("Id")) %>'>
                                                 <div class="loadmask" style="position: absolute; width: 150px; height: 150px; display: none;"></div>
-                                                <asp:Image Width="150" Height="150" Style="display: inline;" runat="server" ImageUrl='<%# Eval("Icon") %>' />
+                                                <asp:Image Width="150" Height="150" Style="display: inline;" runat="server" ImageUrl='<%# P(Eval("Icon")) %>' />
                                             </a></li>
                                         </ItemTemplate>
                                     </asp:Repeater>

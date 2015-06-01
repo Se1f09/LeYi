@@ -48,8 +48,8 @@ public partial class Control_CenterRight : Homory.Model.HomoryResourceControl
     {
         var user = CurrentUser;
 
-        visit.ImageUrl = user.Icon;
-        visitTime.InnerText = DateTime.Now.ToString("HH:mm");
+        //visit.ImageUrl = user.Icon;
+        //visitTime.InnerText = DateTime.Now.ToString("HH:mm");
         time.Text = string.Format("{0} {1}", DateTime.Today.ToString("MM月dd日"),
             DateTime.Now.ToString("dddd", new System.Globalization.CultureInfo("zh-cn")));
         board.DataSource = user.Resource.Where(o => o.State == State.启用).OrderByDescending(o => o.Rate).Take(5).ToList();

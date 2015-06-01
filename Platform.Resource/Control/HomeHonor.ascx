@@ -15,7 +15,7 @@
 							<img src='<%# string.Format("../Image/honor/{0}.jpg", Container.ItemIndex) %>' width="30" height="48">
 						</div>
 						<div style="float:left; margin-left:8px"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
-								<asp:Image Width="49"  Height="49"  ImageUrl='<%# ((Homory.Model.ViewTS)Container.DataItem).Icon %>'  CssClass="fl" runat="server"></asp:Image>
+								<asp:Image Width="49"  Height="49"  ImageUrl='<%# P(((Homory.Model.ViewTS)Container.DataItem).Icon) %>'  CssClass="fl" runat="server"></asp:Image>
 							</a></div>
 						<div class="cl-r">
 							<p class="f14"><%# UC(Eval("Id")).ToString().Replace("江苏省", string.Empty).Replace("江苏", string.Empty).Replace("无锡市", string.Empty).Replace("无锡", string.Empty) %>&nbsp;&nbsp;<a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a></p>
