@@ -173,7 +173,7 @@
                                   <em id="downloadCount" runat="server"></em></a>
                                             </telerik:RadAjaxPanel>
                                         </td>
-                                        <td align="right" width="130">
+                                        <td align="right" width="130">  
                                             <telerik:RadAjaxPanel runat="server" ID="favouritePanel">
                                                 <a target="_self" id="favourite" runat="server" onserverclick="favourite_OnServerClick">
 												</br>收藏</br>
