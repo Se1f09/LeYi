@@ -41,16 +41,20 @@
         </telerik:RadScriptManager>
         <telerik:RadWindowManager runat="server" ID="Rwm" Skin="Metro">
             <Windows>
-                <telerik:RadWindow ID="popup_publish" runat="server" AutoSize="False" Width="360" Height="200" ShowContentDuringLoad="True" ReloadOnShow="False" KeepInScreenBounds="true" VisibleStatusbar="false" Behaviors="Close" Modal="True" Localization-Close="关闭" EnableEmbeddedScripts="True" EnableEmbeddedBaseStylesheet="True" VisibleTitlebar="True">
+                <telerik:RadWindow ID="popup_publish" Title="资源发布" runat="server" AutoSize="False" Width="320" Height="330" ShowContentDuringLoad="True" ReloadOnShow="False" KeepInScreenBounds="true" VisibleStatusbar="false" Behaviors="Close" Modal="True" Localization-Close="关闭" EnableEmbeddedScripts="True" EnableEmbeddedBaseStylesheet="True" VisibleTitlebar="True">
                     <ContentTemplate>
-                        <div style="width: 320px; text-align: center;">
-
+                        <style>
+                            .pub_v, .pub_v:hover{display:block;margin:0 auto;background:url("../image/up/pub_v.png") 0 0 no-repeat;width:173px;height:48px;line-height:43px;color:#fff;padding-left:15px;overflow:hidden;text-decoration:none;font-size:16px;}
+                            .pub_a, .pub_a:hover{display:block;margin:0 auto;background:url("../image/up/pub_a.png") 0 0 no-repeat;width:173px;height:48px;line-height:43px;color:#fff;padding-left:15px;overflow:hidden;text-decoration:none;font-size:16px;}
+                            .pub_c, .pub_c:hover{display:block;margin:0 auto;background:url("../image/up/pub_c.png") 0 0 no-repeat;width:173px;height:48px;line-height:43px;color:#fff;padding-left:15px;overflow:hidden;text-decoration:none;font-size:16px;}
+                            .pub_p, .pub_p:hover{display:block;margin:0 auto;background:url("../image/up/pub_p.png") 0 0 no-repeat;width:173px;height:48px;line-height:43px;color:#fff;padding-left:15px;overflow:hidden;text-decoration:none;font-size:16px;}
+                        </style>
+                        <div style="width: 280px; text-align: center; margin: auto;">
+                            <a class="pub_v" style="cursor: pointer; margin: 20px auto 10px 50px;" href="Publishing.aspx?Type=Media">发布视频</a>
+                            <a class="pub_a" style="cursor: pointer; margin: 10px auto 10px 50px;" href="Publishing.aspx?Type=Article">发布文章</a>
+                            <a class="pub_c" style="cursor: pointer; margin: 10px auto 10px 50px;" href="Publishing.aspx?Type=Courseware">发布课件</a>
+                            <a class="pub_p" style="cursor: pointer; margin: 10px auto 20px 50px;" href="Publishing.aspx?Type=Paper">发布试卷</a>
                         </div>
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Media">发布视频</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Article">发布文章</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Courseware">发布课件</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" href="Publishing.aspx?Type=Paper">发布试卷</a><br />
-                        &nbsp;&nbsp;<a style="cursor: pointer; margin: auto;" onclick="closePublish();">取消发布</a>
                     </ContentTemplate>
                 </telerik:RadWindow>
             </Windows>

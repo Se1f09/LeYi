@@ -159,7 +159,7 @@
 		</div>
 		<div class="ui center aligned page grid">
 			<div class="center aligned column">
-					<img alt="" class="ui image" style="width: 100%; height: auto; margin: auto;" src="../Common/默认/图标.png" />
+					<img alt="" class="ui image" style="width: 100%; height: auto; margin: auto;" src="../Common/配置/SsoCopyright.png" />
 			</div>
 		</div>
 	</form>

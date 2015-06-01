@@ -55,7 +55,7 @@
 		<br />
 		<div class="ui center aligned page grid">
 			<div class="fifteen wide column">
-				<img alt="" style="width: 100%; margin: auto; height: auto;" src="../Common/默认/图标.png" class="ui image" />
+				<img alt="" style="width: 100%; margin: auto; height: auto;" src="../Common/配置/CoreCopyright.png" class="ui image" />
 			</div>
 		</div>
         <style>
