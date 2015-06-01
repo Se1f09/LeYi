@@ -286,33 +286,21 @@
 
                                     <ul>
 
-                                        <li>过程记录</li>
+                                        <li>&nbsp;</li>
 
 
 
                                     </ul>
                                 </div>
-                                <div class="menudiv1">
-                                    <div id="con_one_1">
-                                        <div class="c-prb-role clearfix">
-                                            <div class="srx-comment-iptboxbj" id="srxCommentInputBox">
-                                                <textarea id="mn1" runat="server" data-input-limit-uid="0" style="width:180px;"></textarea>
-                                                <div class="srx-ciptbox-toolbar">
-                                                    <span class="srx-ciptbox-acts">
-                                                        
-                                                    </span>
-                                                    
-                                                    <span class="srx-ciptbox-counter" data-ui-role="counter"><em></em></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                                <style>
+                                    ding:focus {outline: none;border: none;} 
+                                </style>
+                                <div style="background: url('../Image/过程记录.png'); width: 182px; height: 182px;">
+                                    <textarea id="mn1" class="ding" runat="server" data-input-limit-uid="0" style="width:181px; margin-top: 80px; outline: none; resize: none; border: none; background-color: transparent; background: none; line-height: 19px; height: 101px;"></textarea>
                                 </div>
-
+                                
                             </div>
-
+                        <br />
                             <div class="tab1" id="tab1">
 
                                 <div class="menu1">
