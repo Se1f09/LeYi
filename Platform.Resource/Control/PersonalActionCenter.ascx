@@ -10,7 +10,7 @@
             <asp:Panel runat="server" Visible='<%# ((Homory.Model.ActionType)Eval("Type")) == ActionType.用户评论资源 %>'>
                 <dl class="fd-item"  id="item_2404030"  data-action-data=""  data-id="2404030"  data-type="fenxiang"  data-uid="10005"  data-inout="in"  data-otype="diary"  data-oid="2393530"  data-position-type="classe"  data-cat-id="12004"
                     <dt class="fd-left"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("id3")) %>'>
-                        <asp:Image Width="49" Height="49" ImageUrl='<%# U(Eval("Id3")).Icon%>' CssClass="face face_40" runat="server"></asp:Image></a></dt>
+                        <asp:Image Width="49" Height="49" ImageUrl='<%# P(U(Eval("Id3")).Icon) %>' CssClass="face face_40" runat="server"></asp:Image></a></dt>
                     <dd class="fd-right" style="margin-top:-50px;">
                         <div class="fd-top"><a class="fd-actor" href="<%# string.Format("../Go/Personal?Id={0}", Eval("id3")) %>"><%# U(Eval("Id3")).DisplayName %></a>  <span class="fd-verb"></span> <span class="fd-verb1"><%# ((DateTime)Eval("Time")).FormatTime() %></span></div>
                         <div class="fd-incon1 clearfix">
