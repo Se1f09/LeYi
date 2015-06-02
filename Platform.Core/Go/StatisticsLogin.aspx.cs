@@ -12,7 +12,7 @@ namespace Go
 {
     public partial class GoStatisticsLogin : HomoryCorePageWithGrid
     {
-        private const string Right = "QueryActivity";
+        private const string Right = "StatisticsLogin";
 
         protected void Page_Load(object sender, EventArgs e)
         {

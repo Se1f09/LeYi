@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -26,6 +27,38 @@ namespace Homory.Model
                 var files = new DirectoryInfo(Server.MapPath("~/Common/头像/随机")).GetFiles();
                 var r = new Random(Guid.NewGuid().GetHashCode());
                 return "~/Common/头像/随机/" + files[r.Next(0, files.Length)].Name;
+            }
+        }
+
+        private List<string> _rights;
+
+        protected List<string> CurrentRights
+        {
+            get
+            {
+                var id = Guid.Parse("3047E587-8CC1-4645-8536-08D1AF49409F");
+                if (_rights != null) return _rights;
+                if (CurrentUser.State == State.内置 || CurrentUser.UserRole.Count(o => o.Role.State == 0) > 0)
+                {
+                    _rights =
+                        HomoryContext.Value.Right.Where(o => o.ApplicationId == id)
+                            .Select(o => o.Name)
+                            .ToList();
+                }
+                else
+                {
+                    var role = CurrentUser.UserRole;
+                    _rights = role.Count == 0
+                        ? new[] { "Everyone" }.ToList()
+                        : role.Where(o => o.State < State.审核)
+                            .ToList()
+                            .Join(HomoryContext.Value.RoleRight.Where(o => o.State < State.审核), o => o.RoleId, o => o.RoleId,
+                                (o1, o2) => o2.RightName)
+                            .ToList()
+                            .Union(new[] { "Everyone" })
+                            .ToList();
+                }
+                return _rights;
             }
         }
 
@@ -135,6 +168,23 @@ namespace Homory.Model
             var doc = XDocument.Load(Server.MapPath("~/Common/配置/Title.xml"));
             this.Title = doc.Root.Element("Resource").Value;
 
+            if (Request.QueryString.AllKeys.Contains("OnlineId"))
+            {
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["OnlineId"]))
+                {
+                    var id = Guid.Parse(Request.QueryString["OnlineId"]);
+                    if (HomoryContext.Value.UserOnline.Count(o => o.Id == id) == 0)
+                    {
+                        SignOff();
+                        return;
+                    }
+                    Session[HomoryResourceConstant.SessionUserId] = HomoryContext.Value.UserOnline.Single(o => o.Id == id).UserId;
+                    Session["RESOURCE"] = "RESOURCE";
+                    base.OnLoad(e);
+                    return;
+                }
+            }
+
             if (IsOnline)
 			{
 				if (Session["RESOURCE"] == null)
@@ -147,23 +197,6 @@ namespace Homory.Model
 			{
 				TrySignOn();
 				return;
-			}
-
-			if (Request.QueryString.AllKeys.Contains("OnlineId"))
-			{
-				if (!string.IsNullOrWhiteSpace(Request.QueryString["OnlineId"]))
-				{
-					var id = Guid.Parse(Request.QueryString["OnlineId"]);
-					if (HomoryContext.Value.UserOnline.Count(o => o.Id == id) == 0)
-					{
-						SignOff();
-						return;
-					}
-					Session[HomoryResourceConstant.SessionUserId] = HomoryContext.Value.UserOnline.Single(o => o.Id == id).UserId;
-                    Session["RESOURCE"] = "RESOURCE";
-                    base.OnLoad(e);
-					return;
-				}
 			}
 
 			if (!IsOnline && ShouldOnline)

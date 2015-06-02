@@ -104,6 +104,10 @@ namespace Go
 
 		protected void InitializeHomoryPage()
 		{
+            if (!CurrentRights.Contains("OtherPublish"))
+            {
+                apxx.Visible = false;
+            }
             if (CurrentUser.Resource.Count(o => o.State == State.审核 && o.Type == ResourceType && o.UserId == CurrentUser.Id) != 0)
 			{
 				var r = CurrentResource;

@@ -15,20 +15,6 @@ namespace Go
 			if (!IsPostBack)
 			{
 				UserSignOff(HomoryContext.Value);
-				//foreach (var app in HomoryContext.Value.Application.Where(o => o.Type == ApplicationType.平台 && o.State == State.启用).ToList())
-				//{
-				//	if (!string.IsNullOrWhiteSpace(app.Quit))
-				//	{
-				//		try
-				//		{
-				//			WebRequest request = WebRequest.Create(app.Quit);
-				//			var resp = request.GetResponse();
-				//		}
-				//		catch
-				//		{
-				//		}
-				//	}
-				//}
 				var query = Request.QueryString["SsoRedirect"];
 				if (string.IsNullOrWhiteSpace(query))
 				{

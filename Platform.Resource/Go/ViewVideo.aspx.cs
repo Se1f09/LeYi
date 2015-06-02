@@ -52,8 +52,14 @@ namespace Go
 						rating.Enabled = false;
 						rating.Value = decimal.Parse(rate.Content1);
 					}
-				}
-				HomoryContext.Value.ST_Resource(CurrentResource.Id, ResourceOperationType.View, 1);
+                    if (HomoryContext.Value.MediaNote.Count(o => o.ResourceId == CurrentResource.Id && o.UserId == CurrentUser.Id) > 0)
+                    {
+                        var mn = HomoryContext.Value.MediaNote.First(o => o.ResourceId == CurrentResource.Id && o.UserId == CurrentUser.Id);
+                        mn1.InnerText = mn.A;
+                        mn2.InnerText = mn.B;
+                    }
+                }
+                HomoryContext.Value.ST_Resource(CurrentResource.Id, ResourceOperationType.View, 1);
 				if (IsOnline)
 				{
 					var action = HomoryContext.Value.Action.FirstOrDefault(o => o.Id1 == TargetUser.Id && o.Id2 == CurrentResource.Id && o.Id3 == CurrentUser.Id && o.Type == ActionType.用户访问资源);
@@ -538,19 +544,29 @@ TargetUser.Resource.Where(o => o.State == State.启用 && o.Type == rt)
 				mnp.ResponseScripts.Add(string.Format("window.alert('重点摘要不得少于50字，当前{0}字！');", 50 - mn2.InnerText.Length));
 				return;
 			}
-			var mn = new MediaNote
-			{
-				A = mn1.InnerText,
-				B = mn2.InnerText,
-				Month = DateTime.Today.Month,
-				Year = DateTime.Today.Year,
-				Time = DateTime.Now,
-				ResourceId = CurrentResource.Id,
-				UserId = CurrentUser.Id
-			};
-			HomoryContext.Value.MediaNote.Add(mn);
+            if (HomoryContext.Value.MediaNote.Count(o => o.ResourceId == CurrentResource.Id && o.UserId == CurrentUser.Id) == 0)
+            {
+                var mn = new MediaNote
+                {
+                    A = mn1.InnerText,
+                    B = mn2.InnerText,
+                    Month = DateTime.Today.Month,
+                    Year = DateTime.Today.Year,
+                    Time = DateTime.Now,
+                    ResourceId = CurrentResource.Id,
+                    UserId = CurrentUser.Id
+                };
+                HomoryContext.Value.MediaNote.Add(mn);
+            }
+            else
+            {
+                var mn = HomoryContext.Value.MediaNote.First(o => o.ResourceId == CurrentResource.Id && o.UserId == CurrentUser.Id);
+                mn.A = mn1.InnerText;
+                mn.B = mn2.InnerText;
+            }
 			HomoryContext.Value.SaveChanges();
-			mnp.ResponseScripts.Add("window.alert('保存成功！');");
+            Rwm.RadAlert("保存成功！", 200, 80, "提示：", null, "../Image/true.png");
+			//mnp.ResponseScripts.Add("window.alert('保存成功！');");
 		}
 
 		protected void assessTable_OnNeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)

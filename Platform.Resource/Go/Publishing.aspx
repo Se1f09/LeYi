@@ -72,7 +72,7 @@
                             <input runat="server" class="editor-title" id="publish_title_content" type="text" />
                             <br />
                             <br />
-                            <telerik:RadAjaxPanel runat="server">
+                            <telerik:RadAjaxPanel runat="server" ID="apxx">
                                 <telerik:RadSearchBox ID="author_pub" runat="server" OnSearch="author_pub_Search" DropDownSettings-Width="702px" DropDownSettings-CssClass="xs" Width="743px" OnDataSourceSelect="author_pub_DataSourceSelect" DataTextField="Name" DataValueField="Id" LabelCssClass="title fl sx" Label="作者：" ShowLoadingIcon="false" ShowSearchButton="false" EnableEmbeddedSkins="false" EnableEmbeddedBaseStylesheet="true"></telerik:RadSearchBox>
                             </telerik:RadAjaxPanel>
                             <br />

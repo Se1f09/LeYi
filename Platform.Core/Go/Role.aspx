@@ -257,6 +257,12 @@
                                 <telerik:RadButtonToggleState Text="× 直播课堂" Value="False" CssClass="ui black mini button" />
                             </ToggleStates>
                         </telerik:RadButton>
+                        <telerik:RadButton ID="OtherPublish" runat="server" ButtonType="ToggleButton" ToggleType="CustomToggle" AutoPostBack="True" CssClass="ui mini button" Style="margin: 10px;" OnClick="Right_OnClick">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="√ 资源代发" Value="True" CssClass="ui teal mini button" />
+                                <telerik:RadButtonToggleState Text="× 资源代发" Value="False" CssClass="ui black mini button" />
+                            </ToggleStates>
+                        </telerik:RadButton>
                     </div>
                     <div>
                         查询审计：
@@ -278,10 +284,22 @@
                                 <telerik:RadButtonToggleState Text="× 授课查询" Value="False" CssClass="ui black mini button" />
                             </ToggleStates>
                         </telerik:RadButton>
-                        <telerik:RadButton ID="QueryActivity" runat="server" ButtonType="ToggleButton" ToggleType="CustomToggle" AutoPostBack="True" CssClass="ui mini button" Style="margin: 10px;" OnClick="Right_OnClick">
+                        <telerik:RadButton ID="StatisticsOperation" runat="server" ButtonType="ToggleButton" ToggleType="CustomToggle" AutoPostBack="True" CssClass="ui mini button" Style="margin: 10px;" OnClick="Right_OnClick">
                             <ToggleStates>
-                                <telerik:RadButtonToggleState Text="√ 互动审计" Value="True" CssClass="ui teal mini button" />
-                                <telerik:RadButtonToggleState Text="× 互动审计" Value="False" CssClass="ui black mini button" />
+                                <telerik:RadButtonToggleState Text="√ 操作审计" Value="True" CssClass="ui teal mini button" />
+                                <telerik:RadButtonToggleState Text="× 操作审计" Value="False" CssClass="ui black mini button" />
+                            </ToggleStates>
+                        </telerik:RadButton>
+                        <telerik:RadButton ID="StatisticsResource" runat="server" ButtonType="ToggleButton" ToggleType="CustomToggle" AutoPostBack="True" CssClass="ui mini button" Style="margin: 10px;" OnClick="Right_OnClick">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="√ 资源审计" Value="True" CssClass="ui teal mini button" />
+                                <telerik:RadButtonToggleState Text="× 资源审计" Value="False" CssClass="ui black mini button" />
+                            </ToggleStates>
+                        </telerik:RadButton>
+                        <telerik:RadButton ID="StatisticsLogin" runat="server" ButtonType="ToggleButton" ToggleType="CustomToggle" AutoPostBack="True" CssClass="ui mini button" Style="margin: 10px;" OnClick="Right_OnClick">
+                            <ToggleStates>
+                                <telerik:RadButtonToggleState Text="√ 登录审计" Value="True" CssClass="ui teal mini button" />
+                                <telerik:RadButtonToggleState Text="× 登录审计" Value="False" CssClass="ui black mini button" />
                             </ToggleStates>
                         </telerik:RadButton>
                     </div>

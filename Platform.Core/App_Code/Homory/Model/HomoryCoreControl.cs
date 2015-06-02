@@ -67,6 +67,27 @@ namespace Homory.Model
 
         protected override void OnLoad(EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(Request.QueryString["OnlineId"]))
+            {
+                var id = Guid.Parse(Request.QueryString["OnlineId"]);
+                if (HomoryContext.Value.UserOnline.Count(o => o.Id == id) == 0)
+                {
+                    var path = Request.Url.AbsoluteUri;
+                    if (path.IndexOf('?') > 0)
+                        path = path.Substring(0, path.IndexOf('?'));
+                    var query = Request.QueryString.ToString();
+                    var url = string.Format("{0}?SsoRedirect={1}{2}{3}", Application["Sso"] + "Go/SignOff", Server.UrlEncode(path),
+                        string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
+                    Session[HomoryCoreConstant.SessionUserId] = null;
+                    Session["CORE"] = null;
+                    Response.Redirect(url, false);
+                }
+                else
+                {
+                    Session[HomoryCoreConstant.SessionUserId] = HomoryContext.Value.UserOnline.Single(o => o.Id == id).UserId;
+                    base.OnLoad(e);
+                }
+            }
             if (IsOnline && Session["CORE"] != null)
             {
                 base.OnLoad(e);
@@ -79,37 +100,10 @@ namespace Homory.Model
                     if (path.IndexOf('?') > 0)
                         path = path.Substring(0, path.IndexOf('?'));
                     var query = Request.QueryString.ToString();
-					var url = string.Format("{0}?SsoRedirect={1}{2}{3}", Application["Sso"] + "Go/SignOn", Server.UrlEncode(path),
+                    var url = string.Format("{0}?SsoRedirect={1}{2}{3}", Application["Sso"] + "Go/SignOn", Server.UrlEncode(path),
                         string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
                     Session["CORE"] = "CORE";
                     Response.Redirect(url, false);
-                }
-                else
-                {
-                    var id = Guid.Parse(Request.QueryString["OnlineId"]);
-                    if (HomoryContext.Value.UserOnline.Count(o => o.Id == id) == 0)
-                    {
-                        var path = Request.Url.AbsoluteUri;
-                        if (path.IndexOf('?') > 0)
-                            path = path.Substring(0, path.IndexOf('?'));
-                        var query = Request.QueryString.ToString();
-						var url = string.Format("{0}?SsoRedirect={1}{2}{3}", Application["Sso"] + "Go/SignOff", Server.UrlEncode(path),
-                            string.IsNullOrWhiteSpace(query) ? string.Empty : "&", query);
-	                    Session[HomoryCoreConstant.SessionUserId] = null;
-	                    Session["CORE"] = null;
-                        Response.Redirect(url, false);
-                    }
-                    else
-                    {
-                        Session[HomoryCoreConstant.SessionUserId] = HomoryContext.Value.UserOnline.Single(o => o.Id == id).UserId;
-                        var path = Request.Url.AbsoluteUri;
-                        var startIndex = path.IndexOf("OnlineId=");
-                        var endIndex = path.Substring(startIndex).IndexOf('&') + 1;
-                        path = endIndex <= 0
-                            ? path.Replace(path.Substring(startIndex - 1), string.Empty)
-                            : path.Replace(path.Substring(startIndex, endIndex), string.Empty);
-                        Response.Redirect(path, false);
-                    }
                 }
             }
         }

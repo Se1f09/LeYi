@@ -23,7 +23,22 @@ namespace Go
 			}
 		}
 
-		private User _user;
+        protected string P(object icon)
+        {
+            var url = icon.ToString();
+            if (!url.Equals("~/Common/默认/用户.png") && !url.Equals("~/Common/默认/群组.png") && File.Exists(Server.MapPath(url)))
+            {
+                return url;
+            }
+            else
+            {
+                var files = new DirectoryInfo(Server.MapPath("~/Common/头像/随机")).GetFiles();
+                var r = new Random(Guid.NewGuid().GetHashCode());
+                return "~/Common/头像/随机/" + files[r.Next(0, files.Length)].Name;
+            }
+        }
+
+        private User _user;
 
 		protected User InitUser
 		{
@@ -45,10 +60,7 @@ namespace Go
 		private void LoadUser()
 		{
 			icon.Visible = !string.IsNullOrWhiteSpace(InitUser.Icon);
-            if (File.Exists(Server.MapPath(InitUser.Icon)))
-                icon.ImageUrl = InitUser.Icon;
-            else
-                icon.ImageUrl = "~/Common/默认/用户.png";
+            icon.ImageUrl = P(InitUser.Icon);
 			headInfo.InnerText = string.Format("{0} ——乐翼教育云平台控制面板", InitUser.DisplayName);
 			LoadSite(InitUser.Type);
 		}

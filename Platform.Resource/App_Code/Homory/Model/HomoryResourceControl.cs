@@ -131,20 +131,6 @@ namespace Homory.Model
 
         protected override void OnLoad(EventArgs e)
         {
-            if (IsOnline)
-            {
-                if (Session["RESOURCE"] == null)
-                    Session["RESOURCE"] = "RESOURCE";
-                base.OnLoad(e);
-                return;
-            }
-
-            if (Session["RESOURCE"] == null && !Request.QueryString.AllKeys.Contains("OnlineId"))
-            {
-                TrySignOn();
-                return;
-            }
-
             if (Request.QueryString.AllKeys.Contains("OnlineId"))
             {
                 if (!string.IsNullOrWhiteSpace(Request.QueryString["OnlineId"]))
@@ -160,6 +146,20 @@ namespace Homory.Model
                     base.OnLoad(e);
                     return;
                 }
+            }
+
+            if (IsOnline)
+            {
+                if (Session["RESOURCE"] == null)
+                    Session["RESOURCE"] = "RESOURCE";
+                base.OnLoad(e);
+                return;
+            }
+
+            if (Session["RESOURCE"] == null && !Request.QueryString.AllKeys.Contains("OnlineId"))
+            {
+                TrySignOn();
+                return;
             }
 
             if (!IsOnline && ShouldOnline)

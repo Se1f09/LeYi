@@ -42,7 +42,7 @@
                 <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
             </Scripts>
         </telerik:RadScriptManager>
-        <telerik:RadWindowManager runat="server" ID="Rwm" Skin="Metro">
+        <telerik:RadWindowManager runat="server" ID="Rwm" Skin="Metro" Localization-OK="确定">
             <Windows>
                 <telerik:RadWindow ID="homory_note_view" runat="server" NavigateUrl="../Go/PlayVideo.aspx" Skin="Metro" ShowContentDuringLoad="False" Width="800" Height="600" ReloadOnShow="true" KeepInScreenBounds="true" VisibleStatusbar="false" Behaviors="Move,Close" Modal="false" Localization-Close="关闭">
                 </telerik:RadWindow>
@@ -315,7 +315,7 @@
                                     <div id="con_one_1">
                                         <div class="c-prb-role clearfix">
                                             <div class="srx-comment-iptboxbj" id="srxCommentInputBox">
-                                                <textarea id="mn2" runat="server" data-input-limit-uid="0" style="width:180px;"></textarea>
+                                                <textarea id="mn2" runat="server" data-input-limit-uid="0" style="width:180px; line-height:19px;"></textarea>
                                                 <div class="srx-ciptbox-toolbar">
                                                     <span class="srx-ciptbox-acts">
                                                         
