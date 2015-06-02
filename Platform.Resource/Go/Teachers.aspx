@@ -42,8 +42,10 @@
                                 <ItemTemplate>
                                     <div style="width: 150px; float: left; text-align: center;">
                                         <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
-                                            <img src='<%# Eval("Icon").ToString().Replace("~", "..") %>' width="80" height="80" /></a></br>
+                                            <img src='<%# P(Eval("Icon")).ToString().Replace("~", "..") %>' width="80" height="80" /></a></br>
                                             <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a>
+                                        <br />
+                                        <br />
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>

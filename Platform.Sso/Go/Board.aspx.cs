@@ -61,7 +61,7 @@ namespace Go
 		{
 			icon.Visible = !string.IsNullOrWhiteSpace(InitUser.Icon);
             icon.ImageUrl = P(InitUser.Icon);
-			headInfo.InnerText = string.Format("{0} ——乐翼教育云平台控制面板", InitUser.DisplayName);
+			headInfo.InnerText = string.Format("乐翼教育云平台控制面板 —— {0}", InitUser.DisplayName);
 			LoadSite(InitUser.Type);
 		}
 

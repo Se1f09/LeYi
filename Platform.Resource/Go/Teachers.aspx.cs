@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Go_Teachers : HomoryPage
+public partial class Go_Teachers : HomoryResourcePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -15,6 +15,14 @@ public partial class Go_Teachers : HomoryPage
             combo.DataSource = HomoryContext.Value.Department.Where(o => o.Type == DepartmentType.学校 && o.State < State.审核).OrderBy(o => o.ClassType).ThenBy(o => o.Ordinal).ToList();
             combo.DataBind();
             Bind();
+        }
+    }
+
+    protected override bool ShouldOnline
+    {
+        get
+        {
+            return true;
         }
     }
 

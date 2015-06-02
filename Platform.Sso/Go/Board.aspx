@@ -25,16 +25,17 @@
     <form id="form" runat="server">
         <telerik:RadScriptManager runat="server"></telerik:RadScriptManager>
         <div class="ui stackable page grid">
-            <div class="column">
-                <div id="bar" class="ui teal inverted center aligned segment">
+            <div class="sixteen wide column">
+                <div id="bar" class="ui center aligned segment" style="background-color: transparent; border: none; box-shadow: none;">
                     <asp:Image ID="icon" runat="server" CssClass="ui image" Width="60" Height="60" />
-                    <label id="headInfo" runat="server">控制面板</label>
+                    <label id="headInfo" runat="server" class="ui tiny blue button" style="margin: 10px; padding: 11px;"></label>
                     <a href="../Go/SignOff" id="quit" class="ui animated tiny purple button floated right">
                         <div class="visible content">退出</div>
                         <div class="hidden content">
                             <i class="right sign out icon"></i>&nbsp;
                         </div>
                     </a>
+                    <div style="width: 100%; height: 1px; border-bottom: dashed 1px silver;"></div>
                 </div>
             </div>
         </div>
