@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="CenterLeft.ascx.cs" Inherits="Control_CenterLeft" %>
 
-<div class="srx-left">
+<div class="srx-left" style="height: 1500px;">
 
                         <div class="u-l-info" id="userInfoBox">
                             <div class="u-li-pro clearfix" id="faceBox">

@@ -34,11 +34,11 @@ namespace Go
             var l1 = meFavouriteList.Except(bothList);
             var l2 = favouriteMeList.Except(bothList);
 
-            both.DataSource = bothList.Join(HomoryContext.Value.User.Where(o => o.State == State.启用 && o.Type != UserType.学生), o => o, o => o.Id, (a, b) => b).ToList();
+            both.DataSource = bothList.Join(HomoryContext.Value.User.Where(o => o.State < State.审核 && o.Type != UserType.学生), o => o, o => o.Id, (a, b) => b).ToList();
             both.DataBind();
-            positive.DataSource = l1.Join(HomoryContext.Value.User.Where(o => o.State == State.启用 && o.Type != UserType.学生), o => o, o => o.Id, (a, b) => b).ToList();
+            positive.DataSource = l1.Join(HomoryContext.Value.User.Where(o => o.State < State.审核 && o.Type != UserType.学生), o => o, o => o.Id, (a, b) => b).ToList();
             positive.DataBind();
-            negative.DataSource = l2.Join(HomoryContext.Value.User.Where(o => o.State == State.启用 && o.Type != UserType.学生), o => o, o => o.Id, (a, b) => b).ToList();
+            negative.DataSource = l2.Join(HomoryContext.Value.User.Where(o => o.State < State.审核 && o.Type != UserType.学生), o => o, o => o.Id, (a, b) => b).ToList();
             negative.DataBind();
 
         }
@@ -64,7 +64,7 @@ namespace Go
         protected void removeAttend1_ServerClick(object sender, EventArgs e)
         {
             var id = Guid.Parse(((HtmlAnchor)sender).Attributes["data-id"]);
-            HomoryContext.Value.UserFavourite.AddOrUpdate(new UserFavourite { UserId = CurrentUser.Id, FavouriteUserId = id, State = State.启用 });
+            HomoryContext.Value.UserFavourite.AddOrUpdate(new UserFavourite { UserId = CurrentUser.Id, FavouriteUserId = id, State = State.删除 });
             HomoryContext.Value.SaveChanges();
             up2.RaisePostBackEvent("Refresh");
             up3.RaisePostBackEvent("Refresh");
@@ -73,7 +73,7 @@ namespace Go
         protected void removeAttend2_ServerClick(object sender, EventArgs e)
         {
             var id = Guid.Parse(((HtmlAnchor)sender).Attributes["data-id"]);
-            HomoryContext.Value.UserFavourite.AddOrUpdate(new UserFavourite { UserId = CurrentUser.Id, FavouriteUserId = id, State = State.启用 });
+            HomoryContext.Value.UserFavourite.AddOrUpdate(new UserFavourite { UserId = CurrentUser.Id, FavouriteUserId = id, State = State.删除 });
             HomoryContext.Value.SaveChanges();
             up1.RaisePostBackEvent("Refresh");
             up3.RaisePostBackEvent("Refresh");

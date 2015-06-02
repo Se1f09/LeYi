@@ -81,7 +81,7 @@
                             </p>
                             <div class="profile-top-bar">
                                 <telerik:RadAjaxPanel runat="server">
-                                    <telerik:RadButton ID="h_fav" runat="server" Width="100" Skin="Sunset" OnClick="h_fav_Click">
+                                    <telerik:RadButton ID="h_fav" runat="server" Width="100" Skin="Metro" BackColor="#227DC5" Height="30" ForeColor="White" Checked="true" OnClick="h_fav_Click">
                                     </telerik:RadButton>
                                     &nbsp;
                                 </telerik:RadAjaxPanel>
