@@ -218,8 +218,6 @@ namespace Go
             view.Rebind();
         }
 
-        private int? _gradeCount;
-
         protected int GradeCount(ClassType classType)
         {
             switch ((int)classType)

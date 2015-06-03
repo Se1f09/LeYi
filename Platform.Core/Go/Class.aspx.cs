@@ -91,8 +91,6 @@ namespace Go
             var source = HomoryContext.Value.Department.Where(o => (((o.Type == DepartmentType.学校 && o.Id == id) || o.Type == DepartmentType.部门) && o.State < State.审核));
         }
 
-        private int? _gradeCount;
-
         protected int GradeCount(ClassType classType)
         {
             switch ((int)classType)

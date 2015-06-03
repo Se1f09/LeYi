@@ -21,5 +21,7 @@ namespace Homory.Model
 		public static readonly string[] CourseNames = { "语文", "数学", "英语", "音乐", "体育", "美术", "综合" };
 		public static readonly Guid CourseOtherId = Guid.Parse("F0B82122-4E2F-3522-22D7-9E5A7FFA8B13");
 		public static readonly string[] GradeNames = { "一年级", "二年级", "三年级", "四年级", "五年级", "六年级", "七年级", "八年级", "九年级" };
+
+        public dynamic C = new System.Dynamic.ExpandoObject();
 	}
 }

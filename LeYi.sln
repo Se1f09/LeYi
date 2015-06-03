@@ -101,32 +101,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Platform.Sso", "http://loca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.ResourceCount", "Service.ResourceCount\Service.ResourceCount.csproj", "{4CC25DEC-6DA3-4BDE-99EE-B9CA0738F406}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{20B074C6-3D1F-43A8-91B3-6F8E04CDDB23}"
-	ProjectSection(SolutionItems) = preProject
-		Homory.Bin\Aspose.Cells.dll = Homory.Bin\Aspose.Cells.dll
-		Homory.Bin\Aspose.Imaging.dll = Homory.Bin\Aspose.Imaging.dll
-		Homory.Bin\Aspose.Pdf.dll = Homory.Bin\Aspose.Pdf.dll
-		Homory.Bin\Aspose.Slides.dll = Homory.Bin\Aspose.Slides.dll
-		Homory.Bin\Aspose.Words.dll = Homory.Bin\Aspose.Words.dll
-		Homory.Bin\EntityFramework.dll = Homory.Bin\EntityFramework.dll
-		Homory.Bin\EntityFramework.Extended.dll = Homory.Bin\EntityFramework.Extended.dll
-		Homory.Bin\EntityFramework.SqlServer.dll = Homory.Bin\EntityFramework.SqlServer.dll
-		Homory.Bin\Microsoft.AspNet.FriendlyUrls.dll = Homory.Bin\Microsoft.AspNet.FriendlyUrls.dll
-		Homory.Bin\Microsoft.Owin.dll = Homory.Bin\Microsoft.Owin.dll
-		Homory.Bin\Microsoft.Owin.Security.dll = Homory.Bin\Microsoft.Owin.Security.dll
-		Homory.Bin\Microsoft.Web.Infrastructure.dll = Homory.Bin\Microsoft.Web.Infrastructure.dll
-		Homory.Bin\Newtonsoft.Json.dll = Homory.Bin\Newtonsoft.Json.dll
-		Homory.Bin\Owin.dll = Homory.Bin\Owin.dll
-		Homory.Bin\System.Web.Http.Owin.dll = Homory.Bin\System.Web.Http.Owin.dll
-		Homory.Bin\System.Web.Razor.dll = Homory.Bin\System.Web.Razor.dll
-		Homory.Bin\System.Web.WebPages.Deployment.dll = Homory.Bin\System.Web.WebPages.Deployment.dll
-		Homory.Bin\System.Web.WebPages.dll = Homory.Bin\System.Web.WebPages.dll
-		Homory.Bin\System.Web.WebPages.Razor.dll = Homory.Bin\System.Web.WebPages.Razor.dll
-		Homory.Bin\Telerik.Web.Device.Detection.dll = Homory.Bin\Telerik.Web.Device.Detection.dll
-		Homory.Bin\Telerik.Web.UI.dll = Homory.Bin\Telerik.Web.UI.dll
-		Homory.Bin\Telerik.Web.UI.Skins.dll = Homory.Bin\Telerik.Web.UI.Skins.dll
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jhsoft.web.ssologin", "C6\jhsoft.web.ssologin\jhsoft.web.ssologin.csproj", "{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}"
 EndProject
 Global
