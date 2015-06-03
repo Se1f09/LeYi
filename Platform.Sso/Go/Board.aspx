@@ -28,7 +28,7 @@
             <div class="sixteen wide column">
                 <div id="bar" class="ui center aligned segment" style="background-color: transparent; border: none; box-shadow: none;">
                     <asp:Image ID="icon" runat="server" CssClass="ui image" Width="60" Height="60" />
-                    <label id="headInfo" runat="server" class="ui tiny blue button" style="margin: 10px; padding: 11px;"></label>
+                    <label id="headInfo" runat="server" class="ui tiny teal button" style="margin: 10px; padding: 11px;"></label>
                     <a href="../Go/SignOff" id="quit" class="ui animated tiny purple button floated right">
                         <div class="visible content">退出</div>
                         <div class="hidden content">
