@@ -40,22 +40,43 @@
                                             <div class="box-hd"><%# Eval("Name") %></div>
                                             <a id="aMore" runat="server">+更多</a>
                                         </div>
-                                        <ul class="aList">
+                                        <ul>
                                             <asp:Repeater runat="server" ID="resources">
                                                 <ItemTemplate>
-                                                    <li>
-                                                        <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="float: left; width: 20px; height: 20px; margin-top: 6px; margin-right: 20px;" />
-                                                        <strong style="width: 550px;"><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
-                                                        <span style="float:right;"><%# Eval("Time") %></span>
-                                                        <img src='<%# Eval("Image") %>' />
-                                                        <div style="clear:both;"></div>
+                                                    <li style="height: 250px; width: 350px; float: left; margin-bottom: 40px;">
+                                                        <div style="width: 40px; float: left; height: 10px;">&nbsp;</div>
+                                                        <div style="height: 250px; width: 300px; float: left; overflow: hidden; margin-bottom: 40px; text-align: left; vertical-align: middle;">
+                                                            <table>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).DisplayName %></a>&nbsp;-&nbsp;
+                                                                        <span><%# Eval("Time") %></span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="width: 56px;">
+                                                                        <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="width: 20px; height: 20px; margin-top: 6px;" />&nbsp;&nbsp;
+                                                                    </td>
+                                                                    <td>
+                                                                        <strong><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><img src='<%# Eval("Image").ToString() %>' width="300" height="200" /></a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <br />
+                                                        </div>
                                                     </li>
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </ul>
-                                        <br /><br />
+                                        <br />
+                                        <br />
                                     </div>
-                                    
+
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>
@@ -79,14 +100,13 @@
                                     <ul id="role_1" data-count="7">
                                         <asp:Repeater runat="server" ID="leader">
                                             <ItemTemplate>
-                                                <li class="none  first-child" style="display: list-item; height:50px;">
+                                                <li class="none  first-child" style="display: list-item; height: 50px;">
                                                     <div class="c-prb-face">
-                                                        <a href="#">
-                                                            <img width="40" height="40" src="images/tiny_5VOy_83640j019117.jpg" alt="">
-                                                        </a>
+                                                        <a style="border: none;" href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
+                                                            <asp:Image runat="server" ID="icon" ImageUrl='<%# P(Eval("Icon")) %>' Width="40" Height="40" /></a>
                                                     </div>
                                                     <div class="ml50">
-                                                        <div class="c-prb-nickname"><a href="#"><%# Eval("DisplayName") %></a> </div>
+                                                        <div class="c-prb-nickname"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a> </div>
                                                         <div style="display: none;"><a href="javascript:;" class="unflw" data-id="24760" data-type="person" data-action="follow"><strong>×</strong>删除</a> </div>
                                                     </div>
                                                 </li>
@@ -105,14 +125,13 @@
                                     <ul id="role_0" data-count="7">
                                         <asp:Repeater runat="server" ID="members">
                                             <ItemTemplate>
-                                                <li class="none  first-child" style="display: list-item; height:50px;">
+                                                <li class="none  first-child" style="display: list-item; height: 50px;">
                                                     <div class="c-prb-face">
-                                                        <a href="#">
-                                                            <img width="40" height="40" src="images/tiny_5VOy_83640j019117.jpg" alt="">
-                                                        </a>
+                                                        <a style="border: none;" href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
+                                                            <asp:Image runat="server" ID="icon" ImageUrl='<%# P(Eval("Icon")) %>' Width="40" Height="40" /></a>
                                                     </div>
                                                     <div class="ml50">
-                                                        <div class="c-prb-nickname"><a href="#"><%# Eval("DisplayName") %></a> </div>
+                                                        <div class="c-prb-nickname"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a> </div>
                                                         <div style="display: none;"><a href="javascript:;" class="unflw" data-id="24760" data-type="person" data-action="follow"><strong>×</strong>删除</a> </div>
                                                     </div>
                                                 </li>

@@ -78,14 +78,13 @@
                                     <ul id="role_1" data-count="7">
                                         <asp:Repeater runat="server" ID="leader">
                                             <ItemTemplate>
-                                                <li class="none  first-child" style="display: list-item; height:50px;">
+                                                <li class="none  first-child" style="display: list-item; height: 50px;">
                                                     <div class="c-prb-face">
-                                                        <a href="#">
-                                                            <img width="40" height="40" src="images/tiny_5VOy_83640j019117.jpg" alt="">
-                                                        </a>
+                                                        <a style="border: none;" href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
+                                                            <asp:Image runat="server" ID="icon" ImageUrl='<%# P(Eval("Icon")) %>' Width="40" Height="40" /></a>
                                                     </div>
                                                     <div class="ml50">
-                                                        <div class="c-prb-nickname"><a href="#"><%# Eval("DisplayName") %></a> </div>
+                                                        <div class="c-prb-nickname"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a> </div>
                                                         <div style="display: none;"><a href="javascript:;" class="unflw" data-id="24760" data-type="person" data-action="follow"><strong>×</strong>删除</a> </div>
                                                     </div>
                                                 </li>
@@ -104,14 +103,13 @@
                                     <ul id="role_0" data-count="7">
                                         <asp:Repeater runat="server" ID="members">
                                             <ItemTemplate>
-                                                <li class="none  first-child" style="display: list-item; height:50px;">
+                                                <li class="none  first-child" style="display: list-item; height: 50px;">
                                                     <div class="c-prb-face">
-                                                        <a href="#">
-                                                            <img width="40" height="40" src="images/tiny_5VOy_83640j019117.jpg" alt="">
-                                                        </a>
+                                                        <a style="border: none;" href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'>
+                                                            <asp:Image runat="server" ID="icon" ImageUrl='<%# P(Eval("Icon")) %>' Width="40" Height="40" /></a>
                                                     </div>
                                                     <div class="ml50">
-                                                        <div class="c-prb-nickname"><a href="#"><%# Eval("DisplayName") %></a> </div>
+                                                        <div class="c-prb-nickname"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("Id")) %>'><%# Eval("DisplayName") %></a> </div>
                                                         <div style="display: none;"><a href="javascript:;" class="unflw" data-id="24760" data-type="person" data-action="follow"><strong>×</strong>删除</a> </div>
                                                     </div>
                                                 </li>

@@ -72,7 +72,7 @@ namespace Go
             link.Target = "_blank";
             control.DataSource =
 				HomoryContext.Value.Resource.ToList().Where(
-					o => o.ResourceCatalog.Count(p => p.CatalogId == id) > 0 && o.State == State.启用)
+					o => o.ResourceCatalog.Count(p => p.CatalogId == id && p.State < State.审核) > 0 && o.State == State.启用).OrderByDescending(o => o.Time).Take(6)
 					.ToList();
 			control.DataBind();
 		}
