@@ -103,6 +103,101 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.ResourceCount", "Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jhsoft.web.ssologin", "C6\jhsoft.web.ssologin\jhsoft.web.ssologin.csproj", "{E5B1F9E5-451E-4E89-A68F-3C291B89CFAB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UpdatePlan", "UpdatePlan", "{67EF7ADC-B120-4DD6-AEAF-A0B09E047C78}"
+	ProjectSection(SolutionItems) = preProject
+		UpdatePlan\迁移方案.rtf = UpdatePlan\迁移方案.rtf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "数据-执行代码", "数据-执行代码", "{6AA3E477-A054-43E2-BC61-041C30528471}"
+	ProjectSection(SolutionItems) = preProject
+		UpdatePlan\数据-执行代码\01.创建新数据库Platform_BT.sql = UpdatePlan\数据-执行代码\01.创建新数据库Platform_BT.sql
+		UpdatePlan\数据-执行代码\02.创建新数据库卡号表CardNo.sql = UpdatePlan\数据-执行代码\02.创建新数据库卡号表CardNo.sql
+		UpdatePlan\数据-执行代码\03.旧数据库可用卡号导入新数据库.sql = UpdatePlan\数据-执行代码\03.旧数据库可用卡号导入新数据库.sql
+		UpdatePlan\数据-执行代码\04.初始化新数据库应用列表.sql = UpdatePlan\数据-执行代码\04.初始化新数据库应用列表.sql
+		UpdatePlan\数据-执行代码\05.初始化新数据库应用策略列表.sql = UpdatePlan\数据-执行代码\05.初始化新数据库应用策略列表.sql
+		UpdatePlan\数据-执行代码\06.旧数据库应用权限导入新数据库.sql = UpdatePlan\数据-执行代码\06.旧数据库应用权限导入新数据库.sql
+		UpdatePlan\数据-执行代码\07.初始化新数据库基础平台权限列表.sql = UpdatePlan\数据-执行代码\07.初始化新数据库基础平台权限列表.sql
+		UpdatePlan\数据-执行代码\08.旧数据库角色导入新数据库.sql = UpdatePlan\数据-执行代码\08.旧数据库角色导入新数据库.sql
+		UpdatePlan\数据-执行代码\09.新数据库部门表匹配旧数据表结构.sql = UpdatePlan\数据-执行代码\09.新数据库部门表匹配旧数据表结构.sql
+		UpdatePlan\数据-执行代码\10.旧数据库部门表增加GUID列.sql = UpdatePlan\数据-执行代码\10.旧数据库部门表增加GUID列.sql
+		UpdatePlan\数据-执行代码\11.旧数据库部门表两种类型主键匹配.sql = UpdatePlan\数据-执行代码\11.旧数据库部门表两种类型主键匹配.sql
+		UpdatePlan\数据-执行代码\12.旧数据库部门导入新数据库.sql = UpdatePlan\数据-执行代码\12.旧数据库部门导入新数据库.sql
+		UpdatePlan\数据-执行代码\13.新数据库部门数据层级调整.sql = UpdatePlan\数据-执行代码\13.新数据库部门数据层级调整.sql
+		UpdatePlan\数据-执行代码\14.新数据库部门数据排序调整.sql = UpdatePlan\数据-执行代码\14.新数据库部门数据排序调整.sql
+		UpdatePlan\数据-执行代码\15.旧数据库用户和教师表错误数据修复.sql = UpdatePlan\数据-执行代码\15.旧数据库用户和教师表错误数据修复.sql
+		UpdatePlan\数据-执行代码\16.旧数据库用户表增加GUID列.sql = UpdatePlan\数据-执行代码\16.旧数据库用户表增加GUID列.sql
+		UpdatePlan\数据-执行代码\17.旧数据库用户表两种类型主键匹配.sql = UpdatePlan\数据-执行代码\17.旧数据库用户表两种类型主键匹配.sql
+		UpdatePlan\数据-执行代码\18.旧数据库教师用户数据全视图创建.sql = UpdatePlan\数据-执行代码\18.旧数据库教师用户数据全视图创建.sql
+		UpdatePlan\数据-执行代码\19.新数据库教师表匹配旧数据表结构.sql = UpdatePlan\数据-执行代码\19.新数据库教师表匹配旧数据表结构.sql
+		UpdatePlan\数据-执行代码\20.旧数据库用户和教师数据导入新数据库.sql = UpdatePlan\数据-执行代码\20.旧数据库用户和教师数据导入新数据库.sql
+		UpdatePlan\数据-执行代码\21.旧数据库关系合并表新建.sql = UpdatePlan\数据-执行代码\21.旧数据库关系合并表新建.sql
+		UpdatePlan\数据-执行代码\22.旧数据库教师部门关系导入关系合并表.sql = UpdatePlan\数据-执行代码\22.旧数据库教师部门关系导入关系合并表.sql
+		UpdatePlan\数据-执行代码\23.旧数据库教师可查看部门关系导入关系合并表.sql = UpdatePlan\数据-执行代码\23.旧数据库教师可查看部门关系导入关系合并表.sql
+		UpdatePlan\数据-执行代码\24.旧数据库关系合并视图新建.sql = UpdatePlan\数据-执行代码\24.旧数据库关系合并视图新建.sql
+		UpdatePlan\数据-执行代码\25.初始化旧数据库全关系数据.sql = UpdatePlan\数据-执行代码\25.初始化旧数据库全关系数据.sql
+		UpdatePlan\数据-执行代码\26.删除旧数据库全关系中完全相同数据.sql = UpdatePlan\数据-执行代码\26.删除旧数据库全关系中完全相同数据.sql
+		UpdatePlan\数据-执行代码\27.新数据库关系表主键增加关系类型列.sql = UpdatePlan\数据-执行代码\27.新数据库关系表主键增加关系类型列.sql
+		UpdatePlan\数据-执行代码\28.旧数据库全关系导入新数据库.sql = UpdatePlan\数据-执行代码\28.旧数据库全关系导入新数据库.sql
+		UpdatePlan\数据-执行代码\29.删除金和数据库重复单位.sql = UpdatePlan\数据-执行代码\29.删除金和数据库重复单位.sql
+		UpdatePlan\数据-执行代码\30.删除金和数据库无用单位.sql = UpdatePlan\数据-执行代码\30.删除金和数据库无用单位.sql
+		UpdatePlan\数据-执行代码\31.金和数据库单位匹配为GUID.sql = UpdatePlan\数据-执行代码\31.金和数据库单位匹配为GUID.sql
+		UpdatePlan\数据-执行代码\32.金和数据库部门匹配为GUID.sql = UpdatePlan\数据-执行代码\32.金和数据库部门匹配为GUID.sql
+		UpdatePlan\数据-执行代码\33.金和数据库单位部门无匹配列置空.sql = UpdatePlan\数据-执行代码\33.金和数据库单位部门无匹配列置空.sql
+		UpdatePlan\数据-执行代码\34.新数据库单位类型标识设置.sql = UpdatePlan\数据-执行代码\34.新数据库单位类型标识设置.sql
+		UpdatePlan\数据-执行代码\35.金和单位部门和基础平台单位部门全视图创建.sql = UpdatePlan\数据-执行代码\35.金和单位部门和基础平台单位部门全视图创建.sql
+		UpdatePlan\数据-执行代码\36.金和数据库用户匹配为GUID.sql = UpdatePlan\数据-执行代码\36.金和数据库用户匹配为GUID.sql
+		UpdatePlan\数据-执行代码\37.金和用户和基础平台用户全视图创建.sql = UpdatePlan\数据-执行代码\37.金和用户和基础平台用户全视图创建.sql
+		UpdatePlan\数据-执行代码\38.初始化系统字典表数据.sql = UpdatePlan\数据-执行代码\38.初始化系统字典表数据.sql
+		UpdatePlan\数据-执行代码\39.Platform数据库基础平台菜单表导入新数据库.sql = UpdatePlan\数据-执行代码\39.Platform数据库基础平台菜单表导入新数据库.sql
+		UpdatePlan\数据-执行代码\40.初始化新数据库凌俊伟权限.sql = UpdatePlan\数据-执行代码\40.初始化新数据库凌俊伟权限.sql
+		UpdatePlan\数据-执行代码\41.新数据库菜单项调整.sql = UpdatePlan\数据-执行代码\41.新数据库菜单项调整.sql
+		UpdatePlan\数据-执行代码\42.初始化新数据库年级数据.sql = UpdatePlan\数据-执行代码\42.初始化新数据库年级数据.sql
+		UpdatePlan\数据-执行代码\43.新数据库教师试图调整.sql = UpdatePlan\数据-执行代码\43.新数据库教师试图调整.sql
+		UpdatePlan\数据-执行代码\44.新数据库教师查询试图调整.sql = UpdatePlan\数据-执行代码\44.新数据库教师查询试图调整.sql
+		UpdatePlan\数据-执行代码\45.旧数据库课程表导入新数据库.sql = UpdatePlan\数据-执行代码\45.旧数据库课程表导入新数据库.sql
+		UpdatePlan\数据-执行代码\46.旧数据库荣誉分值表导入新数据库.sql = UpdatePlan\数据-执行代码\46.旧数据库荣誉分值表导入新数据库.sql
+		UpdatePlan\数据-执行代码\47.新数据库菜单项调整.sql = UpdatePlan\数据-执行代码\47.新数据库菜单项调整.sql
+		UpdatePlan\数据-执行代码\48.新数据库菜单项调整.sql = UpdatePlan\数据-执行代码\48.新数据库菜单项调整.sql
+		UpdatePlan\数据-执行代码\49.视图调整.sql = UpdatePlan\数据-执行代码\49.视图调整.sql
+		UpdatePlan\数据-执行代码\50.视图调整.sql = UpdatePlan\数据-执行代码\50.视图调整.sql
+		UpdatePlan\数据-执行代码\51.视图调整.sql = UpdatePlan\数据-执行代码\51.视图调整.sql
+		UpdatePlan\数据-执行代码\52.新数据库菜单项调整.sql = UpdatePlan\数据-执行代码\52.新数据库菜单项调整.sql
+		UpdatePlan\数据-执行代码\53.创建金和单点登录视图.sql = UpdatePlan\数据-执行代码\53.创建金和单点登录视图.sql
+		UpdatePlan\数据-执行代码\54.创建金和单位新增存储过程.sql = UpdatePlan\数据-执行代码\54.创建金和单位新增存储过程.sql
+		UpdatePlan\数据-执行代码\55.删除原有数据中心同步存储过程.sql = UpdatePlan\数据-执行代码\55.删除原有数据中心同步存储过程.sql
+		UpdatePlan\数据-执行代码\56.创建金和单位更新存储过程.sql = UpdatePlan\数据-执行代码\56.创建金和单位更新存储过程.sql
+		UpdatePlan\数据-执行代码\57.删除金和原有无效岗位.sql = UpdatePlan\数据-执行代码\57.删除金和原有无效岗位.sql
+		UpdatePlan\数据-执行代码\58.金和原有岗位使用Guid列并与单位匹配.sql = UpdatePlan\数据-执行代码\58.金和原有岗位使用Guid列并与单位匹配.sql
+		UpdatePlan\数据-执行代码\59.创建金和岗位新增存储过程.sql = UpdatePlan\数据-执行代码\59.创建金和岗位新增存储过程.sql
+		UpdatePlan\数据-执行代码\60.创建金和岗位更新存储过程.sql = UpdatePlan\数据-执行代码\60.创建金和岗位更新存储过程.sql
+		UpdatePlan\数据-执行代码\61.创建金和部门新增存储过程.sql = UpdatePlan\数据-执行代码\61.创建金和部门新增存储过程.sql
+		UpdatePlan\数据-执行代码\62.创建金和部门更新存储过程.sql = UpdatePlan\数据-执行代码\62.创建金和部门更新存储过程.sql
+		UpdatePlan\数据-执行代码\63.创建金和用户新增存储过程.sql = UpdatePlan\数据-执行代码\63.创建金和用户新增存储过程.sql
+		UpdatePlan\数据-执行代码\64.删除金和用户表部门同步触发器.sql = UpdatePlan\数据-执行代码\64.删除金和用户表部门同步触发器.sql
+		UpdatePlan\数据-执行代码\65.金和用户信息表和用户表同步主键匹配.sql = UpdatePlan\数据-执行代码\65.金和用户信息表和用户表同步主键匹配.sql
+		UpdatePlan\数据-执行代码\66.创建金和用户更新存储过程.sql = UpdatePlan\数据-执行代码\66.创建金和用户更新存储过程.sql
+		UpdatePlan\数据-执行代码\67.创建金和用户密码更新存储过程.sql = UpdatePlan\数据-执行代码\67.创建金和用户密码更新存储过程.sql
+		UpdatePlan\数据-执行代码\68.创建金和用户主职变更存储过程.sql = UpdatePlan\数据-执行代码\68.创建金和用户主职变更存储过程.sql
+		UpdatePlan\数据-执行代码\69.创建金和用户兼职新增存储过程.sql = UpdatePlan\数据-执行代码\69.创建金和用户兼职新增存储过程.sql
+		UpdatePlan\数据-执行代码\70.创建金和用户兼职变更存储过程.sql = UpdatePlan\数据-执行代码\70.创建金和用户兼职变更存储过程.sql
+		UpdatePlan\数据-执行代码\71.创建金和用户可访新增存储过程.sql = UpdatePlan\数据-执行代码\71.创建金和用户可访新增存储过程.sql
+		UpdatePlan\数据-执行代码\72.创建金和用户更新存储过程.sql = UpdatePlan\数据-执行代码\72.创建金和用户更新存储过程.sql
+		UpdatePlan\数据-执行代码\73.创建金和用户可访变更存储过程.sql = UpdatePlan\数据-执行代码\73.创建金和用户可访变更存储过程.sql
+		UpdatePlan\数据-执行代码\74.用户角色视图调整.sql = UpdatePlan\数据-执行代码\74.用户角色视图调整.sql
+		UpdatePlan\数据-执行代码\75.重新定义用户登录日志表.sql = UpdatePlan\数据-执行代码\75.重新定义用户登录日志表.sql
+		UpdatePlan\数据-执行代码\76.创建登录日志视图.sql = UpdatePlan\数据-执行代码\76.创建登录日志视图.sql
+		UpdatePlan\数据-执行代码\77.重新定义用户操作日志表.sql = UpdatePlan\数据-执行代码\77.重新定义用户操作日志表.sql
+		UpdatePlan\数据-执行代码\78.创建用户操作日志视图.sql = UpdatePlan\数据-执行代码\78.创建用户操作日志视图.sql
+		UpdatePlan\数据-执行代码\79.创建资源平台统一统计表.sql = UpdatePlan\数据-执行代码\79.创建资源平台统一统计表.sql
+		UpdatePlan\数据-执行代码\80.创建资源平台统一统计视图.sql = UpdatePlan\数据-执行代码\80.创建资源平台统一统计视图.sql
+		UpdatePlan\数据-执行代码\81.资源平台荣誉排行视图调整.sql = UpdatePlan\数据-执行代码\81.资源平台荣誉排行视图调整.sql
+		UpdatePlan\数据-执行代码\82.初始化学习小助手资源栏目.sql = UpdatePlan\数据-执行代码\82.初始化学习小助手资源栏目.sql
+		UpdatePlan\数据-执行代码\83.资源表新增年级和课程标识列.sql = UpdatePlan\数据-执行代码\83.资源表新增年级和课程标识列.sql
+		UpdatePlan\数据-执行代码\84.金和用户表用户短信标识重置.sql = UpdatePlan\数据-执行代码\84.金和用户表用户短信标识重置.sql
+		UpdatePlan\数据-执行代码\85.教师查询视图修改.sql = UpdatePlan\数据-执行代码\85.教师查询视图修改.sql
+		UpdatePlan\数据-执行代码\86.菜单以及权限调整.sql = UpdatePlan\数据-执行代码\86.菜单以及权限调整.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -136,6 +231,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6AA3E477-A054-43E2-BC61-041C30528471} = {67EF7ADC-B120-4DD6-AEAF-A0B09E047C78}
 	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
