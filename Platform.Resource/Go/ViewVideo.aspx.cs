@@ -19,7 +19,8 @@ namespace Go
 		{
 			if (!IsPostBack)
 			{
-				player.Video = CurrentResource.Preview;
+                LogOp(ResourceLogType.浏览资源, 1);
+                player.Video = CurrentResource.Preview;
                 catalog.Visible = CurrentResource.Type == ResourceType.视频 && CurrentResource.ResourceCatalog.Count(y => y.State < State.审核 && y.Catalog.State < State.审核 && y.Catalog.Type == CatalogType.视频) > 0;
                 cg.Visible = CanCombineCourse() || CanCombineGrade();
                 tag.Visible = CanCombineTags();
@@ -280,7 +281,8 @@ namespace Go
 				HomoryContext.Value.Action.Add(action);
 			}
 			CurrentResource.Download += 1;
-			HomoryContext.Value.SaveChanges();
+            LogOp(ResourceLogType.下载资源, 1);
+            HomoryContext.Value.SaveChanges();
 			downloadCount.InnerText = CurrentResource.Download.ToString();
 			downloadPanel.ResponseScripts.Add(string.Format("window.open('{0}');", CurrentResource.Source));
 		}
@@ -307,7 +309,8 @@ namespace Go
 				};
 				HomoryContext.Value.Action.Add(action);
 				CurrentResource.Favourite += 1;
-				HomoryContext.Value.SaveChanges();
+                LogOp(ResourceLogType.收藏资源, 1);
+                HomoryContext.Value.SaveChanges();
 				favourite.Attributes["Class"] = "homory1";
 			}
 			favouriteCount.InnerText = CurrentResource.Favourite.ToString();
@@ -365,7 +368,8 @@ namespace Go
 				Time = DateTime.Now,
 			};
 			HomoryContext.Value.Action.Add(action);
-			HomoryContext.Value.SaveChanges();
+            LogOp(ResourceLogType.评论资源, 1);
+            HomoryContext.Value.SaveChanges();
 			comment.Value = string.Empty;
 			BindComment();
 		}
@@ -435,7 +439,8 @@ namespace Go
 				Time = DateTime.Now,
 			};
 			HomoryContext.Value.Action.Add(action);
-			HomoryContext.Value.SaveChanges();
+            LogOp(ResourceLogType.回复评论, 1);
+            HomoryContext.Value.SaveChanges();
 			BindComment();
 
 		}

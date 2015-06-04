@@ -16,7 +16,7 @@
                         <h3>
                             <a title="<%# Eval("Title") %>" href='<%# string.Format("../Go/{1}?Id={0}", Eval("Id"), ((Homory.Model.Resource)Container.DataItem).Type == Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain") %>'><%# Eval("Title").ToString().CutString(12, "...") %>
                             </a></h3>
-                        <h4><span>发布者：<a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></span></h4>
+                        <h4><span>发布者：<a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></span></h4>
 
                         <p><%# Eval("View") %>人访问</p>
                     </dd>

@@ -26,7 +26,7 @@
 
                     <div>
 
-                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + Eval("Author") %></a>
+                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + U(Eval("UserId")).RealName %></a>
 
 
                     </div>
@@ -88,7 +88,7 @@
 
                     <div>
 
-                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + Eval("Author") %></a>
+                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + U(Eval("UserId")).RealName %></a>
 
 
                     </div>
@@ -130,7 +130,7 @@
 
                     <div>
 
-                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + Eval("Author") %></a>
+                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + U(Eval("UserId")).RealName %></a>
 
 
                     </div>
@@ -179,7 +179,7 @@
 
                     <div>
 
-                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + Eval("Author") %></a>
+                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>' class="fbr"><%# UC(Eval("UserId")) + "&nbsp;" + U(Eval("UserId")).RealName %></a>
 
 
                     </div>

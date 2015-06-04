@@ -28,7 +28,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -48,7 +48,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -68,7 +68,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -88,7 +88,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -108,7 +108,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -128,7 +128,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -148,7 +148,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -194,7 +194,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -214,7 +214,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -234,7 +234,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -254,7 +254,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -274,7 +274,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -294,7 +294,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -314,7 +314,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -357,7 +357,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -377,7 +377,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -397,7 +397,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -417,7 +417,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -437,7 +437,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -457,7 +457,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>
@@ -476,7 +476,7 @@
                                     <td width="20"  valign="middle">
                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' /></td>
                                     <td width="175" valign="middle"><a class="fl" href="<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>"><%# Eval("Title").ToString().CutString(12) %></a></td>
-                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# Eval("Author") %></a></td>
+                                    <td width="50"><a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).RealName %></a></td>
                                     <td width="80"><%# ((DateTime)Eval("Time")).FormatTime() %></td>
                                   </tr>
                                 </table>

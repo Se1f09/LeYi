@@ -27,13 +27,13 @@ namespace Go
 		protected void InitializeHomoryPage()
 		{
 			var user = CurrentUser;
-			result.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.文章 && o.UserId == CurrentUser.Id && o.State == State.启用).ToList();
+			result.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.文章 && o.UserId == CurrentUser.Id && o.State == State.启用).OrderByDescending(o => o.Time).ToList();
 			result.DataBind();
-			Repeater1.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.课件 && o.UserId == CurrentUser.Id && o.State == State.启用).ToList();
+			Repeater1.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.课件 && o.UserId == CurrentUser.Id && o.State == State.启用).OrderByDescending(o => o.Time).ToList();
 			Repeater1.DataBind();
-			Repeater2.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.试卷 && o.UserId == CurrentUser.Id && o.State == State.启用).ToList();
+			Repeater2.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.试卷 && o.UserId == CurrentUser.Id && o.State == State.启用).OrderByDescending(o => o.Time).ToList();
 			Repeater2.DataBind();
-			Repeater3.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.视频 && o.UserId == CurrentUser.Id && o.State == State.启用).ToList();
+			Repeater3.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.视频 && o.UserId == CurrentUser.Id && o.State == State.启用).OrderByDescending(o => o.Time).ToList();
 			Repeater3.DataBind();
 		}
 

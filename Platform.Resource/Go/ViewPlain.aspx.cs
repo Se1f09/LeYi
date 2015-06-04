@@ -250,6 +250,7 @@ namespace Go
             };
             HomoryContext.Value.Action.Add(action);
             HomoryContext.Value.SaveChanges();
+            LogOp(ResourceLogType.评定资源, 1);
             rating.Enabled = false;
             bestPanel.RaisePostBackEvent("Refresh");
             scorePanel.RaisePostBackEvent("Refresh");
@@ -273,6 +274,7 @@ namespace Go
                 HomoryContext.Value.Action.Add(action);
             }
             CurrentResource.Download += 1;
+            LogOp(ResourceLogType.下载资源, 1);
             HomoryContext.Value.SaveChanges();
             downloadCount.InnerText = CurrentResource.Download.ToString();
             downloadPanel.ResponseScripts.Add(string.Format("window.open('{0}');", CurrentResource.Source));
@@ -300,6 +302,7 @@ namespace Go
                 };
                 HomoryContext.Value.Action.Add(action);
                 CurrentResource.Favourite += 1;
+                LogOp(ResourceLogType.收藏资源, 1);
                 HomoryContext.Value.SaveChanges();
                 favourite.Attributes["Class"] = "homory1";
             }
@@ -350,6 +353,7 @@ namespace Go
             };
             HomoryContext.Value.Action.Add(action);
             HomoryContext.Value.SaveChanges();
+            LogOp(ResourceLogType.评论资源, 1);
             comment.Value = string.Empty;
             BindComment();
         }
@@ -418,6 +422,7 @@ namespace Go
                 State = State.启用,
                 Time = DateTime.Now,
             };
+            LogOp(ResourceLogType.回复评论, 1);
             HomoryContext.Value.Action.Add(action);
             HomoryContext.Value.SaveChanges();
             BindComment();
