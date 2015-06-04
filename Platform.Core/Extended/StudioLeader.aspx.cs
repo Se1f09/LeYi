@@ -52,7 +52,7 @@ namespace Extended
 			if (id.HasValue)
 			{
 				var groupId = Guid.Parse(Request.QueryString[0]);
-				HomoryContext.Value.GroupUser.Where(o => o.GroupId == groupId && o.Type == GroupUserType.创建者 && o.State == State.启用).Update(o => new GroupUser { State = State.删除 });
+				HomoryContext.Value.GroupUser.Where(o => o.GroupId == groupId && o.Type == GroupUserType.创建者 && o.State < State.审核).Update(o => new GroupUser { State = State.删除 });
 				var gu = new GroupUser
 				{
 					GroupId = groupId,
@@ -70,12 +70,12 @@ namespace Extended
 
 		protected bool Count(Guid id)
 		{
-			return CurrentGroup.GroupUser.Count(o => o.UserId == id && o.Type == GroupUserType.创建者 && o.State == State.启用) > 0;
+			return CurrentGroup.GroupUser.Count(o => o.UserId == id && o.Type == GroupUserType.创建者 && o.State < State.审核) > 0;
 		}
 
 		protected void view_NeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
 		{
-			var obj = HomoryContext.Value.ViewTeacher.Where(o => o.State < State.审核 && o.Type == DepartmentUserType.部门主职教师);
+			var obj = HomoryContext.Value.ViewTeacher.Where(o => o.State < State.审核 && (o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师)).Distinct();
 			var query = peek.Text;
 			view.DataSource = string.IsNullOrWhiteSpace(query) ? obj.ToList() : obj.Where(
 				o =>

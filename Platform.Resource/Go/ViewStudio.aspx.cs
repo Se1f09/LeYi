@@ -20,17 +20,17 @@ namespace Go
 		{
 			if (!IsPostBack)
 			{
-				leader.DataSource = CurrentGroup.GroupUser.Where(o => o.Type == GroupUserType.创建者).Select(o => o.User).ToList();
+				leader.DataSource = CurrentGroup.GroupUser.Where(o => o.Type == GroupUserType.创建者 && o.State < State.审核).Select(o => o.User).ToList();
                 leader.DataBind();
 
-                members.DataSource = CurrentGroup.GroupUser.Where(o => o.Type != GroupUserType.创建者).Select(o => o.User).ToList();
+                members.DataSource = CurrentGroup.GroupUser.Where(o => o.Type != GroupUserType.创建者 && o.State < State.审核).Select(o => o.User).ToList();
                 members.DataBind();
 
                 var list = new List<Catalog>();
-				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id).ToList());
-                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id).ToList())
+				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id && o.State < State.审核).ToList());
+                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id && o.State < State.审核).ToList())
 				{
-                    list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == catalog.Id).ToList());
+                    list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == catalog.Id && o.State < State.审核).ToList());
 				}
 				catalogs.DataSource = list.Where(o => o.ResourceCatalog.Count(p => p.State == State.启用) > 0).ToList();
 				catalogs.DataBind();

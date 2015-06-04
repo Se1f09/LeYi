@@ -47,6 +47,7 @@
                                                         <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="float: left; width: 20px; height: 20px; margin-top: 6px; margin-right: 20px;" />
                                                         <strong style="width: 550px;"><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
                                                         <span style="float:right;"><%# Eval("Time") %></span>
+                                                        <img src='<%# Eval("Image") %>' />
                                                         <div style="clear:both;"></div>
                                                     </li>
                                                 </ItemTemplate>
