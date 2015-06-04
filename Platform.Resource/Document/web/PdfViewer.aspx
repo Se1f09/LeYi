@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google" content="notranslate">
-    <title></title>
+    <title>乐翼教育云平台</title>
 
 
     <link rel="stylesheet" href="viewer.css"/>

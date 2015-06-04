@@ -5,7 +5,7 @@ using Homory.Model;
 
 namespace Document.web
 {
-	public partial class DocumentWebPdfViewer : HomoryResourcePage
+	public partial class DocumentWebPdfViewer : HomoryPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -29,11 +29,6 @@ namespace Document.web
 					return string.Empty;
 				}
 			}
-		}
-
-		protected override bool ShouldOnline
-		{
-			get { return false; }
 		}
 	}
 }
