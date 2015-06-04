@@ -39,10 +39,11 @@ namespace Popup
 		protected void view_NeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
 		{
 			var id = Guid.Parse(Request.QueryString[0]);
-			var obj = HomoryContext.Value.ViewTeacher.Where(o => o.State < State.审核 && o.Type == DepartmentUserType.部门主职教师);
-			if (CurrentGroup.GroupUser.Count(o => o.GroupId == id && o.Type == GroupUserType.创建者 && o.State == State.启用) > 0)
+            var camId = CurrentCampus.Id;
+			var obj = HomoryContext.Value.ViewTeacher.Where(o => o.State < State.审核 && o.TopDepartmentId == camId && (o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师));
+			if (CurrentGroup.GroupUser.Count(o => o.GroupId == id && o.Type == GroupUserType.创建者 && o.State < State.审核) > 0)
 			{
-				var userId = CurrentGroup.GroupUser.First(o => o.GroupId == id && o.Type == GroupUserType.创建者 && o.State == State.启用).UserId;
+				var userId = CurrentGroup.GroupUser.First(o => o.GroupId == id && o.Type == GroupUserType.创建者 && o.State < State.审核).UserId;
 				obj = obj.Where(o => o.Id != userId);
 			}
 			var query = peek.Text;
