@@ -38,7 +38,7 @@
                                     <div class="center_right">
                                         <div class="c-p-title">
                                             <div class="box-hd"><%# Eval("Name") %></div>
-                                            <a style="display: none;">+more</a>
+                                            <a id="aMore" runat="server">+更多</a>
                                         </div>
                                         <ul class="aList">
                                             <asp:Repeater runat="server" ID="resources">

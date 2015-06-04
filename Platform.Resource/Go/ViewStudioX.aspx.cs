@@ -14,7 +14,7 @@ using Homory.Model;
 
 namespace Go
 {
-	public partial class GoViewStudio : HomoryResourcePage
+	public partial class GoViewStudioX : HomoryResourcePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -26,9 +26,10 @@ namespace Go
                 members.DataSource = CurrentGroup.GroupUser.Where(o => o.Type != GroupUserType.创建者).Select(o => o.User).ToList();
                 members.DataBind();
 
-                var list = new List<Catalog>();
-				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id).ToList());
-                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id).ToList())
+				var list = new List<Catalog>();
+                var cid = Guid.Parse(Request.QueryString["CatalogId"]);
+				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id && o.Id == cid).ToList());
+                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id && o.Id == cid).ToList())
 				{
                     list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == catalog.Id).ToList());
 				}
@@ -66,11 +67,7 @@ namespace Go
 			dynamic row = e.Item.DataItem;
             var id = row.Id;
 			var control = e.Item.FindControl("resources") as Repeater;
-            var gid = Guid.Parse(Request.QueryString["Id"]);
-            var link = e.Item.FindControl("aMore") as HtmlAnchor;
-            link.HRef = string.Format("./ViewStudioX.aspx?Id={0}&CatalogId={1}", gid, catalog.Id);
-            link.Target = "_blank";
-            control.DataSource =
+			control.DataSource =
 				HomoryContext.Value.Resource.ToList().Where(
 					o => o.ResourceCatalog.Count(p => p.CatalogId == id) > 0 && o.State == State.启用)
 					.ToList();
