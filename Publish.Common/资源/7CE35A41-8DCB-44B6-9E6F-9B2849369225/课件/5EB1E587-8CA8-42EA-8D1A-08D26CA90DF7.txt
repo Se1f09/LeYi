@@ -1,0 +1,25 @@
+首页地址：
+http://www.btedu.gov.cn:8098/MikeSite/Default.aspx
+登录直接点登录，账号临时固定为"Homory"
+
+登录后，点击左侧菜单，或者在搜索框输入内容后点“搜商讯”，可跳转至商讯查询页，地址：
+http://www.btedu.gov.cn:8098/MikeSite/Search/Business.aspx
+
+三个应用地址：
+便签条	http://www.btedu.gov.cn:8098/MikeSite/Utility/Note.aspx
+备忘录	http://www.btedu.gov.cn:8098/MikeSite/Utility/Memo.aspx
+名片夹	http://www.btedu.gov.cn:8098/MikeSite/Utility/Card.aspx
+
+下方麦客条“我的麦讯”展开：
+我的资料	http://www.btedu.gov.cn:8098/MikeSite/User/Me.aspx
+其中"个人资料"标签可进行相关的认证
+"我的企业"标签共有5个按钮，“创建企业”“加入企业”“浏览企业”“转让企业”“退出企业”，现根据实际权限显示不同
+麦讯互动	http://www.btedu.gov.cn:8098/MikeSite/User/Message.aspx
+
+创建企业页面：（临时开启，但不会在数据库创建，默认此页面和个人资料的我的企业中的创建企业属于同权限）
+http://www.btedu.gov.cn:8098/MikeSite/Enterprise/Create.aspx
+点击“转让企业”或者搜索企业后点击企业成员列表进入：
+http://www.btedu.gov.cn:8098/MikeSite/Enterprise/Member.aspx?ID=00000000-0000-0000-0000-000000000000
+根据登录的用户和权限不同,可"发站内信""加入名片夹""将企业成员移除""转让企业"
+
+其余暂时未上传页面作调整,今晚调整完.
