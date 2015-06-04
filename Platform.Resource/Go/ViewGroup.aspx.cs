@@ -20,19 +20,19 @@ namespace Go
 		{
 			if (!IsPostBack)
 			{
-				leader.DataSource = CurrentGroup.GroupUser.Where(o => o.Type == GroupUserType.创建者).Select(o => o.User).ToList();
+				leader.DataSource = CurrentGroup.GroupUser.Where(o => o.Type == GroupUserType.创建者 && o.State < State.审核).Select(o => o.User).ToList();
                 leader.DataBind();
 
-                members.DataSource = CurrentGroup.GroupUser.Where(o => o.Type != GroupUserType.创建者).Select(o => o.User).ToList();
+                members.DataSource = CurrentGroup.GroupUser.Where(o => o.Type != GroupUserType.创建者 && o.State < State.审核).Select(o => o.User).ToList();
                 members.DataBind();
 
-				var list = new List<Catalog>();
-				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == CurrentGroup.Id).ToList());
-				foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == CurrentGroup.Id).ToList())
+                var list = new List<Catalog>();
+				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == CurrentGroup.Id && o.State < State.审核).ToList());
+                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == CurrentGroup.Id && o.State < State.审核).ToList())
 				{
-					list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == catalog.Id).ToList());
+                    list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == catalog.Id && o.State < State.审核).ToList());
 				}
-				catalogs.DataSource = list.Where(o => o.ResourceCatalog.Count(p => p.State == State.启用) > 0).ToList();
+                catalogs.DataSource = list.Where(o => o.ResourceCatalog.Count(p => p.State == State.启用) > 0).ToList().OrderBy(o => o.Ordinal).ToList();
 				catalogs.DataBind();
 
                 introduction.InnerText = CurrentGroup.Introduction;
@@ -66,9 +66,13 @@ namespace Go
 			dynamic row = e.Item.DataItem;
             var id = row.Id;
 			var control = e.Item.FindControl("resources") as Repeater;
-			control.DataSource =
+            var gid = Guid.Parse(Request.QueryString["Id"]);
+            var link = e.Item.FindControl("aMore") as HtmlAnchor;
+            link.HRef = string.Format("./ViewGroupX.aspx?Id={0}&CatalogId={1}", gid, catalog.Id);
+            link.Target = "_blank";
+            control.DataSource =
 				HomoryContext.Value.Resource.ToList().Where(
-					o => o.ResourceCatalog.Count(p => p.CatalogId == id) > 0 && o.State == State.启用)
+					o => o.ResourceCatalog.Count(p => p.CatalogId == id && p.State < State.审核) > 0 && o.State == State.启用).OrderByDescending(o => o.Time).Take(6)
 					.ToList();
 			control.DataBind();
 		}

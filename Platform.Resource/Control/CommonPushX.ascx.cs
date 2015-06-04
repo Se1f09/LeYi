@@ -19,7 +19,7 @@ namespace Control
 				var gid = Guid.Parse(Request.QueryString[0]);
 				var list = new List<dynamic>();
 					list.AddRange(
-						HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.团队_教研 && o.TopId == gid)
+						HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.团队_教研 && o.TopId == gid).OrderBy(o => o.Ordinal)
 							.ToList()
 							.Select(o => new {o.Id, o.ParentId, o.Name}));
 				groupTree.DataSource = list;

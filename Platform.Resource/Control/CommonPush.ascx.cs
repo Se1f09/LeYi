@@ -26,8 +26,8 @@ namespace Control
 				foreach (var group in groups)
 				{
 					list.AddRange(
-						HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.团队_名师 && o.ParentId != null)
-							.ToList()
+						HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.团队_名师 && o.ParentId != null).OrderBy(o => o.Ordinal)
+                            .ToList()
 							.Select(o => new {o.Id, o.ParentId, o.Name}));
 				}
 				groupTree.DataSource = list;

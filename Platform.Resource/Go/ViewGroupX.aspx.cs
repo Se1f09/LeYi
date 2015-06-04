@@ -14,7 +14,7 @@ using Homory.Model;
 
 namespace Go
 {
-	public partial class GoViewStudio : HomoryResourcePage
+	public partial class GoViewGroupX : HomoryResourcePage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -26,11 +26,12 @@ namespace Go
                 members.DataSource = CurrentGroup.GroupUser.Where(o => o.Type != GroupUserType.创建者 && o.State < State.审核).Select(o => o.User).ToList();
                 members.DataBind();
 
-                var list = new List<Catalog>();
-				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id && o.State < State.审核).ToList());
-                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == CurrentGroup.Id && o.State < State.审核).ToList())
+				var list = new List<Catalog>();
+                var cid = Guid.Parse(Request.QueryString["CatalogId"]);
+				list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == CurrentGroup.Id && o.Id == cid && o.State < State.审核).ToList());
+                foreach (var catalog in HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == CurrentGroup.Id && o.Id == cid && o.State < State.审核).ToList())
 				{
-                    list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == catalog.Id && o.State < State.审核).ToList());
+                    list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_教研 && o.ParentId == catalog.Id && o.State < State.审核).ToList());
 				}
 				catalogs.DataSource = list.Where(o => o.ResourceCatalog.Count(p => p.State == State.启用) > 0).ToList().OrderBy(o => o.Ordinal).ToList();
                 catalogs.DataBind();
@@ -66,13 +67,9 @@ namespace Go
 			dynamic row = e.Item.DataItem;
             var id = row.Id;
 			var control = e.Item.FindControl("resources") as Repeater;
-            var gid = Guid.Parse(Request.QueryString["Id"]);
-            var link = e.Item.FindControl("aMore") as HtmlAnchor;
-            link.HRef = string.Format("./ViewStudioX.aspx?Id={0}&CatalogId={1}", gid, catalog.Id);
-            link.Target = "_blank";
-            control.DataSource =
+			control.DataSource =
 				HomoryContext.Value.Resource.ToList().Where(
-					o => o.ResourceCatalog.Count(p => p.CatalogId == id && p.State < State.审核) > 0 && o.State == State.启用).OrderByDescending(o => o.Time).Take(6)
+					o => o.ResourceCatalog.Count(p => p.CatalogId == id && p.State < State.审核) > 0 && o.State == State.启用).OrderByDescending(o => o.Time)
 					.ToList();
 			control.DataBind();
 		}

@@ -33,8 +33,8 @@ namespace Go
 				{
                     list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.团队_名师 && o.ParentId == catalog.Id && o.State < State.审核).ToList());
 				}
-				catalogs.DataSource = list.Where(o => o.ResourceCatalog.Count(p => p.State == State.启用) > 0).ToList();
-				catalogs.DataBind();
+				catalogs.DataSource = list.Where(o => o.ResourceCatalog.Count(p => p.State == State.启用) > 0).ToList().OrderBy(o => o.Ordinal).ToList();
+                catalogs.DataBind();
 
                 introduction.InnerText = CurrentGroup.Introduction;
 			}
