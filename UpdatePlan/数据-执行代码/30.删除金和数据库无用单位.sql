@@ -1,0 +1,1 @@
+UPDATE C6.dbo.Department SET DeptDelFlag = 1 WHERE DeptID = 1044

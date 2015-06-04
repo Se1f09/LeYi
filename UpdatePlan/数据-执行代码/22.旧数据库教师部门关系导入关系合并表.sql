@@ -1,0 +1,2 @@
+INSERT INTO [DataCenter].[dbo].[Relation]([Time],[Status],[Operator],[TeacherID],[DepartmentID],[TopDepartmentID],[Ordinal])
+SELECT [Time],[Status],[Operator],[TeacherID],[DepartmentID],[TopDepartmentID],[Ordinal] FROM [DataCenter].[dbo].[Relation_DT] WHERE [Status] <> 'O'

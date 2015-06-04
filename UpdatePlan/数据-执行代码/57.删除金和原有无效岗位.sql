@@ -1,0 +1,1 @@
+UPDATE Station SET DelFlag = 1 WHERE StaID IN ('2488', '3755', '3756', '3578', '3170')

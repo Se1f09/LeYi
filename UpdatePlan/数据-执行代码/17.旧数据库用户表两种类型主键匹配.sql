@@ -1,0 +1,1 @@
+UPDATE [DataCenter].[dbo].[User] SET [G_ID] = NEWID() WHERE [Status] <> 'O'

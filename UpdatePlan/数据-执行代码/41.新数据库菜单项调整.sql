@@ -1,0 +1,3 @@
+USE Platform_BT
+GO
+UPDATE [Menu] SET [Name] = '学校管理' WHERE Id = '370CE587-8C73-48F2-9310-08D1C6594523'

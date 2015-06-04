@@ -1,0 +1,11 @@
+DECLARE @Id uniqueidentifier
+DECLARE TEMP CURSOR FOR SELECT Id FROM [Platform_BT].[dbo].[Application] WHERE [Type] = 3
+OPEN TEMP
+FETCH NEXT FROM TEMP INTO @Id
+WHILE(@@FETCH_STATUS=0)
+BEGIN
+INSERT INTO [Platform_BT].[dbo].[ApplicationRole]([ApplicationId],[UserType]) VALUES(@Id,1)
+FETCH NEXT FROM TEMP INTO @Id
+END
+CLOSE TEMP
+DEALLOCATE TEMP
