@@ -384,12 +384,7 @@ namespace Go
 			{
 				case ResourceType.文章:
 					{
-						if (catalog.Value == 0 && (ccc + ggc) == 0)
-						{
-							publish_publish_panel.ResponseScripts.Add("popNotify();");
-							return;
-						}
-						if (catalog.Value == 0 && (ccc + ggc) == 1)
+						if (catalog.Value == 0 || (ccc + ggc) < 2)
 						{
 							publish_publish_panel.ResponseScripts.Add("popNotify();");
 							return;
@@ -408,9 +403,9 @@ namespace Go
 					}
 				case ResourceType.视频:
 					{
-						if (catalogX.Value == 0 || (ccc + ggc) < 2)
-						{
-							publish_publish_panel.ResponseScripts.Add("popNotify();");
+                        if (catalogX.Value == 0 || (ccc + ggc) < 2)
+                        {
+                            publish_publish_panel.ResponseScripts.Add("popNotify();");
 							return;
 						}
 						break;
