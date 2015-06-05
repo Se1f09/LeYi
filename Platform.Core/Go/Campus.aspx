@@ -78,6 +78,7 @@
                                             <telerik:RadComboBoxItem Text="幼儿园" Value="2" />
                                             <telerik:RadComboBoxItem Text="小学" Value="3" />
                                             <telerik:RadComboBoxItem Text="初中" Value="4" />
+                                            <telerik:RadComboBoxItem Text="高中" Value="6" />
                                             <telerik:RadComboBoxItem Text="其他" Value="5" />
 										</Items>
 									</telerik:RadComboBox>

@@ -122,75 +122,6 @@ namespace Go
             tree.DataBind();
         }
 
-        //        private void BindTree()
-        //        {
-        //            if (CurrentRights.Contains(HomoryCoreConstant.RightGlobal))
-        //            {
-        //                var source =
-        //					HomoryContext.Value.Department.Where(
-        //                        o => (o.Type == DepartmentType.学校 && o.State == State.启用 && o.ClassType != ClassType.其他) || (o.Type == DepartmentType.班级 && o.State == State.启用));
-        //                tree.DataSource =
-        //                    source.Where(o => o.Level != 1)
-        //                        .OrderBy(o => o.State)
-        //                        .ThenBy(o => o.Ordinal)
-        //                        .ThenBy(o => o.Name).ToList()
-        //                        .Union(source.Where(o => o.Level == 1).OrderBy(o => o.State).ThenBy(o => o.Ordinal).ThenBy(o => o.Name))
-        //                        .ToList();
-        //            }
-        //            else
-        //            {
-        //                var c = CurrentCampus.Id;
-        //                var source =
-        //					HomoryContext.Value.Department.Where(
-        //                        o => (o.Type == DepartmentType.学校 && o.State == State.启用 && o.Id == c && o.ClassType != ClassType.其他) || (o.Type == DepartmentType.班级 && o.State == State.启用));
-        //                if (CurrentRights.Contains(PageRight))
-        //                {
-        //                    tree.DataSource =
-        //                        source.Where(o => o.Level != 1)
-        //                            .OrderBy(o => o.State)
-        //                            .ThenBy(o => o.Ordinal)
-        //                            .ThenBy(o => o.Name).ToList()
-        //                            .Union(source.Where(o => o.Level == 1).OrderBy(o => o.State).ThenBy(o => o.Ordinal).ThenBy(o => o.Name))
-        //                            .ToList();
-        //                }
-        //                else
-        //                {
-        //                    var list = new List<Department>();
-        //                    var d = CurrentUser.DepartmentUser.Where(o => o.State == State.启用 && o.Type == DepartmentUserType.班级班主任).Select(o => o.DepartmentId).ToList();
-        //                    foreach (var dItem in d)
-        //                    {
-        //                        var found = source.SingleOrDefault(o => o.Id == dItem);
-        //                        if (list.Count(o => o.Id == dItem) == 0)
-        //                        {
-        //                            list.Add(found);
-        //                        }
-        //// ReSharper disable PossibleNullReferenceException
-        //                        if (found.DepartmentParent != null)
-        //// ReSharper restore PossibleNullReferenceException
-        //                        {
-        //                            var found2 = source.SingleOrDefault(o => o.Id == found.DepartmentParent.Id);
-        //                            if (found2 != null && list.Count(o => o.Id == found2.Id) == 0)
-        //                            {
-        //                                list.Add(found2);
-        //                            }
-        //// ReSharper disable PossibleNullReferenceException
-        //                            if (found2.DepartmentParent != null)
-        //// ReSharper restore PossibleNullReferenceException
-        //                            {
-        //                                var found3 = source.SingleOrDefault(o => o.Id == found2.DepartmentParent.Id);
-        //                                if (found3 != null && list.Count(o => o.Id == found3.Id) == 0)
-        //                                {
-        //                                    list.Add(found3);
-        //                                }
-        //                            }
-        //                        }
-        //                    }
-        //                    tree.DataSource = list;
-        //                }
-        //            }
-        //            tree.DataBind();
-        //        }
-
         private void InitTree()
         {
             RadTreeNode node = null;
@@ -223,9 +154,53 @@ namespace Go
             }
         }
 
+        public static string[] J = { "初三", "初二", "初一" };
+        public static string[] PJ = { "九年级", "八年级", "七年级", "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
+        public static string[] P = { "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
+        public static string[] S = { "高三", "高二", "高一" };
+        public static string[] K = { "大班", "中班", "小班" };
+
+        private int? __year;
+
+        protected int __Year
+        {
+            get
+            {
+                if (!__year.HasValue)
+                {
+                    __year = int.Parse(HomoryContext.Value.Dictionary.Single(o => o.Key == "SchoolYear").Value);
+                }
+                return __year.Value;
+            }
+            set
+            {
+                __year = value;
+            }
+        }
+
+        protected string GenGradeName(Homory.Model.Department d)
+        {
+            int index = d.Ordinal - __Year - 1;
+            var pdt = d.DepartmentRoot.ClassType;
+            switch (pdt)
+            {
+                case ClassType.九年一贯制:
+                    return index < PJ.Length && index > -1 ? PJ[index] : string.Empty;
+                case ClassType.初中:
+                    return index < J.Length && index > -1 ? J[index] : string.Empty;
+                case ClassType.小学:
+                    return index < P.Length && index > -1 ? P[index] : string.Empty;
+                case ClassType.幼儿园:
+                    return index < K.Length && index > -1 ? K[index] : string.Empty;
+                case ClassType.高中:
+                    return index < S.Length && index > -1 ? S[index] : string.Empty;
+            }
+            return string.Empty;
+        }
+
         protected string GenerateTreeName(Department department, int index, int level)
         {
-            var part1 = level == 1 ? HomoryCoreConstant.GradeNames[index] : department.DisplayName;
+            var part1 = level == 1 ? GenGradeName(department) : department.DisplayName;
             var part2 = level == 1
                 ? (department.Learned.Count(o => o.State == State.启用) == 0
                     ? " [未选择]" : string.Empty) : (department.Learned.Count(o => o.State == State.启用) > 0

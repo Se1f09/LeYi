@@ -3957,6 +3957,7 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <Member Name="初中" Value="4" />
           <Member Name="其他" Value="5" />
           <Member Name="无" Value="0" />
+          <Member Name="高中" Value="6" />
         </EnumType>
         <EntityType Name="ViewQueryTeacher">
           <Key>

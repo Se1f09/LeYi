@@ -75,6 +75,15 @@ namespace Go
             g4.DataSource = list;
         }
 
+        protected void g5_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+        {
+            List<dynamic> list = new List<dynamic>();
+            list.Add(new { 名称 = "高一", 入学时间 = string.Format("{0}年09月", __Year), 毕业时间 = string.Format("{0}年07月", __Year + 3) });
+            list.Add(new { 名称 = "高二", 入学时间 = string.Format("{0}年09月", __Year - 1), 毕业时间 = string.Format("{0}年07月", __Year + 2) });
+            list.Add(new { 名称 = "高三", 入学时间 = string.Format("{0}年09月", __Year - 2), 毕业时间 = string.Format("{0}年07月", __Year + 1) });
+            g5.DataSource = list;
+        }
+
         private int? __year;
 
         protected int __Year
