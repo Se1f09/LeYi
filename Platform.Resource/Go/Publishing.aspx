@@ -72,8 +72,27 @@
                             <input runat="server" class="editor-title" id="publish_title_content" type="text" />
                             <br />
                             <br />
-                            <telerik:RadAjaxPanel runat="server" ID="apxx">
-                                <telerik:RadSearchBox ID="author_pub" runat="server" OnSearch="author_pub_Search" DropDownSettings-Width="702px" DropDownSettings-CssClass="xs" Width="743px" OnDataSourceSelect="author_pub_DataSourceSelect" DataTextField="Name" DataValueField="Id" LabelCssClass="title fl sx" Label="作者：" ShowLoadingIcon="false" ShowSearchButton="false" EnableEmbeddedSkins="false" EnableEmbeddedBaseStylesheet="true"></telerik:RadSearchBox>
+                                <style>
+                                    .cccc {
+                                        line-height: 32px;
+                                        height: 32px;
+                                        vertical-align: middle;
+                                        margin: auto;
+                                    }
+                                </style>
+                            <telerik:RadAjaxPanel runat="server" ID="apxx" CssClass="cccc">
+                                <label class="title" style="float: left;">作者：</label>
+                                <telerik:RadButton ID="author_type" runat="server" ButtonType="ToggleButton" GroupName="AG" ToggleType="Radio" AutoPostBack="true" OnCheckedChanged="author_type_CheckedChanged">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="本人" Value="0" />
+                                    </ToggleStates>
+                                </telerik:RadButton>
+                                <telerik:RadButton ID="author_typeX" runat="server" ButtonType="ToggleButton" GroupName="AG" ToggleType="Radio" AutoPostBack="true" OnCheckedChanged="author_type_CheckedChanged">
+                                    <ToggleStates>
+                                        <telerik:RadButtonToggleState Text="代发" Value="1" />
+                                    </ToggleStates>
+                                </telerik:RadButton>
+                                <telerik:RadSearchBox ID="author_pub" runat="server" OnSearch="author_pub_Search" DropDownSettings-Width="300px" DropDownSettings-CssClass="xs" OnDataSourceSelect="author_pub_DataSourceSelect" DataTextField="Name" DataValueField="Id" ShowLoadingIcon="false" ShowSearchButton="false" EnableEmbeddedSkins="false" EnableEmbeddedBaseStylesheet="true"></telerik:RadSearchBox>
                             </telerik:RadAjaxPanel>
                             <br />
                             <br />
@@ -310,8 +329,8 @@
                 color: #727272;
                 font-size: 12px;
                 font-weight: bolder;
-                float: right;
-                margin-left: -8px;
+                float: left;
+                margin-left: 8px;
             }
 
             html .RadSearchBox .rsbInner {
@@ -321,16 +340,17 @@
                 padding: 0;
                 position: relative;
                 _overflow: hidden;
-                width: 700px;
+                width: 610px;
+                margin-top: -1px;
+            }
+
+            html .rbToggleRadio, html .rbToggleRadioChecked {
+                margin-top: 8px;
             }
 
             .xs{
                 background-color: wheat;
-                margin-left: 38px;
-            }
-
-            .sx{
-                margin-top: 6px;
+                margin-left: 8px;
             }
         </style>
     </form>

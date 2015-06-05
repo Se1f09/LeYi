@@ -114,8 +114,17 @@ namespace Go
                 try
                 {
                     var ______id = Guid.Parse(CurrentResource.Author);
-                    var ______user = HomoryContext.Value.ViewTeacher.First(o => o.Id == ______id);
-                    author_pub.Text = string.Format(FORMAT_AUTHOR, ______user.RealName, ______user.Phone);
+                    bool yes = ______id == CurrentUser.Id;
+                    author_type.Checked = yes;
+                    author_typeX.Checked = !yes;
+                    author_pub.Visible = !yes;
+                    if (yes)
+                        author_pub.Text = "";
+                    else
+                    {
+                        var ______user = HomoryContext.Value.ViewTeacher.First(o => o.Id == ______id);
+                        author_pub.Text = string.Format(FORMAT_AUTHOR, ______user.RealName, ______user.Phone);
+                    }
                 }
                 catch
                 {
@@ -504,6 +513,16 @@ namespace Go
             if (!string.IsNullOrWhiteSpace(e.Value))
             {
                 CurrentResource.Author = e.Value;
+                HomoryContext.Value.SaveChanges();
+            }
+        }
+
+        protected void author_type_CheckedChanged(object sender, EventArgs e)
+        {
+            author_pub.Visible = !author_type.Checked;
+            if (author_type.Checked)
+            {
+                CurrentResource.Author = CurrentUser.Id.ToString();
                 HomoryContext.Value.SaveChanges();
             }
         }
