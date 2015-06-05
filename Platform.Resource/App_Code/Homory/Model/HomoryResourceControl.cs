@@ -41,17 +41,7 @@ namespace Homory.Model
 
         protected string P(object icon)
         {
-            var url = icon.ToString();
-            if (!url.Equals("~/Common/默认/用户.png") && !url.Equals("~/Common/默认/群组.png") && File.Exists(Server.MapPath(url)))
-            {
-                return url;
-            }
-            else
-            {
-                var files = new DirectoryInfo(Server.MapPath("~/Common/头像/随机")).GetFiles();
-                var r = new Random(Guid.NewGuid().GetHashCode());
-                return "~/Common/头像/随机/" + files[r.Next(0, files.Length)].Name;
-            }
+            return icon.ToString();
         }
 
         protected string UC(object id)

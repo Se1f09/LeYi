@@ -13,9 +13,29 @@ return @curStr
 end
 
 
-UPDATE [Group] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.png' WHERE Icon = '~/Common/默认/群组.png'
+DECLARE TEMP CURSOR FOR SELECT Id FROM [Group]  WHERE Type = 1 and Icon = '~/Common/默认/群组.png'
+DECLARE @Id uniqueidentifier
+OPEN TEMP
+FETCH NEXT FROM TEMP INTO @Id
+WHILE(@@FETCH_STATUS=0)
+BEGIN
+UPDATE [Group] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.jpg' WHERE Id = @Id
+FETCH NEXT FROM TEMP INTO @Id
+END
+CLOSE TEMP
+DEALLOCATE TEMP
 
-UPDATE [User] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.png' WHERE Icon = '~/Common/默认/用户.png'
+DECLARE TEMP CURSOR FOR SELECT Id FROM [User]  WHERE Type = 1 and Icon = '~/Common/默认/用户.png'
+OPEN TEMP
+FETCH NEXT FROM TEMP INTO @Id
+WHILE(@@FETCH_STATUS=0)
+BEGIN
+UPDATE [User] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.jpg' WHERE Id = @Id
+FETCH NEXT FROM TEMP INTO @Id
+END
+CLOSE TEMP
+DEALLOCATE TEMP
+
 
 CREATE TRIGGER dbo.GenUserIcon
    ON  dbo.[User]
@@ -31,7 +51,7 @@ BEGIN
 	SELECT @Id = Id, @Icon = Icon FROM inserted
 	IF(@Icon = '~/Common/默认/用户.png')
 	BEGIN
-		UPDATE [User] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.png' WHERE Id = @Id
+		UPDATE [User] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.jpg' WHERE Id = @Id
 	END
 
 END
@@ -51,8 +71,16 @@ BEGIN
 	SELECT @Id = Id, @Icon = Icon FROM inserted
 	IF(@Icon = '~/Common/默认/群组.png')
 	BEGIN
-		UPDATE [Group] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.png' WHERE Id = @Id
+		UPDATE [Group] SET Icon = '~/Common/头像/随机/' + dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.jpg' WHERE Id = @Id AND Type = 1
 	END
 
 END
 GO
+
+DECLARE @TEMP int
+SET @TEMP = 0
+WHILE(@TEMP < 100)
+BEGIN
+PRINT dbo.PadLeft( CAST(cast( floor(rand()*128) as int) as nvarchar(3) ),'0',3) + '.jpg'
+SET @TEMP = @TEMP + 1
+END

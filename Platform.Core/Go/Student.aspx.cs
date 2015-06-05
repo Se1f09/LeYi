@@ -261,7 +261,7 @@ namespace Go
                     PasswordEx = null,
                     CryptoKey = key,
                     CryptoSalt = salt,
-                    Icon = string.Format("~/Common/头像/用户/{0}.jpg", idCard),
+                    Icon = "~/Common/默认/用户.png",
                     State = state,
                     Ordinal = ordinal,
                     Description = null
