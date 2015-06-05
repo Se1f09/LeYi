@@ -93,7 +93,8 @@ namespace Go
                 downloadCount.InnerText = CurrentResource.Download.ToString();
                 favouriteCount.InnerText = CurrentResource.Favourite.ToString();
                 icon.ImageUrl = TargetUser.Icon;
-                name.Text = UC(TargetUser.Id) + " " + TargetUser.DisplayName;
+                name.Text = UC(TargetUser.Id).Replace("无锡市", "").Replace("无锡", "");
+                nameX.Text = TargetUser.DisplayName;
                 viewCount.Text = CurrentResource.View.ToString();
                 viewList.DataSource = HomoryContext.Value.Action.Where(o => o.Id2 == CurrentResource.Id && o.Type == ActionType.用户访问资源).OrderByDescending(q => q.Time)
                         .Take(9)

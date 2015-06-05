@@ -263,8 +263,9 @@
                                         <asp:Image runat="server" ID="icon" class="fl" Height="50" Width="50" />
                                     </a>
                                     <span class="rbox-uz-right fl">
-                                        <h3><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
-                                            <asp:Label runat="server" ID="name"></asp:Label></a><label style="font-size: 12px;">&nbsp;&nbsp;<%= CurrentResource.User.DepartmentUser.Count(o=>o.Type== DepartmentUserType.部门主职教师) > 0 ? CurrentResource.User.DepartmentUser.Single(o=>o.Type== DepartmentUserType.部门主职教师).TopDepartment.Name : "" %></label></h3>
+                                        <h3><div><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
+                                            <asp:Label runat="server" ID="name"></asp:Label></a></div><div><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
+                                            <asp:Label runat="server" ID="nameX"></asp:Label></a></div></h3>
                                         <a id="go" href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>进入教师空间</a>
                                     </span>
                                 </div>
