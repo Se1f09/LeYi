@@ -72,10 +72,10 @@ namespace Control
 
         protected string GetCatalogName(Resource resource)
         {
-            if (resource.ResourceCatalog.Count(o => (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制) && o.State < State.审核) > 0 && resource.ResourceCatalog.Count(o => o.Catalog.Type == CatalogType.课程 && o.State < State.审核) > 0)
+            if (resource.ResourceCatalog.Count(o => (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制 || o.Catalog.Type == CatalogType.年级_高中) && o.State < State.审核) > 0 && resource.ResourceCatalog.Count(o => o.Catalog.Type == CatalogType.课程 && o.State < State.审核) > 0)
             {
                 return string.Format("{0} {1}",
-                    resource.ResourceCatalog.First(o => (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制) && o.State < State.审核).Catalog.Name,
+                    resource.ResourceCatalog.First(o => (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制 || o.Catalog.Type == CatalogType.年级_高中) && o.State < State.审核).Catalog.Name,
                     resource.ResourceCatalog.First(o => o.Catalog.Type == CatalogType.课程 && o.State < State.审核).Catalog.Name);
             }
             return resource.ResourceCatalog.First(o => o.Catalog.Type == CatalogType.视频 && o.State < State.审核).Catalog.Name;

@@ -135,25 +135,6 @@ namespace Go
             node.Selected = true;
         }
 
-        private int? _gradeCount;
-
-        protected int GradeCount
-        {
-            get
-            {
-                if (!_gradeCount.HasValue)
-                {
-                    _gradeCount =
-						HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.年级_九年制 && o.State < State.审核)
-                            .ToList()
-                            .OrderBy(o => o.Ordinal)
-                            .Last()
-                            .Ordinal;
-                }
-                return _gradeCount.Value;
-            }
-        }
-
         public static string[] J = { "初三", "初二", "初一" };
         public static string[] PJ = { "九年级", "八年级", "七年级", "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
         public static string[] P = { "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };

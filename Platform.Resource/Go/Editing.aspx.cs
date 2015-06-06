@@ -143,14 +143,14 @@ namespace Go
 						.ToList();
 				publish_course.DataBind();
 				publish_grade.DataSource =
-					HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && (o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_六年制 || o.Type == CatalogType.年级_九年制))
+					HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && (o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_六年制 || o.Type == CatalogType.年级_九年制 || o.Type == CatalogType.年级_高中))
 						.OrderBy(o => o.State)
 						.ThenBy(o => o.Ordinal)
 						.ToList();
 				publish_grade.DataBind();
 				var courseValue = r.ResourceCatalog.Where(o => o.Catalog.Type == CatalogType.课程 && o.State == State.启用).Aggregate(string.Empty, (current, course) => current + string.Format("{0},", course.CatalogId));
 				publish_course.SelectedValue = courseValue;
-				var gradeValue = r.ResourceCatalog.Where(o => (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制) && o.State == State.启用).Aggregate(string.Empty, (current, grade) => current + string.Format("{0},", grade.CatalogId));
+				var gradeValue = r.ResourceCatalog.Where(o => (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制 || o.Catalog.Type == CatalogType.年级_高中) && o.State == State.启用).Aggregate(string.Empty, (current, grade) => current + string.Format("{0},", grade.CatalogId));
 				publish_grade.SelectedValue = gradeValue;
 				popup_import.NavigateUrl = string.Format("../Popup/PublishImport.aspx?Type={0}", Request.QueryString["Type"]);
 				popup_attachment.NavigateUrl = string.Format("../Popup/PublishAttachment.aspx?Type={0}", Request.QueryString["Type"]);
@@ -336,7 +336,7 @@ namespace Go
 			}
 			var resource = CurrentResource;
 			var course = HomoryContext.Value.ResourceCatalog.Where(o => o.ResourceId == resource.Id && o.Catalog.Type == CatalogType.课程 && o.State < State.删除).FutureCount();
-			var grade = HomoryContext.Value.ResourceCatalog.Where(o => o.ResourceId == resource.Id && (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制) && o.State < State.删除).FutureCount();
+			var grade = HomoryContext.Value.ResourceCatalog.Where(o => o.ResourceId == resource.Id && (o.Catalog.Type == CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制 || o.Catalog.Type == CatalogType.年级_高中) && o.State < State.删除).FutureCount();
 			var catalog = HomoryContext.Value.ResourceCatalog.Where(o => o.ResourceId == resource.Id && o.Catalog.Type == CatalogType.文章 && o.State < State.删除).FutureCount();
 			switch (resource.Type)
 			{

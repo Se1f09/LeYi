@@ -2755,8 +2755,8 @@
           <Member Name="团队_名师" Value="5" />
           <Member Name="团队_教研" Value="6" />
           <Member Name="年级_幼儿园" Value="-1" />
-          <Member Name="年级_六年制" Value="-2" />
-          <Member Name="年级_九年制" Value="-3" />
+          <Member Name="年级_小学" Value="-2" />
+          <Member Name="年级_初中" Value="-3" />
           <Member Name="学习小助手" Value="1" />
           <Member Name="年级_高中" Value="-4" />
         </EnumType>

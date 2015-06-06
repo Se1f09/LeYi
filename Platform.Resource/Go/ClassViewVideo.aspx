@@ -55,7 +55,7 @@
                                 <div class="photo-info">
                                     <span>作者：<a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'><%= CurrentResource.User.DisplayName %></a></span>&nbsp;&nbsp;
                                 <span id="catalog" runat="server">栏目：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.视频).Aggregate(string.Empty,Combine).CutString(null) %></span><br />
-                                    <span>年级：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&(o.Catalog.Type== CatalogType.年级_幼儿园||o.Catalog.Type== CatalogType.年级_六年制||o.Catalog.Type== CatalogType.年级_九年制)).Aggregate(string.Empty,Combine).CutString(null) %></span>&nbsp;&nbsp;
+                                    <span>年级：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&(o.Catalog.Type== CatalogType.年级_幼儿园||o.Catalog.Type== CatalogType.年级_六年制||o.Catalog.Type== CatalogType.年级_九年制 || o.Catalog.Type == CatalogType.年级_高中)).Aggregate(string.Empty,Combine).CutString(null) %></span>&nbsp;&nbsp;
                                 <span>学科：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.课程).Aggregate(string.Empty,Combine).CutString(null) %></span><br />
                                     <span>时间：<%= CurrentResource.Time.ToString("yyyy-MM-dd HH:mm") %></span>
                                 </div>

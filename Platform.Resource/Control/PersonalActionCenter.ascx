@@ -19,7 +19,7 @@
                             <p><%# R(Eval("Id2")).Content %> </p>
                             <p>
                                 <img src='<%# R(Eval("Id2")).Image %>' width="100" height="80" /></p>
-                            <p class="from">年级：<%# R(Eval("Id2")).ResourceCatalog.Where(o=>o.State==State.启用 && (o.Catalog.Type== CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制)).Aggregate(string.Empty,Combine).CutString(null) %></p>
+                            <p class="from">年级：<%# R(Eval("Id2")).ResourceCatalog.Where(o=>o.State==State.启用 && (o.Catalog.Type== CatalogType.年级_幼儿园 || o.Catalog.Type == CatalogType.年级_六年制 || o.Catalog.Type == CatalogType.年级_九年制 || o.Catalog.Type == CatalogType.年级_高中)).Aggregate(string.Empty,Combine).CutString(null) %></p>
                              <p>回复：<%# Eval("Content1") %></p>
                         </div>
                         <div class="plqgr">

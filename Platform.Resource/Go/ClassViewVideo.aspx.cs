@@ -36,6 +36,7 @@ namespace Go
 				case CatalogType.年级_幼儿园:
                 case CatalogType.年级_六年制:
                 case CatalogType.年级_九年制:
+                case CatalogType.年级_高中:
 					{
 						return "Grade";
 					}
