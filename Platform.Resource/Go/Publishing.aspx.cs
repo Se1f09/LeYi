@@ -500,6 +500,7 @@ namespace Go
                 State = sync_ass.Checked ? State.启用 : State.删除
             };
             HomoryContext.Value.ResourceCatalog.AddOrUpdate(rc);
+            CurrentResource.AssistantType = sync_ass.Checked ? 1 : 0;
             HomoryContext.Value.SaveChanges();
         }
 

@@ -390,6 +390,7 @@ namespace Go
             resource.State = State.启用;
             resource.CourseId = courseCatalogId;
             resource.GradeId = gradeCatalogId;
+            resource.AssistantType = 1;
             HomoryContext.Value.SaveChanges();
             Response.Redirect(string.Format("../Go/{1}?Id={0}", resource.Id, resource.Type == Homory.Model.ResourceType.视频 ? "ClassViewVideo" : "ClassViewPlain"), false);
         }

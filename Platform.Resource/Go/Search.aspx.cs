@@ -134,10 +134,6 @@ namespace Go
         private void B(bool reset = false)
         {
             var source = LoadDataSource();
-            if (ss.Checked)
-            {
-                source = source.Where(o => o.AssistantType == 1).ToList();
-            }
             Guid id;
             CatalogType? period_type = null;
             List<Guid> idList = new List<Guid>();
@@ -175,6 +171,10 @@ namespace Go
             {
                 Homory.Model.ResourceType tt = (Homory.Model.ResourceType)int.Parse(new RadButton[] { t1, t2, t3, t4 }.Single(o => o.Checked).Value);
                 source = source.Where(o => o.Type == tt).ToList();
+            }
+            if (ss.Checked)
+            {
+                source = source.Where(o => o.AssistantType == 1).ToList();
             }
             if (s2.Checked)
                 result.DataSource = source.OrderByDescending(o => o.View);
