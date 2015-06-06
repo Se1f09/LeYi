@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../Style/index.css">
     <link rel="stylesheet" href="../Style/2.css" id="skinCss">
     <link href="../Style/center.css" rel="stylesheet" />
+    <base target="_top" />
 </head>
 <body>
     <form id="form" runat="server">

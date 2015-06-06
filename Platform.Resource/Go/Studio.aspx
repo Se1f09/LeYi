@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/plaza2.css">
     <script src="js/jquery.min.js"></script>
     <link rel="stylesheet" href="css/1.css" id="skinCss">
+    <base target="_top" />
 </head>
 <body class="srx-pclass">
     <form runat="server">

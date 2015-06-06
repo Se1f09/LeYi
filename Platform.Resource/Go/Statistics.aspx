@@ -18,7 +18,7 @@
     <link href="../Style/common.css" rel="stylesheet" />
     <link href="../Style/public.css" rel="stylesheet" />
     <link href="../Style/mhzy.css" rel="stylesheet" />
-
+    <base target="_top" />
     <link href="../Style/login1.css" rel="stylesheet" />
 
 

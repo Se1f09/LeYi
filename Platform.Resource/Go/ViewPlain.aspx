@@ -16,7 +16,8 @@
     <link href="../Style/commentInputBox.css" rel="stylesheet" />
     <link href="../Style/1.css" rel="stylesheet" />
     <script src="../Script/jquery.min.js"></script>
-    <script>
+      <base target="_top" />
+  <script>
         function GetUrlParms() {
             var args = new Object();
             var query = location.search.substring(1);//获取查询串   

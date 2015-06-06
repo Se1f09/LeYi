@@ -83,7 +83,7 @@ namespace Homory.Model
         {
             var gid = Guid.Parse(id.ToString());
             var user = HomoryContext.Value.User.Single(o => o.Id == gid);
-            return user.DepartmentUser.Count(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) > 0 ? "[" + user.DepartmentUser.First(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师).TopDepartment.Name + "]" : "";
+            return user.DepartmentUser.Count(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) > 0 ? "[" + user.DepartmentUser.First(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师).TopDepartment.Name.Replace("无锡市", "").Replace("无锡", "") + "]" : "";
         }
 
         protected User CurrentUser

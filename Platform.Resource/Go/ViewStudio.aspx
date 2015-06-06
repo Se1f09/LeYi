@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/detail.css">
     <link rel="stylesheet" href="css/plaza2.css">
     <link rel="stylesheet" href="css/1.css" id="skinCss">
+    <base target="_top" />
 </head>
 <body class="srx-pclass">
     <form id="form1" runat="server">

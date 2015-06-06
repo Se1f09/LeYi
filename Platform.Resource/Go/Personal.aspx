@@ -15,6 +15,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Pragma" content="no-cache">
     <script src="../Script/jquery.min.js"></script>
+        <base target="_top" />
 
     <link rel="stylesheet" href="../Style/common.css">
     <link rel="stylesheet" href="../Style/common(1).css">

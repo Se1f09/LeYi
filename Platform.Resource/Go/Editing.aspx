@@ -14,6 +14,7 @@
     <script src="../Script/jquery.min.js"></script>
     <script src="../Script/jquery.media.js"></script>
     <link href="../Style/common.css" rel="stylesheet" />
+    <base target="_top" />
 </head>
 <body>
     <form runat="server">

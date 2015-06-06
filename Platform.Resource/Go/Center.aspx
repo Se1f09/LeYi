@@ -27,6 +27,7 @@
     <link href="../Style/public.css" rel="stylesheet" />
     <link href="../Style/mhzy.css" rel="stylesheet" />
     <link href="../Style/center.css" rel="stylesheet" />
+    <base target="_top" />
 </head>
 <body class="srx-phome">
     <form runat="server">

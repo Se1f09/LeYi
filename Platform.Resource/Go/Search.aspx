@@ -16,6 +16,7 @@
     <link href="../Style/public.css" rel="stylesheet" />
     <link href="../Style/mhzy.css" rel="stylesheet" />
     <link href="../Style/zTreeStyle2.css" rel="stylesheet" />
+    <base target="_top" />
 </head>
 <body>
     <form runat="server">

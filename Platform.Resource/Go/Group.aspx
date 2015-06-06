@@ -16,6 +16,7 @@
     <title>团队教研首页</title>
     <link  rel="stylesheet"  href="css/common.css">
 <link  rel="stylesheet"  href="css/common(1).css">
+    <base target="_top" />
 
 <link  rel="stylesheet"  href="css/plaza1.css">
 

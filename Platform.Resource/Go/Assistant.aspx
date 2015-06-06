@@ -20,6 +20,7 @@
     <link href="../Style/mhzy.css" rel="stylesheet" />
 
     <link href="../Style/login1.css" rel="stylesheet" />
+        <base target="_top" />
 
 
 </head>

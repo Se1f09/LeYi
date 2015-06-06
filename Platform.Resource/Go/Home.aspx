@@ -36,7 +36,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/logger.js"></script>
     <script src="js/bds_s_v2.js"></script>
-    <base target="_blank" />
+    <base target="_top" />
 </head>
 <body class="srx-plogin">
     <form runat="server">
