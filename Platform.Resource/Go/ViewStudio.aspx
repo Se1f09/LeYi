@@ -37,38 +37,24 @@
                             <asp:Repeater runat="server" ID="catalogs" OnItemDataBound="catalogs_OnItemDataBound">
                                 <ItemTemplate>
                                     <div class="center_right">
-                                        <div class="c-p-title">
+                                        <div class="c-p-title" style="margin-top: 30px;">
                                             <div class="box-hd"><%# Eval("Name") %></div>
                                             <a id="aMore" runat="server">+更多</a>
                                         </div>
                                         <ul>
                                             <asp:Repeater runat="server" ID="resources">
                                                 <ItemTemplate>
-                                                    <li style="height: 250px; width: 350px; float: left; margin-bottom: 40px;">
-                                                        <div style="width: 40px; float: left; height: 10px;">&nbsp;</div>
-                                                        <div style="height: 250px; width: 300px; float: left; overflow: hidden; margin-bottom: 40px; text-align: left; vertical-align: middle;">
-                                                            <table>
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).DisplayName %></a>&nbsp;-&nbsp;
-                                                                        <span><%# Eval("Time") %></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td style="width: 56px;">
-                                                                        <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="width: 20px; height: 20px; margin-top: 6px;" />&nbsp;&nbsp;
-                                                                    </td>
-                                                                    <td>
-                                                                        <strong><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2">
+                                                    <li style="height: 250px; width: 200px; float: left; margin-bottom: 30px; margin-left: 30px; border: solid 1px #ddd; overflow: hidden;">
+                                                        <div>
+                                                            &nbsp;&nbsp;<img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="width: 20px; height: 20px; margin-top: 8px;" />&nbsp;&nbsp;
+                                                            <strong><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
+                                                        </div>
+                                                        <div style="float: right;">
+                                                            [<a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).DisplayName %></a>
+                                                            @<%# ((System.DateTime)Eval("Time")).FormatTimeShort() %>]&nbsp;&nbsp;
+                                                        </div>
+                                                        <div style="overflow: hidden; text-align: left; vertical-align: middle; clear: both; width: 100%; margin-left: -20px; margin-top: -20px;">
                                                                         <a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><img src='<%# Eval("Image").ToString() %>' width="300" height="200" /></a>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <br />
                                                         </div>
                                                     </li>
                                                 </ItemTemplate>
