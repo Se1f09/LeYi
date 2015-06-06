@@ -83,6 +83,7 @@ namespace Homory.Model
         public virtual DbSet<ViewQueryOperation> ViewQueryOperation { get; set; }
         public virtual DbSet<ResourceLog> ResourceLog { get; set; }
         public virtual DbSet<ViewQueryResource> ViewQueryResource { get; set; }
+        public virtual DbSet<GroupBoard> GroupBoard { get; set; }
     
         public virtual int ResetPolicyCommon()
         {

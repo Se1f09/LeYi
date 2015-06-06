@@ -118,6 +118,9 @@
     <Compile Include="Model\Group.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\GroupBoard.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GroupType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

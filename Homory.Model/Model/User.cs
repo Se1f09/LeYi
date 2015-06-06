@@ -32,6 +32,7 @@ namespace Homory.Model
             this.ResourceAssess = new HashSet<ResourceAssess>();
             this.ResourceCommentTemp = new HashSet<ResourceCommentTemp>();
             this.ResourceLog = new HashSet<ResourceLog>();
+            this.GroupBoard = new HashSet<GroupBoard>();
         }
     
         public System.Guid Id { get; set; }
@@ -66,5 +67,6 @@ namespace Homory.Model
         public virtual ICollection<ResourceAssess> ResourceAssess { get; set; }
         public virtual ICollection<ResourceCommentTemp> ResourceCommentTemp { get; set; }
         public virtual ICollection<ResourceLog> ResourceLog { get; set; }
+        public virtual ICollection<GroupBoard> GroupBoard { get; set; }
     }
 }

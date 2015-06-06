@@ -76,5 +76,20 @@ namespace Go
 					.ToList();
 			control.DataBind();
 		}
-	}
+
+        protected void cPanel_AjaxRequest(object sender, Telerik.Web.UI.AjaxRequestEventArgs e)
+        {
+
+        }
+
+        protected void timer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void dodo_ServerClick(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

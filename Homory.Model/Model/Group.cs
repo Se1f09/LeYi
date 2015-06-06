@@ -18,6 +18,7 @@ namespace Homory.Model
         public Group()
         {
             this.GroupUser = new HashSet<GroupUser>();
+            this.GroupBoard = new HashSet<GroupBoard>();
         }
     
         public System.Guid Id { get; set; }
@@ -35,5 +36,6 @@ namespace Homory.Model
         public virtual Catalog Catalog { get; set; }
         public virtual Catalog Catalog1 { get; set; }
         public virtual ICollection<GroupUser> GroupUser { get; set; }
+        public virtual ICollection<GroupBoard> GroupBoard { get; set; }
     }
 }
