@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>资源平台 - 搜索</title>
+    <title>资源平台 - 检索</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Pragma" content="no-cache">
     <script src="../Script/jquery.min.js"></script>
@@ -32,9 +32,11 @@
                 <div class="login" style="margin-top: 0px;">
                     <div class="lg-top">
                         <h1 class="logo"><a class="fixpng" href="../Go/Home" title="互动教育资源管理平台">互动教育资源管理平台</a></h1>
-                        <div class="lg-search">
+                        <div class="lg-search" style="width: 396px;">
                             <input runat="server" type="text" class="srx-ns-input" id="search_content" value="" data-prevcolor="" style="color: rgb(170, 170, 170);" />
-                            <a class="srx-ns-btn" runat="server" id="search_go" onserverclick="search_go_OnServerClick">搜索</a>
+                            <a class="srx-ns-btn" runat="server" id="search_go_inner" onserverclick="search_go_OnServerClick">检索校内</a>
+                            <a class="srx-ns-btn" runat="server" id="search_go" onserverclick="search_go_OnServerClick" style="border-right: solid 1px silver;">检索全部</a>
+                            <input id="hhhh" runat="server" type="hidden" value="1" />
                         </div>
 
                     </div>
@@ -46,7 +48,7 @@
                                 <div class="xy_crumbs mgtb10">
                                     <a href="../Go/Home" class="h_icon"><em></em></a>
                                     <a href="../Go/Catalog">资源目录</a>
-                                    <span>搜索结果</span>
+                                    <span>检索结果</span>
 
                                 </div>
                                 <div class="xy_ltit mgtb10">

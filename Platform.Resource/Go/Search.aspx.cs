@@ -16,7 +16,10 @@ namespace Go
             if (!IsPostBack)
             {
                 search_content.Value = Request.QueryString["Content"];
-                search_go_OnServerClick(null, null);
+                if (string.IsNullOrEmpty(Request.QueryString["Inner"]))
+                    search_go_OnServerClick(search_go, null);
+                else
+                    search_go_OnServerClick(search_go_inner, null);
             }
         }
 
@@ -25,15 +28,17 @@ namespace Go
             var content = search_content.Value.Trim();
             var source = HomoryContext.Value.Resource.Where(o => o.State < State.审核).ToList();
             var final = source.Where(o => o.Title.Contains(content) || o.ResourceTag.Count(ox => ox.Tag == content) > 0).ToList().OrderByDescending(o => o.Time).ToList();
+            var xFinal = final.Where(o => o.User.DepartmentUser.FirstOrDefault(p => p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)).TopDepartmentId == CurrentCampus.Id).ToList();
             if (!IsPostBack && !string.IsNullOrEmpty(Request.QueryString["Assistant"]))
             {
                 ss.Checked = true;
             }
-            return final;
+            return hhhh.Value == "0" ? xFinal : final;
         }
 
         protected void search_go_OnServerClick(object sender, EventArgs e)
         {
+            hhhh.Value = (sender as HtmlAnchor).ID == search_go.ID ? "1" : "0";
             var source = LoadDataSource();
             total.InnerText = source.Count.ToString();
             var list = new List<ResourceCatalog>();
@@ -60,6 +65,7 @@ namespace Go
             }
             result.DataSource = source;
             result.DataBind();
+            total.InnerText = source.Count.ToString();
         }
 
         protected override bool ShouldOnline
