@@ -4,7 +4,6 @@
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
 <%@ Register Src="~/Control/CommonTop.ascx" TagPrefix="homory" TagName="CommonTop" %>
 
-
 <!DOCTYPE html>
 
 <html>

@@ -131,7 +131,7 @@
                                         </asp:Repeater>
                                     </ul>
                                 </div>
-                                <div class="c-prb-role clearfix">
+                                <div id="bbbb" runat="server" class="c-prb-role clearfix">
                                     <div class="c-prb-title mb10">
                                         <div class="box-hd">留言板 </div>
                                     </div>
@@ -145,23 +145,26 @@
                                             </div>
                                         </telerik:RadAjaxPanel>
                                         <br />
-                                        <div style="width: 170px; height: 440px; overflow: auto; border: solid 1px silver;">
+                                        <div style="width: 170px; max-height: 400px; overflow: auto; border: solid 1px silver;">
                                             <telerik:RadAjaxPanel runat="server" ID="cPanel" OnAjaxRequest="cPanel_AjaxRequest">
                                                 <asp:Timer runat="server" ID="timer" Interval="3000" Enabled="True" OnTick="timer_Tick"></asp:Timer>
-                                                <table>
+                                                <div>
                                                     <asp:Repeater runat="server" ID="cComment">
                                                         <ItemTemplate>
-                                                            <tr>
-                                                                <td style="width: 40px;"><%# ((DateTime)Eval("Time")).ToShortTimeString() %></td>
-                                                                <td style="width: 50px;"><%# U(Eval("UserId")).DisplayName %>：</td>
-                                                                <td><%# Eval("Content") %></td>
-                                                            </tr>
+                                                            <div style="color: #227dc5; font-weight: bold; width:148px; max-width: 148px; word-wrap: break-word; margin-left: 4px;">
+                                                                <%# ((DateTime)Eval("Time")).FormatTimeShortSecond() %>
+                                                                <%# U(Eval("UserId")).DisplayName %>：
+                                                            </div>
+                                                            <div style="width:148px; max-width: 148px; word-wrap: break-word; margin-left: 4px;">
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;<%# Eval("Content") %>
+                                                            </div>
                                                         </ItemTemplate>
                                                     </asp:Repeater>
-                                                </table>
+                                                </div>
                                             </telerik:RadAjaxPanel>
                                         </div>
                                     </div>
+                                    <div>&nbsp;</div>
                                 </div>
                             </div>
                         </div>

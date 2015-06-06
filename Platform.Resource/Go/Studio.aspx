@@ -3,7 +3,7 @@
 <%@ Register Src="~/Control/HomeTop.ascx" TagPrefix="homory" TagName="HomeTop" %>
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
 <%@ Register Src="~/Control/CommonTop.ascx" TagPrefix="homory" TagName="CommonTop" %>
-
+<%@ Import Namespace="Homory.Model" %>
 
 <!DOCTYPE html>
 
@@ -85,7 +85,7 @@
                                                         <asp:Repeater ID="latest" runat="server">
                                                             <ItemTemplate>
                                                                 <li>
-                                                                    <a href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title") %></a>
+                                                                    <a href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title").ToString().CutString(10) %></a>
                                                                 </li>
                                                             </ItemTemplate>
                                                         </asp:Repeater>
@@ -96,7 +96,7 @@
                                                         <asp:Repeater ID="popular" runat="server">
                                                             <ItemTemplate>
                                                                 <li>
-                                                                    <a href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title") %></a>
+                                                                    <a href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title").ToString().CutString(10) %></a>
                                                                 </li>
                                                             </ItemTemplate>
                                                         </asp:Repeater>
@@ -107,7 +107,7 @@
                                                         <asp:Repeater ID="best" runat="server">
                                                             <ItemTemplate>
                                                                 <li>
-                                                                    <a href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title") %></a>
+                                                                    <a href='<%# string.Format("../Go/ViewPlain?Id={0}", Eval("Id")) %>'><%# Eval("Title").ToString().CutString(10) %></a>
                                                                 </li>
                                                             </ItemTemplate>
                                                         </asp:Repeater>

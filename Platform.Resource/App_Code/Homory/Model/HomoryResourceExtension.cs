@@ -181,5 +181,16 @@ namespace Homory.Model
 				return "昨天";
 			return (DateTime.Today - time).TotalDays < 2 ? "前天" : time.ToString("MM/dd");
 		}
-	}
+
+        public static string FormatTimeShortSecond(this DateTime time)
+        {
+            if (time.Date == DateTime.Today)
+            {
+                return time.ToString("HH:mm:ss");
+            }
+            if ((DateTime.Today - time).TotalDays < 1)
+                return "昨天";
+            return (DateTime.Today - time).TotalDays < 2 ? "前天" : time.ToString("MM/dd");
+        }
+    }
 }
