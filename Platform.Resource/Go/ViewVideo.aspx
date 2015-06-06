@@ -18,21 +18,21 @@
     <link href="../Style/1.css" rel="stylesheet" />
     <script src="../Script/jquery.min.js"></script>
     <base target="_top" />
-	<script>
-		function GetUrlParms() {
-			var args = new Object();
-			var query = location.search.substring(1);//获取查询串   
-			var pairs = query.split("&");//在逗号处断开   
-			for (var i = 0; i < pairs.length; i++) {
-				var pos = pairs[i].indexOf('=');//查找name=value   
-				if (pos == -1) continue;//如果没有找到就跳过   
-				var argname = pairs[i].substring(0, pos);//提取name   
-				var value = pairs[i].substring(pos + 1);//提取value   
-				args[argname] = unescape(value);//存为属性   
-			}
-			return args;
-		}
-	</script>
+    <script>
+        function GetUrlParms() {
+            var args = new Object();
+            var query = location.search.substring(1);//获取查询串   
+            var pairs = query.split("&");//在逗号处断开   
+            for (var i = 0; i < pairs.length; i++) {
+                var pos = pairs[i].indexOf('=');//查找name=value   
+                if (pos == -1) continue;//如果没有找到就跳过   
+                var argname = pairs[i].substring(0, pos);//提取name   
+                var value = pairs[i].substring(pos + 1);//提取value   
+                args[argname] = unescape(value);//存为属性   
+            }
+            return args;
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -58,10 +58,10 @@
                 return false;
             }
             function popupRate() {
-            	var args = new Object();
-            	args = GetUrlParms();
-            	window.radopen("../Go/ViewRate.aspx?" + args["Id"], "popup_rate");
-            	return false;
+                var args = new Object();
+                args = GetUrlParms();
+                window.radopen("../Go/ViewRate.aspx?" + args["Id"], "popup_rate");
+                return false;
             }
         </script>
 
@@ -82,13 +82,13 @@
                                     <span id="catalog" runat="server">栏目：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.视频).Aggregate(string.Empty,Combine).CutString(null) %></span>
                                     <br />
                                     <asp:Panel runat="server" ID="cg">
-                                    <span><%= CombineGrade() %></span>&nbsp;&nbsp;
+                                        <span><%= CombineGrade() %></span>&nbsp;&nbsp;
                                     <span><%= CombineCourse() %></span>
-                                    <br />
+                                        <br />
                                     </asp:Panel>
                                     <asp:Panel runat="server" ID="tag">
-                                    <span>标签：<%= CombineTags() %></span>
-                                    <br />
+                                        <span>标签：<%= CombineTags() %></span>
+                                        <br />
                                     </asp:Panel>
                                     <span>时间：<%= CurrentResource.Time.ToString("yyyy-MM-dd HH:mm") %></span>
                                 </div>
@@ -104,11 +104,11 @@
                                             function startDo(sender, e) {
                                                 var t = showtime();
                                                 $find("<%= startDot.ClientID %>").set_value(t + '\'');
-                                                }
-                                                function endDo(sender, e) {
-                                                    var t = showtime();
-                                                    $find("<%= endDot.ClientID %>").set_value(t + '\'');
                                             }
+                                            function endDo(sender, e) {
+                                                var t = showtime();
+                                                $find("<%= endDot.ClientID %>").set_value(t + '\'');
+                                                }
                                         </script>
 
                                         <div style="width: 738px; margin-top: 8px; padding-left: 8px;">
@@ -132,7 +132,7 @@
                                                     <span style="color: black;">上一个：<a runat="server" id="previousLink"></a></span>
                                                 </asp:Panel>
                                             </td>
-											<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                             <td>
                                                 <asp:Panel runat="server" ID="next" Visible="False">
                                                     <span style="color: black;">下一个：<a runat="server" id="nextLink"></a></span>
@@ -169,15 +169,13 @@
 
                                         <td width="130">
                                             <telerik:RadAjaxPanel runat="server" ID="downloadPanel">
-                                                <a target="_self" id="download" runat="server" onserverclick="download_OnServerClick" class="xzbigbtn">
-												</br>下载</br>
+                                                <a target="_self" id="download" runat="server" onserverclick="download_OnServerClick" class="xzbigbtn"></br>下载</br>
                                   <em id="downloadCount" runat="server"></em></a>
                                             </telerik:RadAjaxPanel>
                                         </td>
-                                        <td align="right" width="130">  
+                                        <td align="right" width="130">
                                             <telerik:RadAjaxPanel runat="server" ID="favouritePanel">
-                                                <a target="_self" id="favourite" runat="server" onserverclick="favourite_OnServerClick">
-												</br>收藏</br>
+                                                <a target="_self" id="favourite" runat="server" onserverclick="favourite_OnServerClick"></br>收藏</br>
                                   <em id="favouriteCount" runat="server"></em></a>
                                             </telerik:RadAjaxPanel>
                                         </td>
@@ -185,25 +183,27 @@
 
                                 </table>
                             </div>
-							<br />
-							<telerik:RadAjaxPanel runat="server" ID="assessPanel">
-							<p style="font-size: 16px; margin-bottom: 6px;">评估：（<span id="sss" runat="server"></span>）</p>
-								<telerik:RadListView runat="server" ID="assessTable" OnNeedDataSource="assessTable_OnNeedDataSource">
-									<ItemTemplate>
-										<div style="float: left; width: 45%; margin: 6px;">
-											<div style="float: left;"><%# Eval("Name") %><%# Eval("All") %></div>
-											<div style="float: left;">
-												<telerik:RadSlider ID="ss" runat="server" IncreaseText="+" DecreaseText="-" DragText="" LiveDrag="True" MaximumValue='<%# Eval("Score") %>' MinimumValue="0" Value='<%# Eval("Me") %>' SmallChange="5" LargeChange="5">
-												</telerik:RadSlider>
-											</div>
-										</div>
-									</ItemTemplate>
-								</telerik:RadListView>
-								<div style="clear: both;"></div>
-								<div>                                        <a id="rr" runat="server" class="button24 srx-ciptbox-submit" target="_self" onserverclick="rr_OnServerClick" style="width: 60px;"><em>确认</em></a>
-</div>
-							</telerik:RadAjaxPanel>
-							<br/><br/>
+                            <br />
+                            <telerik:RadAjaxPanel runat="server" ID="assessPanel">
+                                <p style="font-size: 16px; margin-bottom: 6px;">评估：（<span id="sss" runat="server"></span>）</p>
+                                <telerik:RadListView runat="server" ID="assessTable" OnNeedDataSource="assessTable_OnNeedDataSource">
+                                    <ItemTemplate>
+                                        <div style="float: left; width: 45%; margin: 6px;">
+                                            <div style="float: left;"><%# Eval("Name") %><%# Eval("All") %></div>
+                                            <div style="float: left;">
+                                                <telerik:RadSlider ID="ss" runat="server" IncreaseText="+" DecreaseText="-" DragText="" LiveDrag="True" MaximumValue='<%# Eval("Score") %>' MinimumValue="0" Value='<%# Eval("Me") %>' SmallChange="5" LargeChange="5">
+                                                </telerik:RadSlider>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </telerik:RadListView>
+                                <div style="clear: both;"></div>
+                                <div>
+                                    <a id="rr" runat="server" class="button24 srx-ciptbox-submit" target="_self" onserverclick="rr_OnServerClick" style="width: 60px;"><em>确认</em></a>
+                                </div>
+                            </telerik:RadAjaxPanel>
+                            <br />
+                            <br />
 
                             <p style="font-size: 16px;">评论：</p>
                             <telerik:RadAjaxPanel runat="server" ID="commentPanel">
@@ -221,24 +221,31 @@
                                 <telerik:RadTreeView runat="server" ID="commentList" EnableEmbeddedBaseStylesheet="False" EnableEmbeddedSkins="False" DataFieldParentID="ParentId" DataTextField="Content" DataFieldID="Id" DataValueField="Id">
                                     <NodeTemplate>
                                         <div class="srx-comment-list-box" id="srxCommentListBox" style='<%# string.Format("margin-left: {0}px;", ((Homory.Model.ResourceComment)Container.DataItem).Level * 30) %>'>
-                                            <div class="srx-comment-list">
+                                            <div class="srx-comment-list" style="margin-top: 6px;">
                                                 <dl class="srx-comment-item">
                                                     <dt>
                                                         <asp:Image runat="server" ID="icon" ImageUrl='<%# ((Homory.Model.ResourceComment)Container.DataItem).User.Icon %>' Width="35" Height="35" />
                                                     </dt>
                                                     <dd>
-                                                        <div class="srx-comment-content">
-                                                            <label style="color: #333333; font-weight: bold;"><%# Eval("Content") %></label>
+                                                        <div style="font-size: 14px;">
+                                                            <a style="font-size: 14px;" href='<%# string.Format("../Go/Personal?Id={0}", ((Homory.Model.ResourceComment)Container.DataItem).User.Id) %>'><%# UC(((Homory.Model.ResourceComment)Container.DataItem).User.Id) + "&nbsp;" + ((Homory.Model.ResourceComment)Container.DataItem).User.DisplayName %></a>&nbsp;<%# ((DateTime)Eval("Time")).FormatTime() %>&nbsp;<%# ((Homory.Model.ResourceComment)Container.DataItem).Level ==0 ? "评论" : "回复" %>：
                                                         </div>
-                                                        <div>
-                                                            <a href='<%# string.Format("../Go/Personal?Id={0}", ((Homory.Model.ResourceComment)Container.DataItem).User.Id) %>'><%# UC(((Homory.Model.ResourceComment)Container.DataItem).User.Id) + "&nbsp;" + ((Homory.Model.ResourceComment)Container.DataItem).User.DisplayName %></a>&nbsp;<%# ((Homory.Model.ResourceComment)Container.DataItem).Level ==0 ? "评论" : "回复" %>于&nbsp;<%# ((DateTime)Eval("Time")).FormatTime() %></div>
                                                         <asp:Panel runat="server" Visible='<%# ((bool?)Eval("Timed")).HasValue && ((bool?)Eval("Timed")).Value %>' CssClass="poviewvideo">
-                                                            切片时间：<%# FormatPeriod((ResourceComment)Container.DataItem) %></asp:Panel>
+                                                            切片时间：<%# FormatPeriod((ResourceComment)Container.DataItem) %>
+                                                        </asp:Panel>
+                                                        <div class="srx-comment-content">
+                                                            <label style="color: #333333; font-weight: bold; font-size: 14px;"><%# Eval("Content") %></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <a target="_self" id="goReply" runat="server" onserverclick="goReply_OnServerClick">
+                                                                <img src="Image/c.gif" style="width: 26px;" /></a>&nbsp;&nbsp;&nbsp;
+                                                            <a target="_self" id="goDelP" runat="server" alt='<%# Eval("Id").ToString() %>' name='<%# Eval("Id").ToString() %>' onserverclick="goDelP_ServerClick" visible='<%# IsOnline &&  ((Homory.Model.ResourceComment)Container.DataItem).User.Id == CurrentUser.Id %>'>
+                                                                <img src="Image/b.gif" style="width: 26px;" /></a>
+                                                        </div>
                                                         <div class="srx-comment-info">
-                                                            <a target="_self" id="goReply" runat="server" onserverclick="goReply_OnServerClick">回复</a>&nbsp;&nbsp;<a target="_self" id="goDelP" runat="server" alt='<%# Eval("Id").ToString() %>' name='<%# Eval("Id").ToString() %>' onserverclick="goDelP_ServerClick" visible='<%# IsOnline &&  ((Homory.Model.ResourceComment)Container.DataItem).User.Id == CurrentUser.Id %>'>删除</a><br />
+                                                            <br />
                                                             <span runat="server" id="reply" visible="False">
-                                                                <input id="replyId" type="hidden" runat="server" value='<%# Eval("Id").ToString() %>' /><textarea id="replyContent" runat="server" style="width: 90%;" /><br />
-                                                                <a id="replyReply" runat="server" onserverclick="replyReply_OnServerClick" target="_self">发表</a>&nbsp;<a id="noReply" runat="server" onserverclick="noReply_OnServerClick" target="_self">取消</a></span>
+                                                                <input id="replyId" type="hidden" runat="server" value='<%# Eval("Id").ToString() %>' /><textarea id="replyContent" runat="server" style="width: 90%; height: 40px;" /><br />
+                                                                <a id="replyReply" runat="server" onserverclick="replyReply_OnServerClick" target="_self">
+                                                                    <img src="Image/a.gif" style="width: 26px;" /></a></a>&nbsp;&nbsp;&nbsp;<a id="noReply" runat="server" onserverclick="noReply_OnServerClick" target="_self"><img src="Image/d.gif" style="width: 26px;" /></a></a></span>
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -264,9 +271,16 @@
                                         <asp:Image runat="server" ID="icon" class="fl" Height="50" Width="50" />
                                     </a>
                                     <span class="rbox-uz-right fl">
-                                        <h3><div><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
-                                            <asp:Label runat="server" ID="name"></asp:Label></a></div><div><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
-                                            <asp:Label runat="server" ID="nameX"></asp:Label></a></div></h3>
+                                        <h3>
+                                            <div>
+                                                <a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
+                                                    <asp:Label runat="server" ID="name"></asp:Label></a>
+                                            </div>
+                                            <div>
+                                                <a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
+                                                    <asp:Label runat="server" ID="nameX"></asp:Label></a>
+                                            </div>
+                                        </h3>
                                         <a id="go" href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>进入教师空间</a>
                                     </span>
                                 </div>
@@ -282,57 +296,58 @@
                             <div class="cl"></div>
 
                             <telerik:RadAjaxPanel runat="server" ID="mnp">
-                            <div class="tab1" id="tab1">
+                                <div class="tab1" id="tab1">
 
-                                <div class="menu1">
+                                    <div class="menu1">
 
-                                    <ul>
+                                        <ul>
 
-                                        <li>&nbsp;</li>
+                                            <li>&nbsp;</li>
 
 
 
-                                    </ul>
+                                        </ul>
+                                    </div>
+                                    <style>
+                                        ding:focus {
+                                            outline: none;
+                                            border: none;
+                                        }
+                                    </style>
+                                    <div style="background: url('../Image/过程记录.png'); width: 182px; height: 182px;">
+                                        <textarea id="mn1" class="ding" runat="server" data-input-limit-uid="0" style="width: 181px; margin-top: 80px; outline: none; resize: none; border: none; background-color: transparent; background: none; line-height: 19px; height: 101px;"></textarea>
+                                    </div>
+
                                 </div>
-                                <style>
-                                    ding:focus {outline: none;border: none;} 
-                                </style>
-                                <div style="background: url('../Image/过程记录.png'); width: 182px; height: 182px;">
-                                    <textarea id="mn1" class="ding" runat="server" data-input-limit-uid="0" style="width:181px; margin-top: 80px; outline: none; resize: none; border: none; background-color: transparent; background: none; line-height: 19px; height: 101px;"></textarea>
-                                </div>
-                                
-                            </div>
-                        <br />
-                            <div class="tab1" id="tab1">
+                                <br />
+                                <div class="tab1" id="tab1">
 
-                                <div class="menu1">
+                                    <div class="menu1">
 
-                                    <ul>
+                                        <ul>
 
-                                        <li>重点摘要</li>
+                                            <li>重点摘要</li>
 
-                                    </ul>
-                                </div>
-                                <div class="menudiv1">
-                                    <div id="con_one_1">
-                                        <div class="c-prb-role clearfix">
-                                            <div class="srx-comment-iptboxbj" id="srxCommentInputBox">
-                                                <textarea id="mn2" runat="server" data-input-limit-uid="0" style="width:180px; line-height:19px;"></textarea>
-                                                <div class="srx-ciptbox-toolbar">
-                                                    <span class="srx-ciptbox-acts">
-                                                        
-                                                    </span>
-                                                    <a id="mnbtn" target="_self" runat="server" onserverclick="mnbtn_ServerClick" class="button24 srx-ciptbox-submit" data-action="submit"><em>保存</em></a>
-                                                    <span class="srx-ciptbox-counter" data-ui-role="counter"><em></em></span>
+                                        </ul>
+                                    </div>
+                                    <div class="menudiv1">
+                                        <div id="con_one_1">
+                                            <div class="c-prb-role clearfix">
+                                                <div class="srx-comment-iptboxbj" id="srxCommentInputBox">
+                                                    <textarea id="mn2" runat="server" data-input-limit-uid="0" style="width: 180px; line-height: 19px;"></textarea>
+                                                    <div class="srx-ciptbox-toolbar">
+                                                        <span class="srx-ciptbox-acts"></span>
+                                                        <a id="mnbtn" target="_self" runat="server" onserverclick="mnbtn_ServerClick" class="button24 srx-ciptbox-submit" data-action="submit"><em>保存</em></a>
+                                                        <span class="srx-ciptbox-counter" data-ui-role="counter"><em></em></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
                                     </div>
 
-
                                 </div>
-
-                            </div>
                             </telerik:RadAjaxPanel>
 
                             <!--End-->
@@ -421,6 +436,8 @@
                     <style>
                         .poviewvideo {
                             cursor: pointer;
+                            font-size: 14px;
+                            margin-top: 6px;
                         }
                     </style>
                     <homory:CommonBottom runat="server" ID="CommonBottom" />

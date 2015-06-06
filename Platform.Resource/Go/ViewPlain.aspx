@@ -180,23 +180,25 @@
                                 <telerik:RadTreeView runat="server" ID="commentList" EnableEmbeddedBaseStylesheet="False" EnableEmbeddedSkins="False" DataFieldParentID="ParentId" DataTextField="Content" DataFieldID="Id" DataValueField="Id">
                                     <NodeTemplate>
                                         <div class="srx-comment-list-box" id="srxCommentListBox" style='<%# string.Format("margin-left: {0}px;", ((Homory.Model.ResourceComment)Container.DataItem).Level * 30) %>'>
-                                            <div class="srx-comment-list">
+                                            <div class="srx-comment-list" style="margin-top: 6px;">
                                                 <dl class="srx-comment-item">
                                                     <dt>
                                                         <asp:Image runat="server" ID="icon" ImageUrl='<%# ((Homory.Model.ResourceComment)Container.DataItem).User.Icon %>' Width="35" Height="35" />
                                                     </dt>
                                                     <dd>
+                                                        <div style="font-size: 14px;">
+                                                            <a style="font-size: 14px;" href='<%# string.Format("../Go/Personal?Id={0}", ((Homory.Model.ResourceComment)Container.DataItem).User.Id) %>'><%# UC(((Homory.Model.ResourceComment)Container.DataItem).User.Id) + "&nbsp;" + ((Homory.Model.ResourceComment)Container.DataItem).User.DisplayName %></a>&nbsp;<%# ((DateTime)Eval("Time")).FormatTime() %>&nbsp;<%# ((Homory.Model.ResourceComment)Container.DataItem).Level ==0 ? "评论" : "回复" %>：
+                                                        </div>
                                                         <div class="srx-comment-content">
-                                                            <label style="color: #333333; font-weight: bold;"><%# Eval("Content") %></label>
+                                                            <label style="color: #333333; font-weight: bold; font-size: 14px;"><%# Eval("Content") %></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <a target="_self" id="goReply" runat="server" onserverclick="goReply_OnServerClick"><img src="Image/c.gif" style="width: 26px;" /></a>&nbsp;&nbsp;&nbsp;
+                                                            <a target="_self" id="goDelP" runat="server" alt='<%# Eval("Id").ToString() %>' name='<%# Eval("Id").ToString() %>' onserverclick="goDelP_ServerClick" visible='<%# IsOnline &&  ((Homory.Model.ResourceComment)Container.DataItem).User.Id == CurrentUser.Id %>'><img src="Image/b.gif" style="width: 26px;" /></a>
                                                         </div>
-                                                        <div>
-                                                            <a href='<%# string.Format("../Go/Personal?Id={0}", ((Homory.Model.ResourceComment)Container.DataItem).User.Id) %>'><%# UC(((Homory.Model.ResourceComment)Container.DataItem).User.Id) + "&nbsp;" + ((Homory.Model.ResourceComment)Container.DataItem).User.DisplayName %></a>&nbsp;<%# ((Homory.Model.ResourceComment)Container.DataItem).Level ==0 ? "评论" : "回复" %>于&nbsp;<%# ((DateTime)Eval("Time")).FormatTime() %>
-                                                        </div>
-                                                        <div class="srx-comment-info">
-                                                            <a target="_self" id="goReply" runat="server" onserverclick="goReply_OnServerClick">回复</a>&nbsp;&nbsp;<a target="_self" id="goDelP" runat="server" alt='<%# Eval("Id").ToString() %>' name='<%# Eval("Id").ToString() %>' onserverclick="goDelP_ServerClick" visible='<%# IsOnline &&  ((Homory.Model.ResourceComment)Container.DataItem).User.Id == CurrentUser.Id %>'>删除</a><br />
+                                                        <div class="srx-comment-info" style="margin-top: 4px;">
+                                                            <br />
                                                             <span runat="server" id="reply" visible="False">
-                                                                <input id="replyId" type="hidden" runat="server" value='<%# Eval("Id").ToString() %>' /><textarea id="replyContent" runat="server" style="width: 90%;" /><br />
-                                                                <a id="replyReply" runat="server" onserverclick="replyReply_OnServerClick" target="_self">发表</a>&nbsp;<a id="noReply" runat="server" onserverclick="noReply_OnServerClick" target="_self">取消</a></span>
+                                                                <input id="replyId" type="hidden" runat="server" value='<%# Eval("Id").ToString() %>' /><textarea id="replyContent" runat="server" style="width: 90%; height: 40px;" /><br />
+                                                                <a id="replyReply" runat="server" onserverclick="replyReply_OnServerClick" target="_self"><img src="Image/a.gif" style="width: 26px;" /></a></a>&nbsp;&nbsp;&nbsp;<a id="noReply" runat="server" onserverclick="noReply_OnServerClick" target="_self"><img src="Image/d.gif" style="width: 26px;" /></a></a></span>
                                                         </div>
                                                     </dd>
                                                 </dl>
