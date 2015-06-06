@@ -77,7 +77,16 @@
                     </div>
                     <div class="login-r">
                         <homory:HomeNote runat="server" ID="HomeNote" Count="5" MaxTitleLength="12" />
+
+	                    <div class="box">
+		                    <div class="box-hd">学习助手</div>
+		                    <div class="box-bd" style="text-align: center;">
+			                    <a href="../Go/Search.aspx?Assistant=1"><img src="Image/assis.gif" style="margin: auto;" /></a>
+		                    </div>
+	                    </div>
+
                         <homory:PersonalAction runat="server" ID="PersonalAction" />
+
                         <homory:HomeArticle runat="server" ID="HomeArticle" Count="5" MaxTitleLength="12" />
 
                         <telerik:RadAjaxPanel runat="server">
