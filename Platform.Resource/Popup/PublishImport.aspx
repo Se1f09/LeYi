@@ -31,9 +31,8 @@
                     <label>2、转换并导入（上传文件将自动转换格式并导入，转换过程中请勿关闭窗口）</label>
                 </div>
             </div>
-            <div>
-                <a runat="server" id="publish_import_commit" onserverclick="publish_import_commit_OnServerClick">转换并导入</a>
-                <a onclick="RadClose();">关闭</a>
+            <div style="width: 100%; text-align: center;">
+                <a runat="server" id="publish_import_commit" onserverclick="publish_import_commit_OnServerClick" class="srx-ns-btn" style="margin: auto; padding: 4px; cursor: pointer; float: none; width: 150px; height: 32px;">转换并导入</a>
             </div>
         </telerik:RadAjaxPanel>
 
