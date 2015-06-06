@@ -15,12 +15,14 @@ namespace Go
 			{
 				Session["F____K"] = keyword.Value;
 
-				course.DataSource =
+				var list = 
 					HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.课程 && o.State < State.审核)
 						.OrderBy(o => o.State)
 						.ThenBy(o => o.Ordinal)
 						.ToList();
-				course.DataBind();
+                list.Add(new Catalog { Id = Guid.Empty, Name = "全部", Ordinal = -1 });
+                course.DataSource = list.OrderBy(o => o.State).ThenBy(o => o.Ordinal).ToList(); ;
+                course.DataBind();
 
                 List<Catalog> qList;
                 switch (CurrentCampus.ClassType)
@@ -44,6 +46,7 @@ namespace Go
                         qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && (o.Type == CatalogType.年级_小学 || o.Type == CatalogType.年级_初中 || o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_高中)).ToList();
                         break;
                 }
+                qList.Add(new Catalog { Id = Guid.Empty, Name = "全部", Ordinal = -1 });
                 grade.DataSource = qList.OrderBy(o => o.Ordinal).ToList();
                 grade.DataBind();
 
@@ -107,12 +110,14 @@ namespace Go
 			if (Session["F____C"] != null)
 			{
 				var cid = (Guid)Session["F____C"];
-				s = s.Where(o => o.CourseId == cid);
+                if (cid != Guid.Empty)
+                    s = s.Where(o => o.CourseId == cid);
 			}
 			if (Session["F____G"] != null)
 			{
 				var cid = (Guid)Session["F____G"];
-				s = s.Where(o => o.GradeId == cid);
+                if (cid != Guid.Empty)
+                    s = s.Where(o => o.GradeId == cid);
 			}
 			var result = s.ToList().Where(o => o.Serial.Contains(kid) || o.Name.Contains(kid)).ToList();
 			int count = result.Count;
