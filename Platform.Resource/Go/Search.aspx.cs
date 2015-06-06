@@ -25,14 +25,16 @@ namespace Go
             var content = search_content.Value.Trim();
             var source = HomoryContext.Value.Resource.Where(o => o.State < State.审核).ToList();
             var final = source.Where(o => o.Title.Contains(content) || o.ResourceTag.Count(ox => ox.Tag == content) > 0).ToList().OrderByDescending(o => o.Time).ToList();
+            if (!IsPostBack && !string.IsNullOrEmpty(Request.QueryString["Assistant"]))
+            {
+                ss.Checked = true;
+            }
             return final;
         }
 
         protected void search_go_OnServerClick(object sender, EventArgs e)
         {
             var source = LoadDataSource();
-            result.DataSource = source;
-            result.DataBind();
             total.InnerText = source.Count.ToString();
             var list = new List<ResourceCatalog>();
             var filter = source.Aggregate(list, (catalogs, resource) =>
@@ -52,6 +54,12 @@ namespace Go
             t2.Checked = true;
             t3.Checked = true;
             t4.Checked = true;
+            if (ss.Checked)
+            {
+                source = source.Where(o => o.AssistantType == 1).ToList();
+            }
+            result.DataSource = source;
+            result.DataBind();
         }
 
         protected override bool ShouldOnline
