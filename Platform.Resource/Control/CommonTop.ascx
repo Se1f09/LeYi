@@ -2,7 +2,7 @@
 
 <div class="srx-top">
 	<div class="srx-nav pr">
-		<h1 class="srx-nav-logo"><a href="../Go/Home">互动教育资源管理平台</a></h1>
+		<h1 class="srx-nav-logo"><a href="../Go/Home">乐翼云资源平台</a></h1>
 		<div class="srx-nav-left" id="srxNav">
 			
 			<div class="srx-nav-i">

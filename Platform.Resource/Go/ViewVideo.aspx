@@ -122,6 +122,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                                                <br />
+                                <br />
+
+                                
+                                <p id="pppp1" runat="server" style="font-size: 16px;">附件：</p>
+                                <p id="pppp2" runat="server">
+
+                                    <telerik:RadListView ID="publish_attachment_list" runat="server" OnNeedDataSource="publish_attachment_list_NeedDataSource">
+                                        <ItemTemplate>
+                                            <img src='<%# string.Format("../Image/img/{0}.jpg", (int)Eval("FileType")) %>' />
+                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>&nbsp;&nbsp;
+                                        </ItemTemplate>
+                                    </telerik:RadListView>
+                                </p>
 
 
                                 <div class="photo-actions clearfix">

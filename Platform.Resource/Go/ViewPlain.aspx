@@ -91,14 +91,15 @@
                                     <iframe runat="server" src="../Document/web/PdfViewer.aspx" width="738px" height="800px" id="publish_preview_pdf" style="margin-top: 10px;"></iframe>
 
                                 </div>
-
-                                <p style="font-size: 16px;">附件：</p>
-                                <p>
+                                <br />
+                                <br />
+                                <p id="pppp1" runat="server" style="font-size: 16px;">附件：</p>
+                                <p id="pppp2" runat="server">
 
                                     <telerik:RadListView ID="publish_attachment_list" runat="server" OnNeedDataSource="publish_attachment_list_OnNeedDataSource">
                                         <ItemTemplate>
                                             <img src='<%# string.Format("../Image/img/{0}.jpg", (int)Eval("FileType")) %>' />
-                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>
+                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>&nbsp;&nbsp;
                                         </ItemTemplate>
                                     </telerik:RadListView>
                                 </p>

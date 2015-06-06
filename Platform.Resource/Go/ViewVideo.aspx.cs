@@ -138,7 +138,7 @@ namespace Go
 
         protected string CombineGrade()
         {
-            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Name, QueryType(CatalogType.年级_六年制), CurrentResource.GradeId) : "";
+            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Name, QueryType(HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Type), CurrentResource.GradeId) : "";
         }
 
         protected bool CanCombineCourse()
@@ -180,8 +180,9 @@ namespace Go
 			switch (type)
 			{
 				case CatalogType.年级_幼儿园:
-                case CatalogType.年级_六年制:
-                case CatalogType.年级_九年制:
+                case CatalogType.年级_小学:
+                case CatalogType.年级_初中:
+                case CatalogType.年级_高中:
 					{
 						return "Grade";
 					}
@@ -688,5 +689,13 @@ TargetUser.Resource.Where(o => o.State == State.启用 && o.Type == rt)
 
 			}
 		}
-	}
+
+        protected void publish_attachment_list_NeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
+        {
+            var resource = CurrentResource;
+            var files = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.OrderBy(o => o.Id).ToList();
+            publish_attachment_list.DataSource = files;
+            pppp1.Visible = pppp2.Visible = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.Count > 0;
+        }
+    }
 }

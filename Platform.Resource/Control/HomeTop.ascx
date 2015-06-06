@@ -8,7 +8,7 @@
 </script>
 
 <div class="lg-top">
-	<h1 class="logo"><a class="fixpng" href="#" title="互动教育资源管理平台">互动教育资源管理平台</a></h1>
+	<h1 class="logo"><a class="fixpng" href="#" title="互动教育资源管理平台">乐翼云资源平台</a></h1>
 	<div class="lg-search">
 		<input type="text" class="srx-ns-input" id="home_top_search_content" value="" data-prevcolor="" style="color: rgb(170, 170, 170);" />
 		<a class="srx-ns-btn" id="A2" target="_self" style="cursor:pointer;" onclick="goSearchAction();">检索</a>

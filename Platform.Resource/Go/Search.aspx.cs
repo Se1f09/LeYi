@@ -42,7 +42,7 @@ namespace Go
             }).Where(o => o.State == State.启用).Select(o => o.CatalogId).Distinct().ToList().Join(HomoryContext.Value.Catalog, o => o, o => o.Id, (o1, o2) => o2).Where(o => o.State < State.审核).OrderBy(o => o.State).ThenBy(o => o.Ordinal).ToList();
             course.DataSource = filter.Where(o => o.Type == CatalogType.课程).ToList();
             course.DataBind();
-            grade.DataSource = filter.Where(o => o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_六年制 || o.Type == CatalogType.年级_九年制).ToList();
+            grade.DataSource = filter.Where(o => o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_小学 || o.Type == CatalogType.年级_初中 || o.Type == CatalogType.年级_高中).ToList();
             grade.DataBind();
             catalog.DataSource = filter.Where(o => o.Type == CatalogType.文章 || o.Type == CatalogType.视频).ToList();
             catalog.DataBind();

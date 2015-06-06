@@ -26,12 +26,31 @@ public partial class Popup_GroupManage : HomoryResourcePage
 				.ThenBy(o => o.Ordinal)
 				.ToList();
 		publish_course.DataBind();
-		publish_grade.DataSource =
-			HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && (o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_六年制 || o.Type == CatalogType.年级_九年制))
-				.OrderBy(o => o.State)
-				.ThenBy(o => o.Ordinal)
-				.ToList();
-		publish_grade.DataBind();
+
+        List<Catalog> qList;
+        switch (CurrentCampus.ClassType)
+        {
+            case ClassType.九年一贯制:
+                qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && (o.Type == CatalogType.年级_小学 || o.Type == CatalogType.年级_初中)).ToList().Select(o => new Catalog { Id = o.Id, Name = o.Name, Ordinal = o.Ordinal, Type = o.Type, ParentId = o.ParentId, State = o.State, TopId = o.TopId }).ToList();
+                break;
+            case ClassType.初中:
+                qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.年级_初中).ToList();
+                break;
+            case ClassType.小学:
+                qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.年级_小学).ToList();
+                break;
+            case ClassType.幼儿园:
+                qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.年级_幼儿园).ToList();
+                break;
+            case ClassType.高中:
+                qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.年级_高中).ToList();
+                break;
+            default:
+                qList = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && (o.Type == CatalogType.年级_小学 || o.Type == CatalogType.年级_初中 || o.Type == CatalogType.年级_幼儿园 || o.Type == CatalogType.年级_高中)).ToList();
+                break;
+        }
+        publish_grade.DataSource = qList.OrderBy(o => o.Ordinal).ToList();
+        publish_grade.DataBind();
 	}
 
 	protected void icons_NeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
