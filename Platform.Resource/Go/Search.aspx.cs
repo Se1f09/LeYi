@@ -6,6 +6,7 @@ using Aspose.Words.Lists;
 using Homory.Model;
 using Telerik.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace Go
 {
@@ -28,12 +29,27 @@ namespace Go
             var content = search_content.Value.Trim();
             var source = HomoryContext.Value.Resource.Where(o => o.State < State.审核).ToList();
             var final = source.Where(o => o.Title.Contains(content) || o.ResourceTag.Count(ox => ox.Tag == content) > 0).ToList().OrderByDescending(o => o.Time).ToList();
-            var xFinal = final.Where(o => o.User.DepartmentUser.FirstOrDefault(p => p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)).TopDepartmentId == CurrentCampus.Id).ToList();
             if (!IsPostBack && !string.IsNullOrEmpty(Request.QueryString["Assistant"]))
             {
                 ss.Checked = true;
             }
-            return hhhh.Value == "0" ? xFinal : final;
+            if (hhhh.Value == "0")
+            {
+                search_go.Style[HtmlTextWriterStyle.FontWeight] = "normal";
+                search_go.Style[HtmlTextWriterStyle.FontSize] = "10px";
+                search_go_inner.Style[HtmlTextWriterStyle.FontWeight] = "bold";
+                search_go_inner.Style[HtmlTextWriterStyle.FontSize] = "12px";
+                var xFinal = final.Where(o => o.User.DepartmentUser.FirstOrDefault(p => p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)).TopDepartmentId == CurrentCampus.Id).ToList();
+                return xFinal;
+            }
+            else
+            {
+                search_go_inner.Style[HtmlTextWriterStyle.FontWeight] = "normal";
+                search_go_inner.Style[HtmlTextWriterStyle.FontSize] = "10px";
+                search_go.Style[HtmlTextWriterStyle.FontWeight] = "bold";
+                search_go.Style[HtmlTextWriterStyle.FontSize] = "12px";
+                return final;
+            }
         }
 
         protected void search_go_OnServerClick(object sender, EventArgs e)
