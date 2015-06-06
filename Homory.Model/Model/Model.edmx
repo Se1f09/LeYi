@@ -2758,6 +2758,7 @@
           <Member Name="年级_六年制" Value="-2" />
           <Member Name="年级_九年制" Value="-3" />
           <Member Name="学习小助手" Value="1" />
+          <Member Name="年级_高中" Value="-4" />
         </EnumType>
         <EntityType Name="DepartmentUser">
           <Key>

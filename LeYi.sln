@@ -198,6 +198,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "数据-执行代码", "数�
 		UpdatePlan\数据-执行代码\86.菜单以及权限调整.sql = UpdatePlan\数据-执行代码\86.菜单以及权限调整.sql
 		UpdatePlan\数据-执行代码\87.数据库自定义函数和触发器.sql = UpdatePlan\数据-执行代码\87.数据库自定义函数和触发器.sql
 		UpdatePlan\数据-执行代码\88.资源平台留言板表.sql = UpdatePlan\数据-执行代码\88.资源平台留言板表.sql
+		UpdatePlan\数据-执行代码\89.调整新数据库年级数据.sql = UpdatePlan\数据-执行代码\89.调整新数据库年级数据.sql
 	EndProjectSection
 EndProject
 Global
