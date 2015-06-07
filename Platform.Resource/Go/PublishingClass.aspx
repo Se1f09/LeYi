@@ -86,7 +86,8 @@
                                     <iframe runat="server" src="../Document/web/PdfViewer.aspx" width="738px" height="500px" id="publish_preview_pdf" style="margin-top: 10px;"></iframe>
                                 </telerik:RadAjaxPanel>
                                 <telerik:RadAjaxPanel runat="server" ID="publish_preview_media">
-                                    <telerik:RadMediaPlayer ID="publish_preview_player" runat="server" Width="738px" Height="500px" FullScreenButtonToolTip="全屏" HDButtonToolTip="高清" VolumeButtonToolTip="静音"></telerik:RadMediaPlayer>
+                                    <asp:Timer runat="server" ID="preview_timer" Interval="3000" Enabled="True" OnTick="preview_timer_Tick"></asp:Timer>
+                                    <telerik:RadMediaPlayer ID="publish_preview_player" runat="server" Title="正在转换视频格式，请稍候。。。（可尝试先发布资源）" Width="738px" Height="500px" FullScreenButtonToolTip="全屏" HDButtonToolTip="高清" VolumeButtonToolTip="静音"></telerik:RadMediaPlayer>
                                 </telerik:RadAjaxPanel>
                             </div>
                             <div id="journalEditor" class="editor-content">

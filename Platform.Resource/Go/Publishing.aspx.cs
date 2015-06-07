@@ -535,5 +535,30 @@ namespace Go
                 HomoryContext.Value.SaveChanges();
             }
         }
+
+        protected void preview_timer_Tick(object sender, EventArgs e)
+        {
+            var path = Server.MapPath(CurrentResource.Preview);
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    publish_preview_player.Title = "视频格式转换成功。";
+                    preview_timer.Enabled = false;
+                }
+                catch
+                {
+                }
+            }
+        }
     }
 }
