@@ -13,6 +13,36 @@ namespace Homory.Model
             get { return Session[HomoryResourceConstant.SessionUserId] != null; }
         }
 
+        private Department homeCampus;
+
+        protected Department HomeCampus
+        {
+            get
+            {
+                if (homeCampus != null)
+                {
+                    return homeCampus;
+                }
+                if (string.IsNullOrEmpty(Request.QueryString["Campus"]))
+                {
+                    return null;
+                }
+                Guid id = Guid.Parse(Request.QueryString["Campus"]);
+                homeCampus = HomoryContext.Value.Department.Single(o => o.Id == id);
+                return homeCampus;
+            }
+        }
+
+        protected Func<Resource, bool> SR()
+        {
+            return o => o.User.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
+        }
+
+        protected Func<User, bool> SU()
+        {
+            return o => o.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
+        }
+
         protected void LogOp(ResourceLogType type, int? value = null)
         {
             HomoryContext.Value.LogOp(CurrentUser.Id, CurrentCampus.Id, type, value);
