@@ -83,7 +83,7 @@
 	                    <div class="box">
 		                    <div class="box-hd">学习助手</div>
 		                    <div class="box-bd" style="text-align: center;">
-			                    <a href="../Go/Search.aspx?Assistant=1"><img src="Image/assis.gif" style="margin: auto;" /></a>
+			                    <a href="../Go/Search.aspx?Inner=1&Assistant=1"><img src="Image/assis.gif" style="margin: auto;" /></a>
 		                    </div>
 	                    </div>
 
