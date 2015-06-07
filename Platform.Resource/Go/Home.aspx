@@ -2,7 +2,6 @@
 
 <%@ Register Src="~/Control/HomeTop.ascx" TagPrefix="homory" TagName="HomeTop" %>
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
-
 <%@ Register Src="~/Control/HomeSplash.ascx" TagPrefix="homory" TagName="HomeSplash" %>
 <%@ Register Src="~/Control/HomeTopic.ascx" TagPrefix="homory" TagName="HomeTopic" %>
 <%@ Register Src="~/Control/HomeCatalog.ascx" TagPrefix="homory" TagName="HomeCatalog" %>
@@ -38,7 +37,7 @@
     <script src="js/bds_s_v2.js"></script>
     <base target="_top" />
 </head>
-<body class="srx-plogin">
+<body class="srx-plogin" style="margin: 0; padding: 0;">
     <form runat="server">
         <telerik:RadScriptManager ID="Rsm" runat="server">
             <Scripts>
@@ -60,6 +59,7 @@
                 return false;
             }
         </script>
+
         <div class="lg-main-box" id="mainBox">
             <div class="login">
                 <homory:HomeTop runat="server" ID="HomeTop" />
