@@ -33,6 +33,24 @@ namespace Go
             {
                 ss.Checked = true;
             }
+            if (!IsPostBack && !string.IsNullOrEmpty(Request.QueryString["Course"]))
+            {
+                Guid cid;
+                if (Guid.TryParse(Request.QueryString["Course"], out cid))
+                {
+                    if (cid == Guid.Parse("f0b82122-4e2f-3522-22d7-9e5a7ffa8b13"))
+                    {
+                        foreach (var c in HomoryContext.Value.Catalog.Where(p => p.Type == CatalogType.课程 && p.State == State.内置))
+                        {
+                            final = final.Where(o => o.CourseId != c.Id).ToList();
+                        }
+                    }
+                    else
+                    {
+                        final = final.Where(o => o.CourseId != null && o.CourseId == cid).ToList();
+                    }
+                }
+            }
             if (hhhh.Value == "0")
             {
                 search_go.Style[HtmlTextWriterStyle.FontWeight] = "normal";
