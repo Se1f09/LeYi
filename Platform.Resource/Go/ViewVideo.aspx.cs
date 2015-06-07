@@ -19,6 +19,34 @@ namespace Go
 		{
 			if (!IsPostBack)
 			{
+                var path = Server.MapPath(CurrentResource.Preview);
+                bool yes = false;
+                if (File.Exists(path))
+                {
+                    FileInfo info = new FileInfo(path);
+                    try
+                    {
+                        var s = info.OpenWrite();
+                        try
+                        {
+                            s.Close();
+                        }
+                        catch
+                        {
+                        }
+                        yes = true;
+                    }
+                    catch
+                    {
+                    }
+                }
+
+                if (!yes)
+                {
+                    Response.Redirect(string.Format("../Go/ViewVideoNone.aspx?Id={0}&VV=0", CurrentResource.Id), true);
+                    return;
+                }
+
                 LogOp(ResourceLogType.浏览资源, 1);
                 player.Video = CurrentResource.Preview;
                 catalog.Visible = CurrentResource.Type == ResourceType.视频 && CurrentResource.ResourceCatalog.Count(y => y.State < State.审核 && y.Catalog.State < State.审核 && y.Catalog.Type == CatalogType.视频) > 0;

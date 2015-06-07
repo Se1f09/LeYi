@@ -20,6 +20,36 @@ namespace Go
 		{
 			if (!IsPostBack)
 			{
+
+                var path = Server.MapPath(CurrentResource.Preview);
+                bool yes = false;
+                if (File.Exists(path))
+                {
+                    FileInfo info = new FileInfo(path);
+                    try
+                    {
+                        var s = info.OpenWrite();
+                        try
+                        {
+                            s.Close();
+                        }
+                        catch
+                        {
+                        }
+                        yes = true;
+                    }
+                    catch
+                    {
+                    }
+                }
+
+                if (!yes)
+                {
+                    Response.Redirect(string.Format("../Go/ViewVideoNone.aspx?Id={0}&VV=1", CurrentResource.Id), true);
+                    return;
+                }
+
+
                 cg.Visible = CanCombineCourse() || CanCombineGrade();
                 tag.Visible = CanCombineTags();
                 player.Video = CurrentResource.Preview;
