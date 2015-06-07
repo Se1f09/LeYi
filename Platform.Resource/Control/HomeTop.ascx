@@ -5,14 +5,22 @@
         var homory_peek = "../Go/Search?Content=" + encodeURIComponent($("#home_top_search_content").val());
         window.open(homory_peek);
     }
+
+	function popSelector() {
+		window.radopen("../Popup/CampusSelector.aspx", "homory_selector");
+		return false;
+	}
 </script>
 
 <div class="lg-top">
-	<h1 class="logo"><a class="fixpng" href="#" title="互动教育资源管理平台">乐翼云资源平台</a></h1>
+	<h1 class="logo"><a class="fixpng" href="../Go/Home" title="互动教育资源管理平台">乐翼云资源平台</a></h1>
 	<div class="lg-search">
 		<input type="text" class="srx-ns-input" id="home_top_search_content" value="" data-prevcolor="" style="color: rgb(170, 170, 170);" />
-		<a class="srx-ns-btn" id="A2" target="_self" style="cursor:pointer;" onclick="goSearchAction();">检索</a>
+		<a class="srx-ns-btn" id="A2" style="cursor:pointer;" onclick="goSearchAction();">检索</a>
 	</div>
+    <div class="lg-search" style="width: 100px;">
+        <a class="srx-ns-btn" style="cursor:pointer;" onclick="popSelector();">学校切换</a>
+    </div>
 	<div class="lg-top-right">
 
 		<span>

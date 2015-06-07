@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Go.GoHome" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CampusHome.aspx.cs" Inherits="Go.GoCampusHome" %>
 
 <%@ Register Src="~/Control/HomeTop.ascx" TagPrefix="homory" TagName="HomeTop" %>
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
