@@ -42,6 +42,7 @@
             </Scripts>
         </telerik:RadScriptManager>
         <telerik:RadAjaxPanel runat="server">
+                                    <asp:Timer runat="server" ID="preview_timer" Interval="3000" Enabled="True" OnTick="preview_timer_Tick"></asp:Timer>
             <div class="srx-bg22">
                 <div class="srx-wrap">
                     <div class="srx-main" id="mainBox">
@@ -68,8 +69,19 @@
                                     <span>时间：<%= CurrentResource.Time.ToString("yyyy-MM-dd HH:mm") %></span>
                                 </div>
 
+                                <div id="ni" runat="server" style="font-size: 14px; font-weight: bold;">
+                                    <br />
+                                    <br />
+                                    乐翼教育云资源平台正在为您转换视频格式，请稍候。。。
+                                    <br />
+                                    <br />
+                                    视频转换成功后，会自动为您跳转至资源浏览页。您可以先<a target="_blank" href="../Go/Home">浏览其他云资源</a>。
+                                    <br />
+                                    <br />
+                                </div>
 
-                                <div class="j-content clearfix">
+
+                                <div id="ri" runat="server" class="j-content clearfix">
                                     <%= CurrentResource.Content %>
                                     <br />
                                     <div style="background-color: black;">

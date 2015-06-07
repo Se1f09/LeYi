@@ -15,7 +15,33 @@ namespace Go
 {
 	public partial class GoViewVideo : HomoryResourcePage
 	{
-		protected void Page_Load(object sender, EventArgs e)
+
+        protected void preview_timer_Tick(object sender, EventArgs e)
+        {
+            var path = Server.MapPath(CurrentResource.Preview);
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    Response.Redirect(Request.Url.PathAndQuery.ToString(), true);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!IsPostBack)
 			{
@@ -43,8 +69,14 @@ namespace Go
 
                 if (!yes)
                 {
-                    Response.Redirect(string.Format("../Go/ViewVideoNone.aspx?Id={0}&VV=0", CurrentResource.Id), true);
-                    return;
+                    ni.Visible = true;
+                    ri.Visible = ri2.Visible = ri3.Visible = assessPanel.Visible = ri4.Visible = commentPanel.Visible = ri5.Visible = false;
+                }
+                else
+                {
+                    ni.Visible = false;
+                    ri.Visible = ri2.Visible = ri3.Visible = assessPanel.Visible = ri4.Visible = commentPanel.Visible = ri5.Visible = true;
+                    preview_timer.Enabled = false;
                 }
 
                 LogOp(ResourceLogType.浏览资源, 1);
@@ -606,7 +638,35 @@ TargetUser.Resource.Where(o => o.State == State.启用 && o.Type == rt)
 
 		protected void assessTable_OnNeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
 		{
-			if (CurrentResource.GradeId.HasValue && CurrentResource.CourseId.HasValue)
+            var path = Server.MapPath(CurrentResource.Preview);
+            bool yes = false;
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    yes = true;
+                }
+                catch
+                {
+                }
+            }
+
+            if (!yes)
+            {
+                return;
+            }
+
+
+            if (CurrentResource.GradeId.HasValue && CurrentResource.CourseId.HasValue)
 			{
                 assessPanel.Visible = true;
                 var 课程 = CurrentResource.CourseId.Value;

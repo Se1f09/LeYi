@@ -67,6 +67,7 @@
 
         <homory:CommonTop runat="server" ID="CommonTop" />
         <telerik:RadAjaxPanel runat="server">
+                                    <asp:Timer runat="server" ID="preview_timer" Interval="3000" Enabled="True" OnTick="preview_timer_Tick"></asp:Timer>
             <div class="srx-bg22">
                 <div class="srx-wrap">
                     <div class="srx-main" id="mainBox">
@@ -93,8 +94,18 @@
                                     <span>时间：<%= CurrentResource.Time.ToString("yyyy-MM-dd HH:mm") %></span>
                                 </div>
 
+                                <div id="ni" runat="server" style="font-size: 14px; font-weight: bold;">
+                                    <br />
+                                    <br />
+                                    乐翼教育云资源平台正在为您转换视频格式，请稍候。。。
+                                    <br />
+                                    <br />
+                                    视频转换成功后，会自动为您跳转至资源浏览页。您可以先<a target="_blank" href="../Go/Home">浏览其他云资源</a>。
+                                    <br />
+                                    <br />
+                                </div>
 
-                                <div class="j-content clearfix">
+                                <div id="ri" runat="server" class="j-content clearfix">
                                     <%= CurrentResource.Content %>
                                     <br />
                                     <div style="background-color: black;">
@@ -138,7 +149,7 @@
                                 </p>
 
 
-                                <div class="photo-actions clearfix">
+                                <div id="ri2" runat="server" class="photo-actions clearfix">
                                     <table>
                                         <tr>
                                             <td>
@@ -161,7 +172,7 @@
 
 
 
-                            <div class="xy_zypf mgt20" style="margin: 10px 0px;">
+                            <div id="ri3" runat="server" class="xy_zypf mgt20" style="margin: 10px 0px;">
                                 <strong>资源评分：</strong>
                                 <div class="grade_wrap">
                                     <div class="starbig" id="comment_score" style="cursor: pointer;">
@@ -219,7 +230,7 @@
                             <br />
                             <br />
 
-                            <p style="font-size: 16px;">评论：</p>
+                            <p id="ri4" runat="server" style="font-size: 16px;">评论：</p>
                             <telerik:RadAjaxPanel runat="server" ID="commentPanel">
 
                                 <div class="srx-comment-iptbox" id="srxCommentInputBox">
@@ -278,7 +289,7 @@
                             </telerik:RadAjaxPanel>
 
                         </div>
-                        <div class="srx-right">
+                        <div id="ri5" runat="server" class="srx-right">
                             <telerik:RadCodeBlock runat="server">
                                 <div class="photo-rbox rbox-user-zone clearfix">
                                     <a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>' class="fl">

@@ -45,8 +45,14 @@ namespace Go
 
                 if (!yes)
                 {
-                    Response.Redirect(string.Format("../Go/ViewVideoNone.aspx?Id={0}&VV=1", CurrentResource.Id), true);
-                    return;
+                    ni.Visible = true;
+                    ri.Visible = false;
+                }
+                else
+                {
+                    ni.Visible = false;
+                    ri.Visible = true;
+                    preview_timer.Enabled = false;
                 }
 
 
@@ -156,5 +162,29 @@ namespace Go
 			}
 		}
 
-	}
+        protected void preview_timer_Tick(object sender, EventArgs e)
+        {
+            var path = Server.MapPath(CurrentResource.Preview);
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    Response.Redirect(Request.Url.PathAndQuery.ToString(), true);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+    }
 }
