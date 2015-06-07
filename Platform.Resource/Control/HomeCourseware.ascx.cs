@@ -44,7 +44,15 @@ namespace Control
 				{
                     funcWhere =
                         o => o.Type == ResourceType.课件 && o.State < State.审核 && o.CourseId != null && o.CourseId == Courses[index];
-                    repeater.DataSource = HomoryContext.Value.Resource.Where(predicate: funcWhere).OrderByDescending(funcOrder).Take(10).ToList();
+                    if (HomeCampus == null)
+                    {
+                        repeater.DataSource = HomoryContext.Value.Resource.Where(predicate: funcWhere).OrderByDescending(funcOrder).Take(10).ToList();
+                    }
+                    else
+                    {
+                        var predicate = SR();
+                        repeater.DataSource = HomoryContext.Value.Resource.Where(predicate: funcWhere).Where(predicate).OrderByDescending(funcOrder).Take(10).ToList();
+                    }
                     repeater.DataBind();
                 }
                 else
@@ -52,8 +60,17 @@ namespace Control
                     funcWhere = o => o.Type == ResourceType.课件 && o.State < State.审核 && o.CourseId != null;
                     var courseP = Courses[index];
                     var coursesP = HomoryContext.Value.Catalog.Where(o => o.State < State.审核 && o.Type == CatalogType.课程 && o.ParentId == courseP).ToList();
-                    var source = coursesP.Join(HomoryContext.Value.Resource.Where(funcWhere), c => c.Id, r => r.CourseId, (c, r) => r).ToList();
-                    repeater.DataSource = source;
+                    if (HomeCampus == null)
+                    {
+                        var source = coursesP.Join(HomoryContext.Value.Resource.Where(funcWhere), c => c.Id, r => r.CourseId, (c, r) => r).ToList();
+                        repeater.DataSource = source;
+                    }
+                    else
+                    {
+                        var predicate = SR();
+                        var source = coursesP.Join(HomoryContext.Value.Resource.Where(funcWhere).Where(predicate), c => c.Id, r => r.CourseId, (c, r) => r).ToList();
+                        repeater.DataSource = source;
+                    }
                     repeater.DataBind();
                 }
 			}

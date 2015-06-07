@@ -43,6 +43,11 @@ namespace Homory.Model
             return o => o.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
         }
 
+        protected Func<Group, bool> SG()
+        {
+            return o => o.GroupUser.FirstOrDefault(x => x.State < State.审核 && (x.Type == GroupUserType.创建者 || x.Type == GroupUserType.管理员)).User.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
+        }
+
         protected void LogOp(ResourceLogType type, int? value = null)
         {
             HomoryContext.Value.LogOp(CurrentUser.Id, CurrentCampus.Id, type, value);
