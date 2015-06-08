@@ -15,10 +15,70 @@ namespace Go
 {
 	public partial class GoViewVideo : HomoryResourcePage
 	{
-		protected void Page_Load(object sender, EventArgs e)
+
+        protected void preview_timer_Tick(object sender, EventArgs e)
+        {
+            var path = Server.MapPath(CurrentResource.Preview);
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    Response.Redirect(Request.Url.PathAndQuery.ToString(), true);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!IsPostBack)
 			{
+                var path = Server.MapPath(CurrentResource.Preview);
+                bool yes = false;
+                if (File.Exists(path))
+                {
+                    FileInfo info = new FileInfo(path);
+                    try
+                    {
+                        var s = info.OpenWrite();
+                        try
+                        {
+                            s.Close();
+                        }
+                        catch
+                        {
+                        }
+                        yes = true;
+                    }
+                    catch
+                    {
+                    }
+                }
+
+                if (!yes)
+                {
+                    ni.Visible = true;
+                    ri.Visible = ri2.Visible = ri3.Visible = assessPanel.Visible = ri4.Visible = commentPanel.Visible = ri5.Visible = false;
+                }
+                else
+                {
+                    ni.Visible = false;
+                    ri.Visible = ri2.Visible = ri3.Visible = assessPanel.Visible = ri4.Visible = commentPanel.Visible = ri5.Visible = true;
+                    preview_timer.Enabled = false;
+                }
+
                 LogOp(ResourceLogType.浏览资源, 1);
                 player.Video = CurrentResource.Preview;
                 catalog.Visible = CurrentResource.Type == ResourceType.视频 && CurrentResource.ResourceCatalog.Count(y => y.State < State.审核 && y.Catalog.State < State.审核 && y.Catalog.Type == CatalogType.视频) > 0;
@@ -100,8 +160,9 @@ namespace Go
 				downloadCount.InnerText = CurrentResource.Download.ToString();
 				favouriteCount.InnerText = CurrentResource.Favourite.ToString();
 				icon.ImageUrl = TargetUser.Icon;
-				name.Text = TargetUser.DisplayName;
-				viewCount.Text = CurrentResource.View.ToString();
+                name.Text = UC(TargetUser.Id).Replace("无锡市", "").Replace("无锡", "");
+                nameX.Text = TargetUser.DisplayName;
+                viewCount.Text = CurrentResource.View.ToString();
 				viewList.DataSource = Queryable.Take(HomoryContext.Value.Action.Where(o => o.Id2 == CurrentResource.Id && o.Type == ActionType.用户访问资源).OrderByDescending(q => q.Time), 9)
 						.ToList();
 				viewList.DataBind();
@@ -137,7 +198,7 @@ namespace Go
 
         protected string CombineGrade()
         {
-            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Name, QueryType(CatalogType.年级_六年制), CurrentResource.GradeId) : "";
+            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Name, QueryType(HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Type), CurrentResource.GradeId) : "";
         }
 
         protected bool CanCombineCourse()
@@ -179,8 +240,9 @@ namespace Go
 			switch (type)
 			{
 				case CatalogType.年级_幼儿园:
-                case CatalogType.年级_六年制:
-                case CatalogType.年级_九年制:
+                case CatalogType.年级_小学:
+                case CatalogType.年级_初中:
+                case CatalogType.年级_高中:
 					{
 						return "Grade";
 					}
@@ -576,7 +638,35 @@ TargetUser.Resource.Where(o => o.State == State.启用 && o.Type == rt)
 
 		protected void assessTable_OnNeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
 		{
-			if (CurrentResource.GradeId.HasValue && CurrentResource.CourseId.HasValue)
+            var path = Server.MapPath(CurrentResource.Preview);
+            bool yes = false;
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    yes = true;
+                }
+                catch
+                {
+                }
+            }
+
+            if (!yes)
+            {
+                return;
+            }
+
+
+            if (CurrentResource.GradeId.HasValue && CurrentResource.CourseId.HasValue)
 			{
                 assessPanel.Visible = true;
                 var 课程 = CurrentResource.CourseId.Value;
@@ -687,5 +777,13 @@ TargetUser.Resource.Where(o => o.State == State.启用 && o.Type == rt)
 
 			}
 		}
-	}
+
+        protected void publish_attachment_list_NeedDataSource(object sender, RadListViewNeedDataSourceEventArgs e)
+        {
+            var resource = CurrentResource;
+            var files = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.OrderBy(o => o.Id).ToList();
+            publish_attachment_list.DataSource = files;
+            pppp1.Visible = pppp2.Visible = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.Count > 0;
+        }
+    }
 }

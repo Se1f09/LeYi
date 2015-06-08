@@ -13,6 +13,41 @@ namespace Homory.Model
             get { return Session[HomoryResourceConstant.SessionUserId] != null; }
         }
 
+        private Department homeCampus;
+
+        protected Department HomeCampus
+        {
+            get
+            {
+                if (homeCampus != null)
+                {
+                    return homeCampus;
+                }
+                if (string.IsNullOrEmpty(Request.QueryString["Campus"]))
+                {
+                    return null;
+                }
+                Guid id = Guid.Parse(Request.QueryString["Campus"]);
+                homeCampus = HomoryContext.Value.Department.Single(o => o.Id == id);
+                return homeCampus;
+            }
+        }
+
+        protected Func<Resource, bool> SR()
+        {
+            return o => o.User.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
+        }
+
+        protected Func<User, bool> SU()
+        {
+            return o => o.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
+        }
+
+        protected Func<Group, bool> SG()
+        {
+            return o => o.GroupUser.FirstOrDefault(x => x.State < State.审核 && (x.Type == GroupUserType.创建者 || x.Type == GroupUserType.管理员)).User.DepartmentUser.Count(p => p.TopDepartmentId == HomeCampus.Id && p.State < State.审核 && (p.Type == DepartmentUserType.借调后部门主职教师 || p.Type == DepartmentUserType.部门主职教师)) > 0;
+        }
+
         protected void LogOp(ResourceLogType type, int? value = null)
         {
             HomoryContext.Value.LogOp(CurrentUser.Id, CurrentCampus.Id, type, value);
@@ -41,24 +76,14 @@ namespace Homory.Model
 
         protected string P(object icon)
         {
-            var url = icon.ToString();
-            if (!url.Equals("~/Common/默认/用户.png") && !url.Equals("~/Common/默认/群组.png") && File.Exists(Server.MapPath(url)))
-            {
-                return url;
-            }
-            else
-            {
-                var files = new DirectoryInfo(Server.MapPath("~/Common/头像/随机")).GetFiles();
-                var r = new Random(Guid.NewGuid().GetHashCode());
-                return "~/Common/头像/随机/" + files[r.Next(0, files.Length)].Name;
-            }
+            return icon.ToString();
         }
 
         protected string UC(object id)
         {
             var gid = Guid.Parse(id.ToString());
             var user = HomoryContext.Value.User.Single(o => o.Id == gid);
-            return user.DepartmentUser.Count(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) > 0 ? "[" + user.DepartmentUser.First(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师).TopDepartment.Name + "]" : "";
+            return user.DepartmentUser.Count(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) > 0 ? "[" + user.DepartmentUser.First(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师).TopDepartment.Name.Replace("无锡市", "").Replace("无锡", "") + "]" : "";
         }
 
         private Department _campus;

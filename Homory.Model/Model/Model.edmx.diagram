@@ -112,6 +112,9 @@
         <EntityTypeShape EntityType="Homory.Model.ResourceLog" Width="1.5" PointX="3" PointY="63.375" />
         <AssociationConnector Association="Homory.Model.FK_ResourceLog_User" />
         <EntityTypeShape EntityType="Homory.Model.ViewQueryResource" Width="1.5" PointX="16.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Homory.Model.GroupBoard" Width="1.5" PointX="9" PointY="30.625" />
+        <AssociationConnector Association="Homory.Model.FK_GroupBoard_Group" />
+        <AssociationConnector Association="Homory.Model.FK_GroupBoard_User" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

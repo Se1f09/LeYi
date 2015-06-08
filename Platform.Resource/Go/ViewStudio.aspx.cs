@@ -36,6 +36,10 @@ namespace Go
                 catalogs.DataBind();
 
                 introduction.InnerText = CurrentGroup.Introduction;
+
+                bbbb.Visible = CurrentGroup.GroupUser.Count(o => o.UserId == CurrentUser.Id && o.State < State.审核) > 0;
+
+                BindC();
 			}
 		}
 
@@ -76,5 +80,41 @@ namespace Go
 					.ToList();
 			control.DataBind();
 		}
-	}
+
+        protected void cPanel_AjaxRequest(object sender, Telerik.Web.UI.AjaxRequestEventArgs e)
+        {
+            BindC();
+        }
+
+        protected void BindC()
+        {
+            cComment.DataSource = CurrentGroup.GroupBoard.Where(o => o.Time > DateTime.Today && o.State == State.启用).OrderByDescending(o => o.Time).ToList();
+            cComment.DataBind();
+        }
+
+        protected void timer_Tick(object sender, EventArgs e)
+        {
+            BindC();
+        }
+
+        protected void dodo_ServerClick(object sender, EventArgs e)
+        {
+            if (!IsOnline)
+            {
+                SignOn();
+                return;
+            }
+            var c = new GroupBoard();
+            c.Content = cContent.InnerHtml;
+            c.Id = HomoryContext.Value.GetId();
+            c.GroupId = CurrentGroup.Id;
+            c.State = State.启用;
+            c.Time = DateTime.Now;
+            c.UserId = CurrentUser.Id;
+            HomoryContext.Value.GroupBoard.Add(c);
+            HomoryContext.Value.SaveChanges();
+            cContent.InnerHtml = "";
+            cPanel.RaisePostBackEvent("Refresh");
+        }
+    }
 }

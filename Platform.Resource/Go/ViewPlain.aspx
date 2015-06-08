@@ -16,7 +16,8 @@
     <link href="../Style/commentInputBox.css" rel="stylesheet" />
     <link href="../Style/1.css" rel="stylesheet" />
     <script src="../Script/jquery.min.js"></script>
-    <script>
+      <base target="_top" />
+  <script>
         function GetUrlParms() {
             var args = new Object();
             var query = location.search.substring(1);//获取查询串   
@@ -90,14 +91,15 @@
                                     <iframe runat="server" src="../Document/web/PdfViewer.aspx" width="738px" height="800px" id="publish_preview_pdf" style="margin-top: 10px;"></iframe>
 
                                 </div>
-
-                                <p style="font-size: 16px;">附件：</p>
-                                <p>
+                                <br />
+                                <br />
+                                <p id="pppp1" runat="server" style="font-size: 16px;">附件：</p>
+                                <p id="pppp2" runat="server">
 
                                     <telerik:RadListView ID="publish_attachment_list" runat="server" OnNeedDataSource="publish_attachment_list_OnNeedDataSource">
                                         <ItemTemplate>
                                             <img src='<%# string.Format("../Image/img/{0}.jpg", (int)Eval("FileType")) %>' />
-                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>
+                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>&nbsp;&nbsp;
                                         </ItemTemplate>
                                     </telerik:RadListView>
                                 </p>
@@ -179,23 +181,25 @@
                                 <telerik:RadTreeView runat="server" ID="commentList" EnableEmbeddedBaseStylesheet="False" EnableEmbeddedSkins="False" DataFieldParentID="ParentId" DataTextField="Content" DataFieldID="Id" DataValueField="Id">
                                     <NodeTemplate>
                                         <div class="srx-comment-list-box" id="srxCommentListBox" style='<%# string.Format("margin-left: {0}px;", ((Homory.Model.ResourceComment)Container.DataItem).Level * 30) %>'>
-                                            <div class="srx-comment-list">
+                                            <div class="srx-comment-list" style="margin-top: 6px;">
                                                 <dl class="srx-comment-item">
                                                     <dt>
                                                         <asp:Image runat="server" ID="icon" ImageUrl='<%# ((Homory.Model.ResourceComment)Container.DataItem).User.Icon %>' Width="35" Height="35" />
                                                     </dt>
                                                     <dd>
+                                                        <div style="font-size: 14px;">
+                                                            <a style="font-size: 14px;" href='<%# string.Format("../Go/Personal?Id={0}", ((Homory.Model.ResourceComment)Container.DataItem).User.Id) %>'><%# UC(((Homory.Model.ResourceComment)Container.DataItem).User.Id) + "&nbsp;" + ((Homory.Model.ResourceComment)Container.DataItem).User.DisplayName %></a>&nbsp;<%# ((DateTime)Eval("Time")).FormatTime() %>&nbsp;<%# ((Homory.Model.ResourceComment)Container.DataItem).Level ==0 ? "评论" : "回复" %>：
+                                                        </div>
                                                         <div class="srx-comment-content">
-                                                            <label style="color: #333333; font-weight: bold;"><%# Eval("Content") %></label>
+                                                            <label style="color: #333333; font-weight: bold; font-size: 14px;"><%# Eval("Content") %></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <a target="_self" id="goReply" runat="server" onserverclick="goReply_OnServerClick"><img src="Image/c.gif" style="width: 26px;" /></a>&nbsp;&nbsp;&nbsp;
+                                                            <a target="_self" id="goDelP" runat="server" alt='<%# Eval("Id").ToString() %>' name='<%# Eval("Id").ToString() %>' onserverclick="goDelP_ServerClick" visible='<%# IsOnline &&  ((Homory.Model.ResourceComment)Container.DataItem).User.Id == CurrentUser.Id %>'><img src="Image/b.gif" style="width: 26px;" /></a>
                                                         </div>
-                                                        <div>
-                                                            <a href='<%# string.Format("../Go/Personal?Id={0}", ((Homory.Model.ResourceComment)Container.DataItem).User.Id) %>'><%# UC(((Homory.Model.ResourceComment)Container.DataItem).User.Id) + "&nbsp;" + ((Homory.Model.ResourceComment)Container.DataItem).User.DisplayName %></a>&nbsp;<%# ((Homory.Model.ResourceComment)Container.DataItem).Level ==0 ? "评论" : "回复" %>于&nbsp;<%# ((DateTime)Eval("Time")).FormatTime() %>
-                                                        </div>
-                                                        <div class="srx-comment-info">
-                                                            <a target="_self" id="goReply" runat="server" onserverclick="goReply_OnServerClick">回复</a>&nbsp;&nbsp;<a target="_self" id="goDelP" runat="server" alt='<%# Eval("Id").ToString() %>' name='<%# Eval("Id").ToString() %>' onserverclick="goDelP_ServerClick" visible='<%# IsOnline &&  ((Homory.Model.ResourceComment)Container.DataItem).User.Id == CurrentUser.Id %>'>删除</a><br />
+                                                        <div class="srx-comment-info" style="margin-top: 4px;">
+                                                            <br />
                                                             <span runat="server" id="reply" visible="False">
-                                                                <input id="replyId" type="hidden" runat="server" value='<%# Eval("Id").ToString() %>' /><textarea id="replyContent" runat="server" style="width: 90%;" /><br />
-                                                                <a id="replyReply" runat="server" onserverclick="replyReply_OnServerClick" target="_self">发表</a>&nbsp;<a id="noReply" runat="server" onserverclick="noReply_OnServerClick" target="_self">取消</a></span>
+                                                                <input id="replyId" type="hidden" runat="server" value='<%# Eval("Id").ToString() %>' /><textarea id="replyContent" runat="server" style="width: 90%; height: 40px;" /><br />
+                                                                <a id="replyReply" runat="server" onserverclick="replyReply_OnServerClick" target="_self"><img src="Image/a.gif" style="width: 26px;" /></a></a>&nbsp;&nbsp;&nbsp;<a id="noReply" runat="server" onserverclick="noReply_OnServerClick" target="_self"><img src="Image/d.gif" style="width: 26px;" /></a></a></span>
                                                         </div>
                                                     </dd>
                                                 </dl>
@@ -221,8 +225,9 @@
                                         <asp:Image runat="server" ID="icon" class="fl" Height="50" Width="50" />
                                     </a>
                                     <span class="rbox-uz-right fl">
-                                        <h3><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
-                                            <asp:Label runat="server" ID="name"></asp:Label></a></h3>
+                                        <h3><div><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
+                                            <asp:Label runat="server" ID="name"></asp:Label></a></div><div><a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>
+                                            <asp:Label runat="server" ID="nameX"></asp:Label></a></div></h3>
                                         <a id="go" href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'>进入教师空间</a>
                                     </span>
                                 </div>

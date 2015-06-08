@@ -20,11 +20,22 @@ namespace Control
 
 		public void BindArticle()
 		{
-			homory_article.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.文章 && o.State == State.启用)
-						.OrderByDescending(o => o.Time)
-						.Take(Count)
-						.ToList();
-			homory_article.DataBind();
+            if (HomeCampus == null)
+            {
+                homory_article.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.文章 && o.State == State.启用)
+                            .OrderByDescending(o => o.Time)
+                            .Take(Count)
+                            .ToList();
+            }
+            else
+            {
+                var predicate = SR();
+                homory_article.DataSource = HomoryContext.Value.Resource.Where(o => o.Type == ResourceType.文章 && o.State == State.启用).Where(predicate)
+                            .OrderByDescending(o => o.Time)
+                            .Take(Count)
+                            .ToList();
+            }
+            homory_article.DataBind();
 		}
 
 		protected void HomeArticleTimer_OnTick(object sender, EventArgs e)

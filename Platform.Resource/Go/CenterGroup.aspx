@@ -17,7 +17,8 @@
 	<link rel="stylesheet" href="../Style/common(1).css">
 	<link rel="stylesheet" href="../Style/index1.css">
 	<link rel="stylesheet" href="../Style/2.css" id="skinCss">
-	<style>
+	    <base target="_top" />
+<style>
 		html .rbPrimaryIcon {
 			margin-top: 6px;
 		}

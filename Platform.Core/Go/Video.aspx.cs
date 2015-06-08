@@ -11,18 +11,20 @@ namespace Go
     {
         private const string Right = "Video";
 
+        private static Guid VideoTopId = Guid.Parse("10a37221-02c5-48d8-a82c-da62a3386c0b");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadInit();
-                LogOp(OperationType.查询);
             }
         }
 
         private void LoadInit()
         {
 			loading.InitialDelayTime = int.Parse("Busy".FromWebConfig());
+            LogOp(OperationType.查询);
             BindTree();
             InitTree();
         }
@@ -30,9 +32,9 @@ namespace Go
         private void BindTree()
         {
             var list = new List<Catalog>();
+            list.Add(new Catalog { Id = VideoTopId, Name = "视频栏目", Ordinal = 0, ParentId = null, State = State.启用, Type = CatalogType.视频 });
             list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.视频 && o.State < State.删除).OrderBy(o => o.State).ThenBy(o => o.Ordinal).ThenBy(o => o.Name).ToList());
-            list.ForEach(o => { if (o.ParentId == null) { o.ParentId = Guid.Empty; } });
-            list.Add(new Catalog { Id = Guid.Empty, Name = "视频栏目", Ordinal = 0, ParentId = null, State = State.启用, Type = CatalogType.视频 });
+            list.ForEach(o => { if (o.ParentId == null) { o.ParentId = VideoTopId; } });
             tree.DataSource = list;
             tree.DataBind();
         }
@@ -48,9 +50,9 @@ namespace Go
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             var parentId = tree.SelectedNode == null ? (Guid?)(null) : Guid.Parse(tree.SelectedNode.Value);
-            if (parentId == Guid.Empty)
+            if (parentId == VideoTopId)
             {
-                grid.DataSource = HomoryContext.Value.Catalog.Where(o => o.State < State.删除 && o.ParentId == null && o.Type == CatalogType.视频)
+                grid.DataSource = HomoryContext.Value.Catalog.Where(o => o.State < State.删除 && (o.ParentId == null || (o.ParentId != null && o.ParentId == VideoTopId)) && o.Type == CatalogType.视频)
                       .OrderBy(o => o.State)
                       .ThenBy(o => o.Ordinal)
                       .ToList();
@@ -153,7 +155,7 @@ namespace Go
         {
             if (catalog.Id == Guid.Empty)
             {
-                var count = HomoryContext.Value.Catalog.Count(o => o.State < State.删除 && o.Type == CatalogType.视频 && o.ParentId == null);
+                var count = HomoryContext.Value.Catalog.Count(o => o.State < State.删除 && o.Type == CatalogType.视频 && (o.ParentId == null || (o.ParentId != null && o.ParentId == VideoTopId)));
                 return count == 0 ? string.Empty : string.Format(" [{0}]", count);
             }
             else

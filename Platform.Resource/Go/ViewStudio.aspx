@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/detail.css">
     <link rel="stylesheet" href="css/plaza2.css">
     <link rel="stylesheet" href="css/1.css" id="skinCss">
+    <base target="_top" />
 </head>
 <body class="srx-pclass">
     <form id="form1" runat="server">
@@ -36,38 +37,25 @@
                             <asp:Repeater runat="server" ID="catalogs" OnItemDataBound="catalogs_OnItemDataBound">
                                 <ItemTemplate>
                                     <div class="center_right">
-                                        <div class="c-p-title">
+                                        <div class="c-p-title" style="margin-top: 30px;">
                                             <div class="box-hd"><%# Eval("Name") %></div>
-                                            <a id="aMore" runat="server">+更多</a>
+                                            <a id="aMore" target="_top" runat="server">+更多</a>
                                         </div>
                                         <ul>
                                             <asp:Repeater runat="server" ID="resources">
                                                 <ItemTemplate>
-                                                    <li style="height: 250px; width: 350px; float: left; margin-bottom: 40px;">
-                                                        <div style="width: 40px; float: left; height: 10px;">&nbsp;</div>
-                                                        <div style="height: 250px; width: 300px; float: left; overflow: hidden; margin-bottom: 40px; text-align: left; vertical-align: middle;">
-                                                            <table>
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).DisplayName %></a>&nbsp;-&nbsp;
-                                                                        <span><%# Eval("Time") %></span>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td style="width: 56px;">
-                                                                        <img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="width: 20px; height: 20px; margin-top: 6px;" />&nbsp;&nbsp;
-                                                                    </td>
-                                                                    <td>
-                                                                        <strong><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="2">
-                                                                        <a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><img src='<%# Eval("Image").ToString() %>' width="300" height="200" /></a>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                            <br />
+                                                    <li style="height: 250px; width: 200px; float: left; margin-bottom: 30px; margin-left: 30px; border: solid 1px #ddd; overflow: hidden;">
+                                                        <div>
+                                                            &nbsp;&nbsp;<img src='<%# string.Format("../Image/img/{0}.jpg", Eval("Thumbnail")) %>' style="width: 20px; height: 20px; margin-top: 8px;" />&nbsp;&nbsp;
+                                                            <strong><a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'><%# Eval("Title") %></a></strong>
+                                                        </div>
+                                                        <div style="float: right;">
+                                                            [<a href='<%# string.Format("../Go/Personal?Id={0}", Eval("UserId")) %>'><%# U(Eval("UserId")).DisplayName %></a>
+                                                            @<%# ((System.DateTime)Eval("Time")).FormatTimeShort() %>]&nbsp;&nbsp;
+                                                        </div>
+                                                        <div style="overflow: hidden; text-align: left; vertical-align: middle; clear: both; width: 100%; margin-left: -20px; margin-top: -20px;">
+                                                            <a href='<%# string.Format("../Go/{0}?Id={1}", ((Homory.Model.ResourceType)Eval("Type"))== Homory.Model.ResourceType.视频 ? "ViewVideo" : "ViewPlain", Eval("Id")) %>'>
+                                                                <img src='<%# Eval("Image").ToString() %>' width="300" height="200" /></a>
                                                         </div>
                                                     </li>
                                                 </ItemTemplate>
@@ -142,6 +130,41 @@
                                             </ItemTemplate>
                                         </asp:Repeater>
                                     </ul>
+                                </div>
+                                <div id="bbbb" runat="server" class="c-prb-role clearfix">
+                                    <div class="c-prb-title mb10">
+                                        <div class="box-hd">留言板 </div>
+                                    </div>
+                                    <div>
+                                        <telerik:RadAjaxPanel runat="server" ID="cDo">
+                                            <textarea id="cContent" runat="server" style="width: 180px; height: 56px; max-width: 170px;"></textarea>
+                                            <div class="srx-ciptbox-toolbar">
+                                                <span class="srx-ciptbox-acts"></span>
+                                                <a id="dodo" runat="server" class="button24 srx-ciptbox-submit" data-action="submit" onserverclick="dodo_ServerClick"><em>发表</em></a>
+                                                <span class="srx-ciptbox-counter" data-ui-role="counter"></span>
+                                            </div>
+                                        </telerik:RadAjaxPanel>
+                                        <br />
+                                        <div style="width: 170px; max-height: 400px; overflow: auto; border: solid 1px silver;">
+                                            <telerik:RadAjaxPanel runat="server" ID="cPanel" OnAjaxRequest="cPanel_AjaxRequest">
+                                                <asp:Timer runat="server" ID="timer" Interval="3000" Enabled="True" OnTick="timer_Tick"></asp:Timer>
+                                                <div>
+                                                    <asp:Repeater runat="server" ID="cComment">
+                                                        <ItemTemplate>
+                                                            <div style="color: #227dc5; font-weight: bold; width:148px; max-width: 148px; word-wrap: break-word; margin-left: 4px;">
+                                                                <%# ((DateTime)Eval("Time")).FormatTimeShortSecond() %>
+                                                                <%# U(Eval("UserId")).DisplayName %>：
+                                                            </div>
+                                                            <div style="width:148px; max-width: 148px; word-wrap: break-word; margin-left: 4px;">
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;<%# Eval("Content") %>
+                                                            </div>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
+                                                </div>
+                                            </telerik:RadAjaxPanel>
+                                        </div>
+                                    </div>
+                                    <div>&nbsp;</div>
                                 </div>
                             </div>
                         </div>

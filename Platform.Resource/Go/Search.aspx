@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>资源平台 - 搜索</title>
+    <title>资源平台 - 检索</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="Pragma" content="no-cache">
     <script src="../Script/jquery.min.js"></script>
@@ -16,6 +16,7 @@
     <link href="../Style/public.css" rel="stylesheet" />
     <link href="../Style/mhzy.css" rel="stylesheet" />
     <link href="../Style/zTreeStyle2.css" rel="stylesheet" />
+    <base target="_top" />
 </head>
 <body>
     <form runat="server">
@@ -31,9 +32,11 @@
                 <div class="login" style="margin-top: 0px;">
                     <div class="lg-top">
                         <h1 class="logo"><a class="fixpng" href="../Go/Home" title="互动教育资源管理平台">互动教育资源管理平台</a></h1>
-                        <div class="lg-search">
+                        <div class="lg-search" style="width: 396px;">
                             <input runat="server" type="text" class="srx-ns-input" id="search_content" value="" data-prevcolor="" style="color: rgb(170, 170, 170);" />
-                            <a class="srx-ns-btn" runat="server" id="search_go" onserverclick="search_go_OnServerClick">搜索</a>
+                            <a class="srx-ns-btn" runat="server" id="search_go_inner" onserverclick="search_go_OnServerClick">检索校内</a>
+                            <a class="srx-ns-btn" runat="server" id="search_go" onserverclick="search_go_OnServerClick" style="border-right: solid 1px silver;">检索全部</a>
+                            <input id="hhhh" runat="server" type="hidden" value="1" />
                         </div>
 
                     </div>
@@ -45,7 +48,7 @@
                                 <div class="xy_crumbs mgtb10">
                                     <a href="../Go/Home" class="h_icon"><em></em></a>
                                     <a href="../Go/Catalog">资源目录</a>
-                                    <span>搜索结果</span>
+                                    <span>检索结果</span>
 
                                 </div>
                                 <div class="xy_ltit mgtb10">
@@ -54,10 +57,10 @@
                                 </div>
                                 <div class="xy_sort">
                                     <ul>
-                                        <li><span>学科：</span><p>
-                                            <asp:Repeater runat="server" ID="course">
+                                        <li><span>学段：</span><p>
+                                            <asp:Repeater runat="server" ID="period">
                                                 <ItemTemplate>
-                                                    <telerik:RadButton Width="80" runat="server" ID="course_item" OnClick="item1_OnClick" Text='<%# Eval("Name") %>' Value='<%# Eval("Id") %>' ToggleType="CheckBox" Checked="true" Style="margin-left: 10px; margin-right: 10px;">
+                                                    <telerik:RadButton Width="80" runat="server" ID="period_item" OnClick="item0_OnClick" Text='<%# Container.DataItem.ToString().Replace("年级_", "") %>' Value='<%# (int)Container.DataItem %>' ToggleType="CheckBox" Checked="true" Style="margin-left: 10px; margin-right: 10px;">
                                                     </telerik:RadButton>
                                                 </ItemTemplate>
                                             </asp:Repeater>
@@ -67,6 +70,15 @@
                                             <asp:Repeater runat="server" ID="grade">
                                                 <ItemTemplate>
                                                     <telerik:RadButton Width="80" runat="server" ID="grade_item" OnClick="item2_OnClick" Text='<%# Eval("Name") %>' Value='<%# Eval("Id") %>' ToggleType="CheckBox" Checked="true" Style="margin-left: 10px; margin-right: 10px;"></telerik:RadButton>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </p>
+                                        </li>
+                                        <li><span>课程：</span><p>
+                                            <asp:Repeater runat="server" ID="course">
+                                                <ItemTemplate>
+                                                    <telerik:RadButton Width="80" runat="server" ID="course_item" OnClick="item1_OnClick" Text='<%# Eval("Name") %>' Value='<%# Eval("Id") %>' ToggleType="CheckBox" Checked="true" Style="margin-left: 10px; margin-right: 10px;">
+                                                    </telerik:RadButton>
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                         </p>
@@ -89,11 +101,13 @@
                                     </ul>
                                 </div>
                                 <div class="mgt30">
-                                    <div class="xy_pxbar mgt15">
+                                    <div class="xy_pxbar mgt15" style="height: 40px; line-height: 40px;">
                                         <p>
                                             <telerik:RadButton Width="80" runat="server" ID="s1" OnClick="itemX_OnClick" Text="最新" Value='1' ToggleType="CheckBox" Checked="true" Style="margin-left: 10px; margin-right: 10px;"></telerik:RadButton>
                                             <telerik:RadButton Width="80" runat="server" ID="s2" OnClick="itemX_OnClick" Text="最热" Value='2' ToggleType="CheckBox" Style="margin-left: 10px; margin-right: 10px;"></telerik:RadButton>
                                             <telerik:RadButton Width="80" runat="server" ID="s3" OnClick="itemX_OnClick" Text="最优" Value='3' ToggleType="CheckBox" Style="margin-left: 10px; margin-right: 10px;"></telerik:RadButton>
+                                            <telerik:RadButton Width="80" runat="server" ID="ss" OnClick="itemS_OnClick" Text="学习助手" ToggleType="CheckBox" Style="margin-left: 450px; margin-right: 10px;"></telerik:RadButton>
+                                            <asp:Image ImageUrl="~/Go/css/s.png" runat="server" Width="28" Height="28" />
                                         </p>
                                     </div>
                                     <div class="xy_allzylist">

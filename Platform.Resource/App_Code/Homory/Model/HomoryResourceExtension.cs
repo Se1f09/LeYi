@@ -105,6 +105,7 @@ namespace Homory.Model
                 db.SaveChanges();
             }
             var ops = db.ResourceLog.Single(o => o.Year == year && o.Month == month && o.Id == userId);
+            var dict = db.Dictionary.ToList();
             switch (logType)
             {
                 case ResourceLogType.下载资源:
@@ -115,30 +116,38 @@ namespace Homory.Model
                     break;
                 case ResourceLogType.发布文章:
                     ops.Article++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditPublish").Value);
                     break;
                 case ResourceLogType.发布视频:
                     ops.Media++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditPublish").Value);
                     break;
                 case ResourceLogType.发布试卷:
                     ops.Paper++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditPublish").Value);
                     break;
                 case ResourceLogType.发布课件:
                     ops.Courseware++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditPublish").Value);
                     break;
                 case ResourceLogType.回复评论:
                     ops.Reply++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditReply").Value);
                     break;
                 case ResourceLogType.收藏资源:
                     ops.Favourite++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditFavourite").Value);
                     break;
                 case ResourceLogType.浏览资源:
                     ops.View++;
                     break;
                 case ResourceLogType.评定资源:
                     ops.Rate++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditRate").Value);
                     break;
                 case ResourceLogType.评论资源:
                     ops.Comment++;
+                    ops.Credit += int.Parse(dict.Single(o => o.Key == "CreditComment").Value);
                     break;
             }
             db.SaveChanges();
@@ -181,5 +190,16 @@ namespace Homory.Model
 				return "昨天";
 			return (DateTime.Today - time).TotalDays < 2 ? "前天" : time.ToString("MM/dd");
 		}
-	}
+
+        public static string FormatTimeShortSecond(this DateTime time)
+        {
+            if (time.Date == DateTime.Today)
+            {
+                return time.ToString("HH:mm:ss");
+            }
+            if ((DateTime.Today - time).TotalDays < 1)
+                return "昨天";
+            return (DateTime.Today - time).TotalDays < 2 ? "前天" : time.ToString("MM/dd");
+        }
+    }
 }

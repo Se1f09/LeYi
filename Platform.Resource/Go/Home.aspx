@@ -2,7 +2,6 @@
 
 <%@ Register Src="~/Control/HomeTop.ascx" TagPrefix="homory" TagName="HomeTop" %>
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
-
 <%@ Register Src="~/Control/HomeSplash.ascx" TagPrefix="homory" TagName="HomeSplash" %>
 <%@ Register Src="~/Control/HomeTopic.ascx" TagPrefix="homory" TagName="HomeTopic" %>
 <%@ Register Src="~/Control/HomeCatalog.ascx" TagPrefix="homory" TagName="HomeCatalog" %>
@@ -36,9 +35,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/logger.js"></script>
     <script src="js/bds_s_v2.js"></script>
-    <base target="_blank" />
+    <base target="_top" />
 </head>
-<body class="srx-plogin">
+<body class="srx-plogin" style="margin: 0; padding: 0;">
     <form runat="server">
         <telerik:RadScriptManager ID="Rsm" runat="server">
             <Scripts>
@@ -51,6 +50,8 @@
             <Windows>
                 <telerik:RadWindow ID="homory_note_view" runat="server" NavigateUrl="../Popup/HomeNotePopup.aspx" Skin="Metro" ShowContentDuringLoad="True" Width="500" Height="300" ReloadOnShow="true" KeepInScreenBounds="true" VisibleStatusbar="false" Behaviors="Move,Close" Modal="true" Localization-Close="关闭">
                 </telerik:RadWindow>
+                <telerik:RadWindow ID="homory_selector" runat="server" NavigateUrl="../Popup/CampusSelector.aspx" Skin="Metro" ShowContentDuringLoad="True" Width="900" Height="600" ReloadOnShow="true" KeepInScreenBounds="true" VisibleStatusbar="false" Behaviors="Move,Close" Modal="true" Localization-Close="关闭">
+                </telerik:RadWindow>
             </Windows>
         </telerik:RadWindowManager>
         <script>
@@ -60,6 +61,7 @@
                 return false;
             }
         </script>
+
         <div class="lg-main-box" id="mainBox">
             <div class="login">
                 <homory:HomeTop runat="server" ID="HomeTop" />
@@ -77,7 +79,16 @@
                     </div>
                     <div class="login-r">
                         <homory:HomeNote runat="server" ID="HomeNote" Count="5" MaxTitleLength="12" />
+
+	                    <div class="box">
+		                    <div class="box-hd">学习助手</div>
+		                    <div class="box-bd" style="text-align: center;">
+			                    <a href="../Go/Search.aspx?Assistant=1"><img src="Image/assis.gif" style="margin: auto;" /></a>
+		                    </div>
+	                    </div>
+
                         <homory:PersonalAction runat="server" ID="PersonalAction" />
+
                         <homory:HomeArticle runat="server" ID="HomeArticle" Count="5" MaxTitleLength="12" />
 
                         <telerik:RadAjaxPanel runat="server">

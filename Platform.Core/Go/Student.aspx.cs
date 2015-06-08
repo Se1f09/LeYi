@@ -85,12 +85,56 @@ namespace Go
             combo.SelectedIndex = 0;
         }
 
+        public static string[] J = { "初三", "初二", "初一" };
+        public static string[] PJ = { "九年级", "八年级", "七年级", "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
+        public static string[] P = { "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
+        public static string[] S = { "高三", "高二", "高一" };
+        public static string[] K = { "大班", "中班", "小班" };
+
+        private int? __year;
+
+        protected int __Year
+        {
+            get
+            {
+                if (!__year.HasValue)
+                {
+                    __year = int.Parse(HomoryContext.Value.Dictionary.Single(o => o.Key == "SchoolYear").Value);
+                }
+                return __year.Value;
+            }
+            set
+            {
+                __year = value;
+            }
+        }
+
+        protected string GenGradeName(Homory.Model.Department d)
+        {
+            int index = d.Ordinal - __Year - 1;
+            var pdt = d.DepartmentRoot.ClassType;
+            switch (pdt)
+            {
+                case ClassType.九年一贯制:
+                    return index < PJ.Length && index > -1 ? PJ[index] : string.Empty;
+                case ClassType.初中:
+                    return index < J.Length && index > -1 ? J[index] : string.Empty;
+                case ClassType.小学:
+                    return index < P.Length && index > -1 ? P[index] : string.Empty;
+                case ClassType.幼儿园:
+                    return index < K.Length && index > -1 ? K[index] : string.Empty;
+                case ClassType.高中:
+                    return index < S.Length && index > -1 ? S[index] : string.Empty;
+            }
+            return string.Empty;
+        }
+
         protected string GenerateTreeName(Homory.Model.Department department, int index, int level)
         {
             try
             {
                 if (level == 1)
-                    return HomoryCoreConstant.GradeNames[index];
+                    return GenGradeName(department);
                 var count = department.DepartmentUser.Count(
                     o =>
                         o.Type == DepartmentUserType.班级学生 && o.State == State.启用);
@@ -217,7 +261,7 @@ namespace Go
                     PasswordEx = null,
                     CryptoKey = key,
                     CryptoSalt = salt,
-                    Icon = string.Format("~/Common/头像/用户/{0}.jpg", idCard),
+                    Icon = "~/Common/默认/用户.png",
                     State = state,
                     Ordinal = ordinal,
                     Description = null

@@ -17,17 +17,17 @@ namespace Homory.Model
 
         protected string P(object icon)
         {
-            var url = icon.ToString();
-            if (!url.Equals("~/Common/默认/用户.png") && !url.Equals("~/Common/默认/群组.png") && File.Exists(Server.MapPath(url)))
-            {
-                return url;
-            }
-            else
-            {
-                var files = new DirectoryInfo(Server.MapPath("~/Common/头像/随机")).GetFiles();
-                var r = new Random(Guid.NewGuid().GetHashCode());
-                return "~/Common/头像/随机/" + files[r.Next(0, files.Length)].Name;
-            }
+            return icon.ToString();
+            //if (!url.Equals("~/Common/默认/用户.png") && !url.Equals("~/Common/默认/群组.png") && File.Exists(Server.MapPath(url)))
+            //{
+            //    return url;
+            //}
+            //else
+            //{
+            //    var files = new DirectoryInfo(Server.MapPath("~/Common/头像/随机")).GetFiles();
+            //    var r = new Random(Guid.NewGuid().GetHashCode());
+            //    return "~/Common/头像/随机/" + files[r.Next(0, files.Length)].Name;
+            //}
         }
 
         private List<string> _rights;
@@ -83,7 +83,7 @@ namespace Homory.Model
         {
             var gid = Guid.Parse(id.ToString());
             var user = HomoryContext.Value.User.Single(o => o.Id == gid);
-            return user.DepartmentUser.Count(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) > 0 ? "[" + user.DepartmentUser.First(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师).TopDepartment.Name + "]" : "";
+            return user.DepartmentUser.Count(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师) > 0 ? "[" + user.DepartmentUser.First(o => o.Type == DepartmentUserType.部门主职教师 || o.Type == DepartmentUserType.借调后部门主职教师).TopDepartment.Name.Replace("无锡市", "").Replace("无锡", "") + "]" : "";
         }
 
         protected User CurrentUser

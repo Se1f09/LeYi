@@ -14,6 +14,7 @@
     <script src="../Script/jquery.min.js"></script>
     <script src="../Script/jquery.media.js"></script>
     <link href="../Style/common.css" rel="stylesheet" />
+    <base target="_top" />
 </head>
 <body>
     <form runat="server">
@@ -198,11 +199,22 @@
                                         </asp:Panel>
                                         <asp:Panel runat="server" ID="publish_course_panel">
                                             <h5>学科：</h5>
-                                            <telerik:RadDropDownTree runat="server" ID="publish_course" Width="140" CheckBoxes="CheckChildNodes" AutoPostBack="True" DataTextField="Name" DataValueField="Id" DataFieldID="Id" OnEntryAdded="publish_course_OnEntryAdded" OnEntryRemoved="publish_course_OnEntryRemoved"></telerik:RadDropDownTree>
+                                            <telerik:RadComboBox runat="server" ID="publish_course" Width="140" AppendDataBoundItems="true" AutoPostBack="true" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="publish_course_SelectedIndexChanged">
+                                                <Items>
+                                                    <telerik:RadComboBoxItem Text="" Value="" />
+                                                </Items>
+                                            </telerik:RadComboBox>
                                         </asp:Panel>
                                         <asp:Panel runat="server" ID="publish_grade_panel">
                                             <h5>年级：</h5>
-                                            <telerik:RadDropDownTree runat="server" ID="publish_grade" Width="140" CheckBoxes="CheckChildNodes" AutoPostBack="True" DataTextField="Name" DataValueField="Id" DataFieldID="Id" DataFieldParentID="ParentId" OnEntryAdded="publish_grade_OnEntryAdded" OnEntryRemoved="publish_grade_OnEntryRemoved"></telerik:RadDropDownTree>
+                                            <telerik:RadComboBox runat="server" ID="publish_grade" Width="140" AppendDataBoundItems="true" AutoPostBack="true" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="publish_grade_SelectedIndexChanged">
+                                                <Items>
+                                                    <telerik:RadComboBoxItem Text="" Value="" />
+                                                </Items>
+                                            </telerik:RadComboBox>
+                                        </asp:Panel>
+                                        <asp:Panel ID="sync_assistant" runat="server" Style="margin-top: 6px;">
+                                            <asp:CheckBox ID="sync_ass" runat="server" Text="发布至资源小助手" OnCheckedChanged="sync_ass_CheckedChanged" Style="margin: 0 0 0 16px;" AutoPostBack="true" />
                                         </asp:Panel>
                                     </telerik:RadAjaxPanel>
                                 </div>

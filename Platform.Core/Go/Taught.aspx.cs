@@ -230,6 +230,8 @@ namespace Go
                     return 6;
                 case 4:
                     return 3;
+                case 6:
+                    return 3;
                 default:
                     return 0;
             }
@@ -244,6 +246,7 @@ namespace Go
         public static string[] PJ = { "九年级", "八年级", "七年级", "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
         public static string[] P = { "六年级", "五年级", "四年级", "三年级", "二年级", "一年级" };
         public static string[] K = { "大班", "中班", "小班" };
+        public static string[] S = { "高三", "高二", "高一" };
 
         private int? __year;
 
@@ -277,6 +280,8 @@ namespace Go
                     return index < P.Length && index > -1 ? P[index] : string.Empty;
                 case ClassType.幼儿园:
                     return index < K.Length && index > -1 ? K[index] : string.Empty;
+                case ClassType.高中:
+                    return index < S.Length && index > -1 ? S[index] : string.Empty;
             }
             return string.Empty;
         }

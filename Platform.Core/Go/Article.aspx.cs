@@ -11,6 +11,8 @@ namespace Go
     {
         private const string Right = "Article";
 
+        private static Guid ArticleTopId = Guid.Parse("023caf84-4f7b-4777-abeb-66137b4e71fd");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -30,9 +32,9 @@ namespace Go
         private void BindTree()
         {
             var list = new List<Catalog>();
+            list.Add(new Catalog { Id = ArticleTopId, Name = "文章栏目", Ordinal = 0, ParentId = null, State = State.启用, Type = CatalogType.文章 });
             list.AddRange(HomoryContext.Value.Catalog.Where(o => o.Type == CatalogType.文章 && o.State < State.删除).OrderBy(o => o.State).ThenBy(o => o.Ordinal).ThenBy(o => o.Name).ToList());
-            list.ForEach(o => { if (o.ParentId == null) { o.ParentId = Guid.Empty; } });
-            list.Add(new Catalog { Id = Guid.Empty, Name = "文章栏目", Ordinal = 0, ParentId = null, State = State.启用, Type = CatalogType.文章 });
+            list.ForEach(o => { if (o.ParentId == null) { o.ParentId = ArticleTopId; } });
             tree.DataSource = list;
             tree.DataBind();
         }
@@ -48,9 +50,9 @@ namespace Go
         protected void grid_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             var parentId = tree.SelectedNode == null ? (Guid?)(null) : Guid.Parse(tree.SelectedNode.Value);
-            if (parentId == Guid.Empty)
+            if (parentId == ArticleTopId)
             {
-                grid.DataSource = HomoryContext.Value.Catalog.Where(o => o.State < State.删除 && o.ParentId == null && o.Type == CatalogType.文章)
+                grid.DataSource = HomoryContext.Value.Catalog.Where(o => o.State < State.删除 && (o.ParentId == null || (o.ParentId != null && o.ParentId == ArticleTopId)) && o.Type == CatalogType.文章)
                       .OrderBy(o => o.State)
                       .ThenBy(o => o.Ordinal)
                       .ToList();
@@ -153,7 +155,7 @@ namespace Go
         {
             if (catalog.Id == Guid.Empty)
             {
-                var count = HomoryContext.Value.Catalog.Count(o => o.State < State.删除 && o.Type == CatalogType.文章 && o.ParentId == null);
+                var count = HomoryContext.Value.Catalog.Count(o => o.State < State.删除 && o.Type == CatalogType.文章 && (o.ParentId == null || (o.ParentId != null && o.ParentId == ArticleTopId)));
                 return count == 0 ? string.Empty : string.Format(" [{0}]", count);
             }
             else

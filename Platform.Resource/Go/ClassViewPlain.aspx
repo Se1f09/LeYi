@@ -13,6 +13,7 @@
     <link href="../Style/detail.css" rel="stylesheet" />
     <link href="../Style/commentInputBox.css" rel="stylesheet" />
     <link href="../Style/1.css" rel="stylesheet" />
+    <base target="_top" />
     <script src="../Script/jquery.min.js"></script>
     <script>
         function GetUrlParms() {
@@ -30,7 +31,7 @@
         }
     </script>
 </head>
-<body>
+<body style="background: url('../image/mainbg.png');">
     <form id="form1" runat="server">
         <telerik:RadScriptManager ID="Rsm" runat="server">
             <Scripts>
@@ -52,11 +53,17 @@
                                 </div>
                                 <div class="photo-info">
                                     <span>作者：<a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'><%= CurrentResource.User.DisplayName %></a></span>&nbsp;&nbsp;
-                                <span id="catalog" runat="server">栏目：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.文章).Aggregate(string.Empty,Combine).CutString(null) %></span>
+                                    <span id="catalog" runat="server">栏目：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.文章).Aggregate(string.Empty,Combine).CutString(null) %></span>
                                     <br />
-                                    <span>年级：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&(o.Catalog.Type== CatalogType.年级_幼儿园||o.Catalog.Type== CatalogType.年级_六年制||o.Catalog.Type== CatalogType.年级_九年制)).Aggregate(string.Empty,Combine).CutString(null) %></span>&nbsp;&nbsp;
-                                <span>学科：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.课程).Aggregate(string.Empty,Combine).CutString(null) %></span>
+                                    <asp:Panel runat="server" ID="cg">
+                                    <span><%= CombineGrade() %></span>&nbsp;&nbsp;
+                                    <span><%= CombineCourse() %></span>
                                     <br />
+                                    </asp:Panel>
+                                    <asp:Panel runat="server" ID="tag">
+                                    <span>标签：<%= CombineTags() %></span>
+                                    <br />
+                                    </asp:Panel>
                                     <span>时间：<%= CurrentResource.Time.ToString("yyyy-MM-dd HH:mm") %></span>
                                 </div>
 
@@ -67,14 +74,16 @@
                                     <iframe runat="server" src="../Document/web/PdfViewer.aspx" width="738px" height="800px" id="publish_preview_pdf" style="margin-top: 10px;"></iframe>
 
                                 </div>
+                                                                <br />
+                                <br />
 
-                                <p style="font-size: 16px;">附件：</p>
-                                <p>
+                                <p id="pppp1" runat="server" style="font-size: 16px;">附件：</p>
+                                <p id="pppp2" runat="server">
 
                                     <telerik:RadListView ID="publish_attachment_list" runat="server" OnNeedDataSource="publish_attachment_list_OnNeedDataSource">
                                         <ItemTemplate>
                                             <img src='<%# string.Format("../Image/img/{0}.jpg", (int)Eval("FileType")) %>' />
-                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>
+                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>&nbsp;&nbsp;
                                         </ItemTemplate>
                                     </telerik:RadListView>
                                 </p>

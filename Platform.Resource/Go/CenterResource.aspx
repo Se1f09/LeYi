@@ -4,7 +4,6 @@
 
 <%@ Register Src="~/Control/CommonTop.ascx" TagPrefix="homory" TagName="CommonTop" %>
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
-<%@ Register Src="~/Control/PersonalActioncenter.ascx" TagPrefix="homory" TagName="PersonalActioncenter" %>
 <%@ Register Src="~/Control/PersonalActionvideo.ascx" TagPrefix="homory" TagName="PersonalActionvideo" %>
 <%@ Register Src="~/Control/CenterLeft.ascx" TagPrefix="homory" TagName="CenterLeft" %>
 <%@ Register Src="~/Control/CenterRight.ascx" TagPrefix="homory" TagName="CenterRight" %>
@@ -30,6 +29,7 @@
     <link href="../Style/public.css" rel="stylesheet" />
     <link href="../Style/mhzy.css" rel="stylesheet" />
     <link href="../Style/center.css" rel="stylesheet" />
+    <base target="_top" />
 
 </head>
 <body class="srx-phome">

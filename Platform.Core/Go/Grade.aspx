@@ -60,16 +60,6 @@
 						<HeaderStyle HorizontalAlign="Center" />
 					</MasterTableView>
 				</telerik:RadGrid>
-            </div>
-            <div class="eight wide column">
-                <h6 class="ui teal header"><i class="ui teal circle icon"></i>初中</h6>
-                <telerik:RadGrid ID="g2" runat="server" CssClass="coreCenter" AutoGenerateColumns="True" LocalizationPath="../Language" GridLines="None" OnNeedDataSource="g2_NeedDataSource">
-					<MasterTableView>
-						<HeaderStyle HorizontalAlign="Center" />
-					</MasterTableView>
-				</telerik:RadGrid>
-            </div>
-            <div class="eight wide column">
                 <h6 class="ui teal header"><i class="ui teal circle icon"></i>小学</h6>
                 <telerik:RadGrid ID="g3" runat="server" CssClass="coreCenter" AutoGenerateColumns="True" LocalizationPath="../Language" GridLines="None" OnNeedDataSource="g3_NeedDataSource">
 					<MasterTableView>
@@ -80,6 +70,18 @@
             <div class="eight wide column">
                 <h6 class="ui teal header"><i class="ui teal circle icon"></i>幼儿园</h6>
                 <telerik:RadGrid ID="g1" runat="server" CssClass="coreCenter" AutoGenerateColumns="True" LocalizationPath="../Language" GridLines="None" OnNeedDataSource="g1_NeedDataSource">
+					<MasterTableView>
+						<HeaderStyle HorizontalAlign="Center" />
+					</MasterTableView>
+				</telerik:RadGrid>
+                <h6 class="ui teal header"><i class="ui teal circle icon"></i>初中</h6>
+                <telerik:RadGrid ID="g2" runat="server" CssClass="coreCenter" AutoGenerateColumns="True" LocalizationPath="../Language" GridLines="None" OnNeedDataSource="g2_NeedDataSource">
+					<MasterTableView>
+						<HeaderStyle HorizontalAlign="Center" />
+					</MasterTableView>
+				</telerik:RadGrid>
+                <h6 class="ui teal header"><i class="ui teal circle icon"></i>高中</h6>
+                <telerik:RadGrid ID="g5" runat="server" CssClass="coreCenter" AutoGenerateColumns="True" LocalizationPath="../Language" GridLines="None" OnNeedDataSource="g5_NeedDataSource">
 					<MasterTableView>
 						<HeaderStyle HorizontalAlign="Center" />
 					</MasterTableView>

@@ -2,7 +2,7 @@
 <%@ Import Namespace="Homory.Model" %>
 
 <telerik:RadAjaxPanel runat="server" ID="HomeNotePanel">
-	<asp:Timer runat="server" ID="HomeNoteTimer" Interval="10000" Enabled="False" OnTick="HomeNoteTimer_OnTick"></asp:Timer>
+	<asp:Timer runat="server" ID="HomeNoteTimer" Interval="30000" Enabled="False" OnTick="HomeNoteTimer_OnTick"></asp:Timer>
 	<div class="box">
 		<div class="box-hd">通知公告</div>
 		<div class="box-bd">

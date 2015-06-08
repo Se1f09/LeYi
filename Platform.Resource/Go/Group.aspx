@@ -4,7 +4,6 @@
 <%@ Register Src="~/Control/CommonBottom.ascx" TagPrefix="homory" TagName="CommonBottom" %>
 <%@ Register Src="~/Control/CommonTop.ascx" TagPrefix="homory" TagName="CommonTop" %>
 
-
 <!DOCTYPE html>
 
 <html>
@@ -16,6 +15,7 @@
     <title>团队教研首页</title>
     <link  rel="stylesheet"  href="css/common.css">
 <link  rel="stylesheet"  href="css/common(1).css">
+    <base target="_top" />
 
 <link  rel="stylesheet"  href="css/plaza1.css">
 

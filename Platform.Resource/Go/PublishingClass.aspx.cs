@@ -390,6 +390,7 @@ namespace Go
             resource.State = State.启用;
             resource.CourseId = courseCatalogId;
             resource.GradeId = gradeCatalogId;
+            resource.AssistantType = 1;
             HomoryContext.Value.SaveChanges();
             Response.Redirect(string.Format("../Go/{1}?Id={0}", resource.Id, resource.Type == Homory.Model.ResourceType.视频 ? "ClassViewVideo" : "ClassViewPlain"), false);
         }
@@ -505,6 +506,31 @@ namespace Go
 
             popup_import.NavigateUrl = string.Format("../Popup/PublishImportClass.aspx?UserId={1}&Type={0}", TeacherOperationType.ToString(), UserId);
             popup_attachment.NavigateUrl = string.Format("../Popup/PublishAttachmentClass.aspx?UserId={1}&Type={0}", TeacherOperationType.ToString(), UserId);
+        }
+
+        protected void preview_timer_Tick(object sender, EventArgs e)
+        {
+            var path = Server.MapPath(CurrentResource.Preview);
+            if (File.Exists(path))
+            {
+                FileInfo info = new FileInfo(path);
+                try
+                {
+                    var s = info.OpenWrite();
+                    try
+                    {
+                        s.Close();
+                    }
+                    catch
+                    {
+                    }
+                    publish_preview_player.Title = "视频格式转换成功。";
+                    preview_timer.Enabled = false;
+                }
+                catch
+                {
+                }
+            }
         }
     }
 }

@@ -153,6 +153,17 @@
           <Property Name="GradeId" Type="uniqueidentifier" />
           <Property Name="CourseId" Type="uniqueidentifier" />
         </EntityType>
+        <EntityType Name="GroupBoard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GroupId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="GroupUser">
           <Key>
             <PropertyRef Name="GroupId" />
@@ -537,8 +548,8 @@
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewLearned' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewLearned”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewLearned">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -551,8 +562,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewLearned' does not have a prima
           <Property Name="CourseName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="Ordinal" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewQueryOperation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewQueryOperation”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewQueryOperation">
           <Key>
             <PropertyRef Name="Id" />
@@ -567,8 +578,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewQueryOperation' does not have 
           <Property Name="Name" Type="nvarchar" MaxLength="64" />
           <Property Name="姓名" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewQueryResource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewQueryResource”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewQueryResource">
           <Key>
             <PropertyRef Name="Id" />
@@ -605,8 +616,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewQueryResource' does not have a
           <Property Name="学校" Type="nvarchar" MaxLength="64" />
           <Property Name="教师" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewQuerySign' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewQuerySign”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewQuerySign">
           <Key>
             <PropertyRef Name="Id" />
@@ -629,8 +640,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewQuerySign' does not have a pri
           <Property Name="Name" Type="nvarchar" MaxLength="64" />
           <Property Name="姓名" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewQueryStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewQueryStudent”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewQueryStudent">
           <Key>
             <PropertyRef Name="姓名" />
@@ -657,8 +668,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewQueryStudent' does not have a 
           <Property Name="联系人" Type="nvarchar" MaxLength="16" />
           <Property Name="联系号码" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewQueryTaught' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewQueryTaught”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewQueryTaught">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -679,8 +690,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewQueryTaught' does not have a p
           <Property Name="课程名称" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="教师" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewQueryTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewQueryTeacher”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewQueryTeacher">
           <Key>
             <PropertyRef Name="姓名" />
@@ -709,8 +720,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewQueryTeacher' does not have a 
           <Property Name="现居住地" Type="nvarchar" MaxLength="256" />
           <Property Name="民族" Type="nvarchar" MaxLength="16" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewResource' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewResource”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewResource">
           <Key>
             <PropertyRef Name="RC" />
@@ -761,8 +772,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewResource' does not have a prim
           <Property Name="Download" Type="int" Nullable="false" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewResourceX' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewResourceX”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewResourceX">
           <Key>
             <PropertyRef Name="CatalogId" />
@@ -813,8 +824,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewResourceX' does not have a pri
           <Property Name="Download" Type="int" Nullable="false" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewRole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewRole">
           <Key>
             <PropertyRef Name="RoleId" />
@@ -830,8 +841,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewRole' does not have a primary 
           <Property Name="RoleName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="State" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewStudent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewStudent”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewStudent">
           <Key>
             <PropertyRef Name="Id" />
@@ -862,8 +873,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewStudent' does not have a prima
           <Property Name="DeaprtmentDisplayName" Type="nvarchar" MaxLength="64" />
           <Property Name="Level" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewTaught' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewTaught”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewTaught">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -878,8 +889,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTaught' does not have a primar
           <Property Name="State" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewTeacher”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewTeacher">
           <Key>
             <PropertyRef Name="Id" />
@@ -918,8 +929,8 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTeacher' does not have a prima
           <Property Name="MinorOrdinal" Type="int" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“Platform_BT.dbo.ViewTS”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="ViewTS">
           <Key>
             <PropertyRef Name="Id" />
@@ -1128,6 +1139,30 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
             </Principal>
             <Dependent Role="Group">
               <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupBoard_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="GroupBoard" Type="Self.GroupBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupBoard">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupBoard_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="GroupBoard" Type="Self.GroupBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupBoard">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1589,6 +1624,7 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <EntitySet Name="DepartmentUser" EntityType="Self.DepartmentUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dictionary" EntityType="Self.Dictionary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupBoard" EntityType="Self.GroupBoard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Learned" EntityType="Self.Learned" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
@@ -1938,6 +1974,14 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <AssociationSet Name="FK_Group_Grade" Association="Self.FK_Group_Grade">
             <End Role="Catalog" EntitySet="Catalog" />
             <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupBoard_Group" Association="Self.FK_GroupBoard_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="GroupBoard" EntitySet="GroupBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupBoard_User" Association="Self.FK_GroupBoard_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="GroupBoard" EntitySet="GroupBoard" />
           </AssociationSet>
           <AssociationSet Name="FK_GroupUser_Group" Association="Self.FK_GroupUser_Group">
             <End Role="Group" EntitySet="Group" />
@@ -2354,6 +2398,15 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
             <End Role="ResourceLog" EntitySet="ResourceLog" />
           </AssociationSet>
           <EntitySet Name="ViewQueryResource" EntityType="Homory.Model.ViewQueryResource" />
+          <EntitySet Name="GroupBoard" EntityType="Homory.Model.GroupBoard" />
+          <AssociationSet Name="FK_GroupBoard_Group" Association="Homory.Model.FK_GroupBoard_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="GroupBoard" EntitySet="GroupBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupBoard_User" Association="Homory.Model.FK_GroupBoard_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="GroupBoard" EntitySet="GroupBoard" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Application">
           <Key>
@@ -2431,6 +2484,7 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <NavigationProperty Name="ResourceAssess" Relationship="Homory.Model.FK_ResourceAssess_User" FromRole="User" ToRole="ResourceAssess" />
           <NavigationProperty Name="ResourceCommentTemp" Relationship="Homory.Model.FK_ResourceCommentTemp_User" FromRole="User" ToRole="ResourceCommentTemp" />
           <NavigationProperty Name="ResourceLog" Relationship="Homory.Model.FK_ResourceLog_User" FromRole="User" ToRole="ResourceLog" />
+          <NavigationProperty Name="GroupBoard" Relationship="Homory.Model.FK_GroupBoard_User" FromRole="User" ToRole="GroupBoard" />
           </EntityType>
         <EntityType Name="UserOnline">
           <Key>
@@ -2701,9 +2755,10 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <Member Name="团队_名师" Value="5" />
           <Member Name="团队_教研" Value="6" />
           <Member Name="年级_幼儿园" Value="-1" />
-          <Member Name="年级_六年制" Value="-2" />
-          <Member Name="年级_九年制" Value="-3" />
+          <Member Name="年级_小学" Value="-2" />
+          <Member Name="年级_初中" Value="-3" />
           <Member Name="学习小助手" Value="1" />
+          <Member Name="年级_高中" Value="-4" />
         </EnumType>
         <EntityType Name="DepartmentUser">
           <Key>
@@ -3852,6 +3907,7 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <NavigationProperty Name="Catalog" Relationship="Homory.Model.FK_Group_Course" FromRole="Group" ToRole="Catalog" />
           <NavigationProperty Name="Catalog1" Relationship="Homory.Model.FK_Group_Grade" FromRole="Group" ToRole="Catalog" />
           <NavigationProperty Name="GroupUser" Relationship="Homory.Model.FK_GroupUser_Group" FromRole="Group" ToRole="GroupUser" />
+          <NavigationProperty Name="GroupBoard" Relationship="Homory.Model.FK_GroupBoard_Group" FromRole="Group" ToRole="GroupBoard" />
         </EntityType>
         <Association Name="FK_Group_Course">
           <End Type="Homory.Model.Catalog" Role="Catalog" Multiplicity="0..1" />
@@ -3957,6 +4013,7 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <Member Name="初中" Value="4" />
           <Member Name="其他" Value="5" />
           <Member Name="无" Value="0" />
+          <Member Name="高中" Value="6" />
         </EnumType>
         <EntityType Name="ViewQueryTeacher">
           <Key>
@@ -4156,6 +4213,43 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
           <Property Name="学校" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="教师" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="GroupBoard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="GroupId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="State" Type="Homory.Model.State" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Homory.Model.FK_GroupBoard_Group" FromRole="GroupBoard" ToRole="Group" />
+          <NavigationProperty Name="User" Relationship="Homory.Model.FK_GroupBoard_User" FromRole="GroupBoard" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_GroupBoard_Group">
+          <End Type="Homory.Model.Group" Role="Group" Multiplicity="1" />
+          <End Type="Homory.Model.GroupBoard" Role="GroupBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupBoard">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupBoard_User">
+          <End Type="Homory.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Homory.Model.GroupBoard" Role="GroupBoard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupBoard">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5002,6 +5096,18 @@ warning 6002: The table/view 'Platform_BT.dbo.ViewTS' does not have a primary ke
                 <ScalarProperty Name="月份" ColumnName="月份" />
                 <ScalarProperty Name="年份" ColumnName="年份" />
                 <ScalarProperty Name="CampusId" ColumnName="CampusId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupBoard">
+            <EntityTypeMapping TypeName="Homory.Model.GroupBoard">
+              <MappingFragment StoreEntitySet="GroupBoard">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

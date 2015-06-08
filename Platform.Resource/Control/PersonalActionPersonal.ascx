@@ -8,7 +8,7 @@
     <telerik:RadListView runat="server" ID="actions" AllowPaging="true" PageSize="5" OnNeedDataSource="resultX_NeedDataSource">
         <ItemTemplate>
             <div class="srx-comment-list-box" id="srxCommentListBox">
-                <div class="srx-comment-list">
+                <div class="srx-comment-list" style="margin-top: 20px;">
                     <dl class="srx-comment-item">
                         <dt>
                             <a style="border: none;" href='<%# string.Format("../Go/Personal?Id={0}", U(((Homory.Model.Action)Container.DataItem).Id3).Id) %>'>
@@ -16,22 +16,21 @@
                         </dt>
                         <dd>
                             <div class="srx-comment-content" style="font-size: 14px;">
-                                <a href='<%# string.Format("../Go/Personal?Id={0}", U(((Homory.Model.Action)Container.DataItem).Id3).Id) %>'><font color="#949494"><%# UC(U(((Homory.Model.Action)Container.DataItem).Id3).Id) %></font>&nbsp;<font color="#333333"><b><%# U(((Homory.Model.Action)Container.DataItem).Id3).DisplayName %></b></font></a>&nbsp;<%# ((Homory.Model.Action)Container.DataItem).Type == ActionType.用户评分资源 ? "评分" : (((Homory.Model.Action)Container.DataItem).Type == ActionType.用户评论资源 ?"" : "") %>&nbsp;
+                                <a href='<%# string.Format("../Go/Personal?Id={0}", U(((Homory.Model.Action)Container.DataItem).Id3).Id) %>'><font color="#949494"><%# UC(U(((Homory.Model.Action)Container.DataItem).Id3).Id) %></font>&nbsp;<font color="#333333"><%# U(((Homory.Model.Action)Container.DataItem).Id3).DisplayName %></font></a>&nbsp;<%# ((Homory.Model.Action)Container.DataItem).Type == ActionType.用户评分资源 ? "评分" : (((Homory.Model.Action)Container.DataItem).Type == ActionType.用户评论资源 ?"" : "") %>：&nbsp;
                              
                               <span style="float: right; margin-right: 25px;"><%# ((DateTime)Eval("Time")).FormatTime() %></span>
                             </div>
                             <table>
                                 <tr>
                                     <td>
-
-                                        <label style="color: #227DC5; font-size: 12px; font-weight: normal; color: #333333;"><%# ((Homory.Model.Action)Container.DataItem).Type == ActionType.用户评分资源 ? Eval("Content1") + "分" : Eval("Content1") %></label></br>
+                                        <label style="color: #227DC5; font-size: 16px; font-weight: bold; color: #227dc5;"><%# ((Homory.Model.Action)Container.DataItem).Type == ActionType.用户评分资源 ? Eval("Content1") + "分" : Eval("Content1") %></label></br>
+                                        </br>
                                         <a style="border: none;" href='<%# string.Format("../Go/{1}?Id={0}",R(Eval("Id2")).Id,R(Eval("Id2")).Type == Homory.Model.ResourceType.视频?"ViewVideo":"ViewPlain") %>'>
-                                            <div style="width: 500px; height: 150px; overflow: hidden; border: 1px #CDCDCD solid;">
-                                                <img src='<%# R(Eval("Id2")).Image %>' width="500" style="margin-top: -90px;" />
+                                            <div style="width: 300px; height: 150px; overflow: hidden; border: 1px #CDCDCD solid;">
+                                                <img src='<%# R(Eval("Id2")).Image %>' width="300" style="margin-top: -90px;" />
                                             </div>
                                         </a>
-                                        </br>
-                                        <a href='<%# string.Format("../Go/{1}?Id={0}",R(Eval("Id2")).Id,R(Eval("Id2")).Type == Homory.Model.ResourceType.视频?"ViewVideo":"ViewPlain") %>'><font color="#333333"><%# R(Eval("Id2")).Title %></font></a>&nbsp;
+                                        <a href='<%# string.Format("../Go/{1}?Id={0}",R(Eval("Id2")).Id,R(Eval("Id2")).Type == Homory.Model.ResourceType.视频?"ViewVideo":"ViewPlain") %>'><font color="#333333">《<%# R(Eval("Id2")).Title %>》</font></a>&nbsp;
                                     </td>
                                     <td style="vertical-align: top; padding-left: 20px;"></td>
                                 </tr>

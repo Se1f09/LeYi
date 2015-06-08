@@ -160,10 +160,10 @@ public partial class Popup_PublishImportClass : System.Web.UI.Page
             case "wmv":
                 NReco.VideoConverter.FFMpegConverter c = new NReco.VideoConverter.FFMpegConverter();
                 c.GetVideoThumbnail(sourceX, cpicX, 2F);
-                if (!sourceX.EndsWith("flv"))
-                {
-                    c.ConvertMedia(sourceX, pathX, NReco.VideoConverter.Format.flv);
-                }
+                //if (!sourceX.EndsWith("flv"))
+                //{
+                //    c.ConvertMedia(sourceX, pathX, NReco.VideoConverter.Format.flv);
+                //}
                 res.Image = cpic;
                 res.FileType = ResourceFileType.Media;
                 res.Thumbnail = ((int)ResourceFileType.Media).ToString();

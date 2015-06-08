@@ -32,8 +32,7 @@
                 </div>
             </div>
             <div>
-                <a runat="server" id="publish_import_commit" onserverclick="publish_import_commit_OnServerClick">转换并导入</a>
-                <a onclick="RadClose();">关闭</a>
+                <a runat="server" id="publish_import_commit" onserverclick="publish_import_commit_OnServerClick" class="srx-ns-btn" style="margin: auto; padding: 4px; cursor: pointer; float: none; width: 150px; height: 32px;">转换并导入</a>
             </div>
         </telerik:RadAjaxPanel>
 

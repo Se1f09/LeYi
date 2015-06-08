@@ -93,7 +93,8 @@ namespace Go
                 downloadCount.InnerText = CurrentResource.Download.ToString();
                 favouriteCount.InnerText = CurrentResource.Favourite.ToString();
                 icon.ImageUrl = TargetUser.Icon;
-                name.Text = UC(TargetUser.Id) + " " + TargetUser.DisplayName;
+                name.Text = UC(TargetUser.Id).Replace("无锡市", "").Replace("无锡", "");
+                nameX.Text = TargetUser.DisplayName;
                 viewCount.Text = CurrentResource.View.ToString();
                 viewList.DataSource = HomoryContext.Value.Action.Where(o => o.Id2 == CurrentResource.Id && o.Type == ActionType.用户访问资源).OrderByDescending(q => q.Time)
                         .Take(9)
@@ -130,8 +131,9 @@ namespace Go
             switch (type)
             {
                 case CatalogType.年级_幼儿园:
-                case CatalogType.年级_六年制:
-                case CatalogType.年级_九年制:
+                case CatalogType.年级_小学:
+                case CatalogType.年级_初中:
+                case CatalogType.年级_高中:
                     {
                         return "Grade";
                     }
@@ -151,6 +153,7 @@ namespace Go
             var resource = CurrentResource;
             var files = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.OrderBy(o => o.Id).ToList();
             publish_attachment_list.DataSource = files;
+            pppp1.Visible = pppp2.Visible = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.Count > 0;
         }
 
         protected Func<string, ResourceCatalog, string> Combine = (a, o) => string.Format("{0}<a target='_blank' href='../Go/Search?{2}={3}'>{1}</a>、", a, o.Catalog.Name, QueryType(o.Catalog.Type), o.CatalogId);
@@ -162,7 +165,7 @@ namespace Go
 
         protected string CombineGrade()
         {
-            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o=>o.Id==CurrentResource.GradeId).Name, QueryType(CatalogType.年级_六年制), CurrentResource.GradeId) : "";
+            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o=>o.Id==CurrentResource.GradeId).Name, QueryType(HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Type), CurrentResource.GradeId) : "";
         }
 
         protected bool CanCombineCourse()

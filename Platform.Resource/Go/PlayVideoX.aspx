@@ -8,6 +8,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <base target="_top" />
 </head>
 <body style="text-align: center; width: 100%;margin:0;padding:0;">
     <form id="form1" runat="server">

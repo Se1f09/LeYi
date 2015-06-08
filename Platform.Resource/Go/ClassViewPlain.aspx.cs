@@ -6,18 +6,20 @@ using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI.HtmlControls;
 using Homory.Model;
+using System.Text;
 
 namespace Go
 {
     public partial class GoViewPlain : System.Web.UI.Page
     {
-
-
         protected Lazy<Entities> HomoryContext = new Lazy<Entities>(() => new Entities());
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                cg.Visible = CanCombineCourse() || CanCombineGrade();
+                tag.Visible = CanCombineTags();
                 var url = string.Format("../Document/web/PdfViewer.aspx?Id={0}&Random={1}", Request.QueryString["Id"],
                     Guid.NewGuid());
                 publish_preview_pdf.Attributes["src"] = url;
@@ -34,13 +36,48 @@ namespace Go
 
         private Resource _resource;
 
+        protected bool CanCombineGrade()
+        {
+            return CurrentResource.GradeId.HasValue;
+        }
+
+        protected string CombineGrade()
+        {
+            return CanCombineGrade() ? string.Format("年级：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Name, QueryType(HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.GradeId).Type), CurrentResource.GradeId) : "";
+        }
+
+        protected bool CanCombineCourse()
+        {
+            return CurrentResource.CourseId.HasValue;
+        }
+
+        protected string CombineCourse()
+        {
+            return CanCombineCourse() ? string.Format("学科：<a target='_blank' href='../Go/Search?{1}={2}'>{0}</a>", HomoryContext.Value.Catalog.First(o => o.Id == CurrentResource.CourseId).Name, QueryType(CatalogType.课程), CurrentResource.CourseId) : "";
+        }
+
+        protected bool CanCombineTags()
+        {
+            return CurrentResource.ResourceTag.Count(o => o.State < State.审核) > 0;
+        }
+
+        protected string CombineTags()
+        {
+            var format = "、<a target='_blank' href='../Go/Search?Content={1}'>{0}</a>";
+            var sb = new StringBuilder();
+            foreach (var t in CurrentResource.ResourceTag.Where(o => o.State < State.审核).ToList())
+                sb.Append(string.Format(format, t.Tag, Server.UrlEncode(t.Tag)));
+            return CanCombineTags() ? sb.ToString().Substring(1) : "";
+        }
+
         protected static string QueryType(CatalogType type)
         {
             switch (type)
             {
                 case CatalogType.年级_幼儿园:
-                case CatalogType.年级_六年制:
-                case CatalogType.年级_九年制:
+                case CatalogType.年级_初中:
+                case CatalogType.年级_小学:
+                case CatalogType.年级_高中:
                     {
                         return "Grade";
                     }
@@ -60,6 +97,7 @@ namespace Go
             var resource = CurrentResource;
             var files = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.OrderBy(o => o.Id).ToList();
             publish_attachment_list.DataSource = files;
+            pppp1.Visible = pppp2.Visible = HomoryContext.Value.Resource.Single(o => o.Id == resource.Id).ResourceAttachment.Count > 0;
         }
 
         protected Func<string, ResourceCatalog, string> Combine = (a, o) => string.Format("{0}<a target='_blank' href='../Go/Search?{2}={3}'>{1}</a>、", a, o.Catalog.Name, QueryType(o.Catalog.Type), o.CatalogId);

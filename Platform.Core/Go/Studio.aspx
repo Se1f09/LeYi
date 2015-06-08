@@ -129,7 +129,7 @@
                             </telerik:GridTemplateColumn>
                             <telerik:GridTemplateColumn ReadOnly="true" ItemStyle-HorizontalAlign="Center" HeaderText="头像" DataField="Icon" AllowSorting="false" UniqueName="Icon">
                                 <ItemTemplate>
-                                    <asp:Image ID="icon" runat="server" onclick=<%# string.Format("PopIcon('{0}');", Eval("Id")) %> Width="60" Height="60" CssClass='<%# string.Format("{0}{1}", "ui image rootPointer", ((Homory.Model.State)Eval("State")) < Homory.Model.State.审核 ? "" : " disabled") %>' ImageUrl='<%# FormatIcon((string)Eval("Icon")) %>'></asp:Image>
+                                    <asp:Image ID="icon" runat="server" onclick=<%# string.Format("PopIcon('{0}');", Eval("Id")) %> Width="60" Height="60" CssClass='<%# string.Format("{0}{1}", "ui image rootPointer", ((Homory.Model.State)Eval("State")) < Homory.Model.State.审核 ? "" : " disabled") %>' ImageUrl='<%# FormatIcon((string)Eval("Icon")) + "?"  + Guid.NewGuid().ToString("N")%>'></asp:Image>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                             <telerik:GridTemplateColumn ItemStyle-HorizontalAlign="Center" ReadOnly="true" HeaderText="引领" AllowSorting="false" UniqueName="Members">

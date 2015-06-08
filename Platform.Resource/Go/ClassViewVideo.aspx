@@ -14,7 +14,8 @@
     <link href="../Style/detail.css" rel="stylesheet" />
     <link href="../Style/commentInputBox.css" rel="stylesheet" />
     <link href="../Style/1.css" rel="stylesheet" />
-    <script src="../Script/jquery.min.js"></script>
+      <base target="_top" />
+  <script src="../Script/jquery.min.js"></script>
     <script>
         function GetUrlParms() {
             var args = new Object();
@@ -31,7 +32,7 @@
         }
     </script>
 </head>
-<body>
+<body style="background: url('../image/mainbg.png');">
     <form id="form1" runat="server">
         <telerik:RadScriptManager ID="Rsm" runat="server">
             <Scripts>
@@ -41,6 +42,7 @@
             </Scripts>
         </telerik:RadScriptManager>
         <telerik:RadAjaxPanel runat="server">
+                                    <asp:Timer runat="server" ID="preview_timer" Interval="3000" Enabled="True" OnTick="preview_timer_Tick"></asp:Timer>
             <div class="srx-bg22">
                 <div class="srx-wrap">
                     <div class="srx-main" id="mainBox">
@@ -53,14 +55,33 @@
                                 </div>
                                 <div class="photo-info">
                                     <span>作者：<a href='<%= string.Format("../Go/Personal?Id={0}", TargetUser.Id) %>'><%= CurrentResource.User.DisplayName %></a></span>&nbsp;&nbsp;
-                                <span id="catalog" runat="server">栏目：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.视频).Aggregate(string.Empty,Combine).CutString(null) %></span><br />
-                                    <span>年级：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&(o.Catalog.Type== CatalogType.年级_幼儿园||o.Catalog.Type== CatalogType.年级_六年制||o.Catalog.Type== CatalogType.年级_九年制)).Aggregate(string.Empty,Combine).CutString(null) %></span>&nbsp;&nbsp;
-                                <span>学科：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.课程).Aggregate(string.Empty,Combine).CutString(null) %></span><br />
+                                    <span id="catalog" runat="server">栏目：<%= CurrentResource.ResourceCatalog.Where(o=>o.State==State.启用 &&o.Catalog.Type== CatalogType.视频).Aggregate(string.Empty,Combine).CutString(null) %></span>
+                                    <br />
+                                    <asp:Panel runat="server" ID="cg">
+                                        <span><%= CombineGrade() %></span>&nbsp;&nbsp;
+                                    <span><%= CombineCourse() %></span>
+                                        <br />
+                                    </asp:Panel>
+                                    <asp:Panel runat="server" ID="tag">
+                                        <span>标签：<%= CombineTags() %></span>
+                                        <br />
+                                    </asp:Panel>
                                     <span>时间：<%= CurrentResource.Time.ToString("yyyy-MM-dd HH:mm") %></span>
                                 </div>
 
+                                <div id="ni" runat="server" style="font-size: 14px; font-weight: bold;">
+                                    <br />
+                                    <br />
+                                    乐翼教育云资源平台正在为您转换视频格式，请稍候。。。
+                                    <br />
+                                    <br />
+                                    视频转换成功后，会自动为您跳转至资源浏览页。您可以先<a target="_blank" href="../Go/Home">浏览其他云资源</a>。
+                                    <br />
+                                    <br />
+                                </div>
 
-                                <div class="j-content clearfix">
+
+                                <div id="ri" runat="server" class="j-content clearfix">
                                     <%= CurrentResource.Content %>
                                     <br />
                                     <div style="background-color: black;">
@@ -68,6 +89,20 @@
 
                                     </div>
                                 </div>
+
+                                                                <br />
+                                <br />
+
+                                <p id="pppp1" runat="server" style="font-size: 16px;">附件：</p>
+                                <p id="pppp2" runat="server">
+
+                                    <telerik:RadListView ID="publish_attachment_list" runat="server" OnNeedDataSource="publish_attachment_list_NeedDataSource">
+                                        <ItemTemplate>
+                                            <img src='<%# string.Format("../Image/img/{0}.jpg", (int)Eval("FileType")) %>' />
+                                            <a href='<%# string.Format("{0}", Eval("Source")) %>'><%# Eval("Title") %></a>&nbsp;&nbsp;
+                                        </ItemTemplate>
+                                    </telerik:RadListView>
+                                </p>
 
 
 

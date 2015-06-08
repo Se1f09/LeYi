@@ -11,6 +11,7 @@ namespace Go
         {
             if (!IsPostBack)
             {
+                Session["______Campus"] = Guid.Empty;
                 BindTag();
             }
         }
