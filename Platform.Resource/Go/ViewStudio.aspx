@@ -39,7 +39,7 @@
                                     <div class="center_right">
                                         <div class="c-p-title" style="margin-top: 30px;">
                                             <div class="box-hd"><%# Eval("Name") %></div>
-                                            <a id="aMore" runat="server">+更多</a>
+                                            <a id="aMore" target="_top" runat="server">+更多</a>
                                         </div>
                                         <ul>
                                             <asp:Repeater runat="server" ID="resources">
